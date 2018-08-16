@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	First Name: <span th:text = "${person.firstName}"></span><br/>
+	Last Name: <span th:text = "${person.lastName}"></span><br/>
+	Age: <span th:text = "${person.age}"></span><br/>
+</body>
+</html>

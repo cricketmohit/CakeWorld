@@ -1,0 +1,5 @@
+package com.cakeworld.controller;
+
+public class WelcomeController {
+
+}

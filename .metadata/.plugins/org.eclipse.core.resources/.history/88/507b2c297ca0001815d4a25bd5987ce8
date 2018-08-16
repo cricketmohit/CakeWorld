@@ -1,0 +1,5 @@
+package com.cakeworld.model;
+
+public class Cake {
+
+}

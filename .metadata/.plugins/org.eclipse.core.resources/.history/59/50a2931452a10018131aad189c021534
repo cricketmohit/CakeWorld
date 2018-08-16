@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>Cake World</title>
+</head>
+<body>
+	Cake Name: <span th:text = "${cake.name}"></span><br/>
+
+	Cake Price: <span th:text = "${cake.price}"></span><br/>
+	
+<h2>HTML Image</h2>
+
+<img src="comingsoon.jpg"  alt="my dog eating a tangerine" width="800" height="333"/>
+
+</body>
+</html>

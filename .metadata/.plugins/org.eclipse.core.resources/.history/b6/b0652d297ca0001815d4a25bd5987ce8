@@ -1,0 +1,23 @@
+package com.cakeworld.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class WelcomeController {
+
+	@RequestMapping("/person")
+	public String Person (Model model) {
+		Person p = new Person();
+		p.setFirstName("Mohit");
+		p.setLastName("Sharma");
+		p.setAge(33); 
+		model.addAttribute("person",p);
+		return "personview";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/")
+	String entry() {
+		return "My second Spring Boot App";
+	}
+}
