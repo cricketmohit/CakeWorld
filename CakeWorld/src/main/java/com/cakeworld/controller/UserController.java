@@ -30,7 +30,11 @@ public class UserController {
 		userRepository.save(n);
 		return "Saved";
 	}
-
+	@RequestMapping("/mohit")
+	public @ResponseBody String getMohit() {
+		// This returns a JSON or XML with the users
+		return "Mohit";
+	}
 	@RequestMapping("/all")
 	public @ResponseBody Iterable<Users> getAllUsers() {
 		// This returns a JSON or XML with the users
