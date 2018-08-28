@@ -5,4 +5,6 @@
 <fullyQualifiedTypeName name="org.springframework.boot.SpringBootConfiguration"/>
 <fullyQualifiedTypeName name="org.springframework.boot.SpringApplicationRunListener"/>
 <fullyQualifiedTypeName name="org.springframework.boot.web.support.SpringBootServletInitializer"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>
