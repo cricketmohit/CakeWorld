@@ -1,6 +1,6 @@
 deploy_local.sh
-*.metadata
-*.recommenders
+*/.metadata/*
+*/.recommenders/*
 application-local.properties
 application-dev.properties
 *.class
