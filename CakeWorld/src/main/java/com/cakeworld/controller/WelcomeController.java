@@ -2,10 +2,15 @@ package com.cakeworld.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cakeworld.main.UserRepository;
 import com.cakeworld.model.Cake;
+import com.cakeworld.model.Users;
 
 @Controller
 public class WelcomeController {
@@ -18,6 +23,7 @@ public class WelcomeController {
 		model.addAttribute("cake",cake);
 		return "cakeView";
 	}
+
 	
 	
 	@RequestMapping("/")

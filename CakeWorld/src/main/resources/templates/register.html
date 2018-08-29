@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html  xmlns:th="http://www.thymeleaf.org" >
 
 <head>
 <title> Bake World</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="utf-8" />
 <meta name="keywords" content="Bake world" />
@@ -140,29 +141,30 @@
 			<h3 class="tittle">Register Now</h3>
 			<div class="inner-sec">
 				<div class="login p-5 bg-dark mx-auto mw-100">
-					<form action="#" method="post">
+				
+						<form th:action="@{/registerUser}" method="post" modelAttribute="users" >
 						<div class="form-row">
 							<div class="col-md-6 mb-3">
 								<label for="validationCustom01">Name</label>
 
-								<input type="text" class="form-control" id="validationDefault01" placeholder="" required=""/>
+								<input type="text" class="form-control" id="validationDefault01" placeholder="" name="name" required=""/>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="validationCustom02">Email Address</label>
-								<input class="form-control" type="email" placeholder="Enter your email..." required=""/>
+								<input class="form-control" type="email" placeholder="a@a.a"  name="email" required=""/>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6 mb-3">
 								<label for="exampleInputPassword1 mb-2">Password</label>
-								<input type="password" class="form-control" id="password1" placeholder="" required=""/>
+								<input type="password" class="form-control" id="password" name="password" placeholder="" required=""/>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="exampleInputPassword2 mb-2">Confirm Password</label>
-								<input type="password" class="form-control" id="password2" placeholder="" required=""/>
+								<input type="password" class="form-control" id="password2"  placeholder="" required=""/>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary submit mb-4">Register</button>
+						<input type="submit" class=" btn-primary submit" >Register</input>
 						<p>
 							<a href="#">By clicking Register, You agree to our terms</a>
 						</p>
@@ -191,7 +193,7 @@
 						<div class="subscribe-form">
 							<form action="#" method="post" class="subscribe_form">
 								<input class="form-control" type="email" placeholder="Enter your email..." required=""/>
-								<button type="submit" class="btn btn-primary submit">Submit</button>
+								<button type="submit" class="btn btn-primary submit mb-4">Submit</button>
 							</form>
 
 						</div>
