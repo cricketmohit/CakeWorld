@@ -6,7 +6,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org" >
 
 <head>
 <title> Bake World</title>
@@ -149,23 +149,27 @@
 			<h3 class="tittle">Sign In Now</h3>
 			<div class="row inner-sec">
 				<div class="login p-5 bg-dark mx-auto mw-100">
-					<form action="#" method="post">
+					<form th:action="@{/login}" method="post" modelAttribute="users">
 						<div class="form-group">
 							<label for="exampleInputEmail1 mb-2">Email address</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required=""/>
-							<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email" placeholder="" required=""/>
+							
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1 mb-2">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required=""/>
+							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name = "password" required=""/>
+							
 						</div>
 						<div class="form-check mb-2">
 							<input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-							<label class="form-check-label" for="exampleCheck1">Check me out</label>
+							<label class="form-check-label" for="exampleCheck1">Keep me sign in </label>
+							<a href="forgetPassword.html" style="color: white" class = "forgot info"> Forgot Password?</a>
 						</div>
 						<button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
+						 
+					
 						<p>
-							<a href="register.html"> Don't have an account?</a>
+							<a href="register.html"> Don't have an account? Register Now!</a>
 						</p>
 					</form>
 				</div>
@@ -291,5 +295,16 @@
 
 
 </body>
-
+<style>
+.forgot {
+    color: #4CAF50;
+    padding: 6px;
+    
+}
+.success {background-color: #4CAF50;} /* Green */
+.info {background-color: #2196F3;} /* Blue */
+.warning {background-color: #ff9800;} /* Orange */
+.danger {background-color: #f44336;} /* Red */ 
+.other {background-color: #e7e7e7; color: black;} /* Gray */ 
+</style>
 </html>

@@ -13,6 +13,8 @@ public class Users {
     private String email;
     
     private String password;
+    
+    private boolean newsletter;
 
 	public Integer getId() {
 		return id;
@@ -44,6 +46,14 @@ public class Users {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isNewsletter() {
+		return newsletter;
+	}
+
+	public void setNewsletter(boolean newsletter) {
+		this.newsletter = newsletter;
 	}
 
 

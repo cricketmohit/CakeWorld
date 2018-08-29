@@ -28,10 +28,27 @@ public class UserController {
 		Iterable<Users> users = userRepository.findAll(); 
         return users;
     }
+	@RequestMapping(value = "/login", method = RequestMethod.POST) 
+    public String login(@ModelAttribute("users")  Users user) {
+		List<Users> emailList = userRepository.findByEmail(user.getEmail());
+		for(Users userPersisted :emailList) {
+				if(userPersisted.getPassword().equals(user.getPassword()))
+					return "index";
+		}
+		return "login";
+    }
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST) 
-	    public String registerUser(@ModelAttribute("users")  Users users) {
-		 	//System.out.println(users.getEmail().toString()); 
-	        return "register";
+	    public String registerUser(@ModelAttribute("users")  Users user) {
+			List<Users> emailList = userRepository.findByEmail(user.getEmail());
+			for(Users userPersisted :emailList) {
+				if(userPersisted.getEmail().equalsIgnoreCase(user.getEmail())){
+					userPersisted.setPassword(user.getPassword());
+					userRepository.save(userPersisted);
+				return"login";	
+				}
+			}
+		 	userRepository.save(user);
+	        return "login";
 	    }
 	@RequestMapping("/add")// Map ONLY GET Requests
 	public @ResponseBody String addNewUser (@RequestParam String name
