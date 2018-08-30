@@ -1,39 +1,33 @@
 package com.cakeworld.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cakeworld.main.UserRepository;
-import com.cakeworld.model.Cake;
-import com.cakeworld.model.Users;
+import com.cakeworld.main.MenuRepository;
+import com.cakeworld.model.Menu;
 
 @Controller
 public class WelcomeController {
 
-	@RequestMapping("/cake")
-	public String Person (Model model) {
-		Cake cake = new Cake();
-		cake.setName("Vanilla"); 
-		cake.setPrice(200); 
-		model.addAttribute("cake",cake);
-		return "cakeView";
+
+	@Autowired
+	private MenuRepository menuRepository;
+	
+	@RequestMapping("/")
+	String entry(Model model) {
+		Iterable<Menu> menuList = menuRepository.findAll();
+		for (Menu menu : menuList) { 
+			if(menu.getId()!=null) {
+				model.addAttribute("menu",menu);
+			}
+		}
+		return "index";
 	}
 
 	
-	
-	@RequestMapping("/")
-	String entry() {
-		return "index";
-	}
-	@RequestMapping("/index")
-	String index() {
-		return "index";
-	}
+
 	@RequestMapping("/404")
 	String noPage() {
 		return "404";

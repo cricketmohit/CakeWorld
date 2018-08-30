@@ -7,4 +7,13 @@
 <fullyQualifiedTypeName name="org.springframework.boot.web.support.SpringBootServletInitializer"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+<fullyQualifiedTypeName name="com.cakeworld.model.Users"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
+<fullyQualifiedTypeName name="com.cakeworld.main.UserRepository"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.cakeworld.model.Menu"/>
+<fullyQualifiedTypeName name="com.cakeworld.main.MenuRepository"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
 </qualifiedTypeNameHistroy>

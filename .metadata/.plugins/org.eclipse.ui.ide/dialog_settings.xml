@@ -121,7 +121,7 @@
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item value="false" key="FilterByLocation"/>
 		<item value="true" key="ShowStatusLine"/>
-		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/.classpath&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/src/main/java/com/cakeworld/main/A.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/.gitignore&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/.classpath&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/.gitignore&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/src/main/resources/templates/register.html&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/src/main/resources/templates/contact.html&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/src/main/resources/application.properties&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/src/main/java/com/cakeworld/main/A.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/CakeWorld/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
 		<item value="false" key="ShowDerived"/>
 		<section name="DialogBoundsSettings">
@@ -137,6 +137,6 @@
 		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
 		<item value="529" key="DIALOG_HEIGHT"/>
 		<item value="458" key="DIALOG_X_ORIGIN"/>
-		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item value="22" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
