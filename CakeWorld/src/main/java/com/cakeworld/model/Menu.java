@@ -15,22 +15,22 @@ import lombok.Data;
 public class Menu {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    public Integer id;
     
-    private Integer externalId;
+    public Integer externalId;
 
-    private String name;
+    public String name;
 
-    private String description;
+    public String description;
     
-    private int price;
+    public int price;
     
     @ManyToOne
     public Category category;
     
-    private boolean availableToOrder;
+    public boolean availableToOrder;
     
-    private Blob image;
+    public String imageUrl;
   
     }
 

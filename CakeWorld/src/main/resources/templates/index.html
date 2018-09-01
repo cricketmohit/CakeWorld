@@ -6,7 +6,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org" >
 
 <head>
 <title>Bake World </title>
@@ -271,268 +271,173 @@
 						<li class="nav-item">
 							<a class="nav-link active"
 								id="pills-cake-tab" data-toggle="pill" href="#pills-cake"
-								role="tab" aria-controls="pills-cake" aria-selected="true">
+								role="tab" aria-controls="pills-cake" aria-selected="true" th:if="${not #lists.isEmpty(cakeMenu)}">
 								Cakes
 							</a>
 						</li>
 						<li class="nav-item"><a class="nav-link"
 							id="pills-cc-tabb" data-toggle="pill" href="#pills-cc"
-							role="tab" aria-controls="pills-cc" aria-selected="false">
+							role="tab" aria-controls="pills-cc" aria-selected="false" th:if="${not #lists.isEmpty(ccMenu)}">
 								Cup Cake</a></li>
 						<li class="nav-item"><a class="nav-link "
 							id="pills-savory-tab" data-toggle="pill" href="#pills-savory"
-							role="tab" aria-controls="pills-savory" aria-selected="false">Savory Baked</a></li>
+							role="tab" aria-controls="pills-savory" aria-selected="false" th:if="${not #lists.isEmpty(savMenu)}">
+							Savory Baked</a></li>
 						<li class="nav-item"><a class="nav-link"
 							id="pills-biscuits-tabb" data-toggle="pill" href="#pills-biscuits"
-							role="tab" aria-controls="pills-biscuits" aria-selected="false">Cookies &amp;' Biscuits</a></li>
+							role="tab" aria-controls="pills-biscuits" aria-selected="false" th:if="${not #lists.isEmpty(biscuitMenu)}" >
+							Cookies &amp; Biscuits</a></li>
 
 					
 					</ul>
+					
+					
+					
+					
+
+					
+					
 					<div class="tab-content" id="pills-tabContent">
+						
 						<div class="tab-pane fade show active" id="pills-cake"
-							role="tabpanel" aria-labelledby="pills-cake-tab">
-							<div class="menu-grids my-lg-4 my-md-2">
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+							role="tabpanel" aria-labelledby="pills-cake-tab" th:if="${not #lists.isEmpty(cakeMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2" >
+								<div class="row inner-menu mt-4" >
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${cakeMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/1.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Chocolate Cake</h5>
-												<p class="sub-meta mt-2">230 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${cakeMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/2.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Theme Based Cake</h5>
-												<p class="sub-meta mt-2">270 kr</p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/3.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Red Velvet Cake</h5>
-												<p class="sub-meta mt-2">220 kr</p>
-											</div>
-										</div>
-
-									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/4.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Carrot Cake</h5>
-												<p class="sub-meta mt-2">240 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
 								</div>
+							
 							</div>
 						
 						</div>
 						<div class="tab-pane fade" id="pills-cc" role="tabpanel"
-							aria-labelledby="pills-cc-tab">
-							<div class="menu-grids my-lg-4 my-md-2">
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+							aria-labelledby="pills-cc-tab" th:if="${not #lists.isEmpty(ccMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2" >
+								<div class="row inner-menu mt-4" >
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${ccMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/1.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Chocolate Cake</h5>
-												<p class="sub-meta mt-2">230 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${ccMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/2.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Theme Based Cake</h5>
-												<p class="sub-meta mt-2">270 kr</p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/3.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Red Velvet Cake</h5>
-												<p class="sub-meta mt-2">220 kr</p>
-											</div>
-										</div>
-
-									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/4.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Carrot Cake</h5>
-												<p class="sub-meta mt-2">240 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
 								</div>
+							
 							</div>
+						
 						</div>
 						<div class="tab-pane fade" id="pills-savory"
-							role="tabpanel" aria-labelledby="pills-savory-tab">
-							<div class="menu-grids my-lg-4 my-md-2">
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+							role="tabpanel" aria-labelledby="pills-savory-tab" th:if="${not #lists.isEmpty(savMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2" >
+								<div class="row inner-menu mt-4" >
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${savMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/1.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Chocolate Cake</h5>
-												<p class="sub-meta mt-2">230 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${savMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/2.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Theme Based Cake</h5>
-												<p class="sub-meta mt-2">270 kr</p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/3.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Red Velvet Cake</h5>
-												<p class="sub-meta mt-2">220 kr</p>
-											</div>
-										</div>
-
-									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/4.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Carrot Cake</h5>
-												<p class="sub-meta mt-2">240 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
 								</div>
+							
 							</div>
+						
 						</div>
 						<div class="tab-pane fade" id="pills-biscuits" role="tabpanel"
-							aria-labelledby="pills-biscuits-tab">
-							<div class="menu-grids my-lg-4 my-md-2">
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+							aria-labelledby="pills-biscuits-tab" th:if="${not #lists.isEmpty(biscuitMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2" >
+								<div class="row inner-menu mt-4" >
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/1.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Chocolate Cake</h5>
-												<p class="sub-meta mt-2">230 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img src="images/2.jpg" class="img-fluid rounded-circle"
+												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Theme Based Cake</h5>
-												<p class="sub-meta mt-2">270 kr</p>
-											</div>
-										</div>
-
-									</div>
-								</div>
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/3.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Red Velvet Cake</h5>
-												<p class="sub-meta mt-2">220 kr</p>
-											</div>
-										</div>
-
-									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img src="images/4.jpg" class="img-fluid rounded-circle"
-													alt="" />
-											</div>
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Carrot Cake</h5>
-												<p class="sub-meta mt-2">240 kr</p>
+												<h5 th:text="${cake.name}"></h5>
+												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
 											</div>
 										</div>
 
 									</div>
 								</div>
+							
 							</div>
+						
 						</div>
 					</div>
 				</div>
