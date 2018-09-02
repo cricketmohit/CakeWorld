@@ -1,0 +1,9 @@
+INSERT INTO category (id, category_available, category_type) VALUES ('1', 1, 'cake');
+INSERT INTO category (id, category_available, category_type) VALUES ('2', 1, 'cupcake');
+INSERT INTO category (id, category_available, category_type) VALUES ('3', 1, 'savory');
+INSERT INTO category (id, category_available, category_type) VALUES ('4', 1, 'biscuits');
+
+
+INSERT INTO 'menu' (id, available_to_order, description, name, price, category_id,image) VALUES ('1', 1, 'Chocolate cake with choco chips on top', 'Chocolate Cake', '230', '1','/user/Desktop/1.jpg');
+
+

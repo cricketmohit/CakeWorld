@@ -26,10 +26,37 @@ public class WelcomeController {
 
 	@RequestMapping("/")
 	String entry(Model model) {
-		model.addAttribute("menu", menuRepository.findAll());
+		Iterable<Menu> findAll = menuRepository.findAll(); 
+		List<Menu> cakeMenu = new ArrayList<Menu>();
+		List<Menu> ccMenu = new ArrayList<Menu>();
+		List<Menu> savMenu = new ArrayList<Menu>();
+		List<Menu> biscuitMenu = new ArrayList<Menu>();
+		for (Menu menu : findAll) {
+			switch(menu.getCategory().getId()) {
+			case 1:
+				cakeMenu.add(menu);
+				break;
+			case 2:
+				ccMenu.add(menu);
+				break;
+			case 3:
+				savMenu.add(menu);	
+				break;
+			case 4:
+				biscuitMenu.add(menu);
+				break;
+			default :
+				break;
+			}
+			
+		}
+		model.addAttribute("cakeMenu", cakeMenu);
+		model.addAttribute("ccMenu", ccMenu);
+		model.addAttribute("savMenu", savMenu);
+		model.addAttribute("biscuitMenu", biscuitMenu);
 		return "index";
 	}
-	@RequestMapping("/index")
+	@RequestMapping("/index") 
 	String entryIndex(Model model) {
 		Iterable<Menu> findAll = menuRepository.findAll(); 
 		List<Menu> cakeMenu = new ArrayList<Menu>();
@@ -40,21 +67,25 @@ public class WelcomeController {
 			switch(menu.getCategory().getId()) {
 			case 1:
 				cakeMenu.add(menu);
+				break;
 			case 2:
 				ccMenu.add(menu);
+				break;
 			case 3:
 				savMenu.add(menu);	
+				break;
 			case 4:
 				biscuitMenu.add(menu);
+				break;
 			default :
 				break;
 			}
 			
 		}
 		model.addAttribute("cakeMenu", cakeMenu);
-//		model.addAttribute("ccMenu", ccMenu);
-//		model.addAttribute("savMenu", savMenu);
-//		model.addAttribute("biscuitMenu", biscuitMenu);
+		model.addAttribute("ccMenu", ccMenu);
+		model.addAttribute("savMenu", savMenu);
+		model.addAttribute("biscuitMenu", biscuitMenu);
 		
 		return "index";
 	}
