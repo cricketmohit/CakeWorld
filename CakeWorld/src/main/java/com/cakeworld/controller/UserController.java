@@ -2,6 +2,8 @@ package com.cakeworld.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,12 +31,18 @@ public class UserController {
         return users;
     }
 	@RequestMapping(value = "/login", method = RequestMethod.POST) 
-    public String login(@ModelAttribute("users")  Users user) {
-		List<Users> emailList = userRepository.findByEmail(user.getEmail());
-		for(Users userPersisted :emailList) {
-				if(userPersisted.getPassword().equals(user.getPassword()))
-					return "index";
+    public String login(@ModelAttribute("users")  Users user,HttpSession session) {
+		Users userPersisted;
+		if(session.getAttribute("userDBSession")!=null){
+			 userPersisted = (Users)session.getAttribute("userDBSession");
+		}else {
+			userPersisted = userRepository.findByEmail(user.getEmail()).get(0); 
+			session.setAttribute("userDBSession",userPersisted);
 		}
+		
+		if(userPersisted.getPassword().equals(user.getPassword()))
+			return "index";
+		
 		return "login";
     }
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST) 
