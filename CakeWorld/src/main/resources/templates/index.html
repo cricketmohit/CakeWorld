@@ -1,15 +1,10 @@
-<!--
-	Author: W3layouts
-	Author URL: http://w3layouts.com
-	License: Creative Commons Attribution 3.0 Unported
-	License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Bake World </title>
+<title>Bake World</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="utf-8" />
 <meta name="keywords" content="Bake world" />
@@ -22,13 +17,60 @@
 		window.scrollTo(0, 1);
 	}
 </script>
+<script src="js/local.js"></script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/fontawesome-all.css" rel="stylesheet" />
+<link href="css/local.css" rel="stylesheet" />
 <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	crossorigin="anonymous" />
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+
+.close {
+	color: #000000;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+</style>
 </head>
 
 <body>
@@ -40,9 +82,8 @@
 					<span> <a href="index.html"> <i class="fa fa-home"></i>
 							Welcome!
 					</a>
-					</span>
-					<span class="mx-lg-4 mx-md-2  mx-1">
-						<a href="login.html"> <i class="fa fa-lock"></i> Sign In
+					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a href="login.html">
+							<i class="fa fa-lock"></i> Sign In
 					</a>
 					</span> <span> <a href="register.html"> <i class="far fa-user"></i>
 							Register
@@ -50,9 +91,8 @@
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
-					<a class="navbar-brand" href="index.html">
-					 <i
-						class=""></i> Bake World
+					<a class="navbar-brand" href="index.html"> <i class=""></i>
+						Bake World
 					</a>
 				</div>
 
@@ -60,35 +100,46 @@
 
 					<ul class="social_list1 mt-4">
 
-						<li><a href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank" class="facebook1 mx-2"> <i
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="facebook1 mx-2"> <i
 								class="fab fa-facebook-f"></i>
 
 						</a></li>
-						<li><a href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank" class="twitter2"> <i
-								class="fab fa-twitter"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="twitter2"> <i class="fab fa-twitter"></i>
 
 						</a></li>
-						<li><a href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank" class="instagram3"> <i
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="instagram3"> <i
 								class="fab fa-instagram"></i>
 						</a></li>
-						<li><a href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank" class="pin"> <i
-								class="fab fa-google-plus"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="pin"> <i class="fab fa-google-plus"></i>
 						</a></li>
 					</ul>
-				<br/>
-				<div  data-aos="fade-up">
-					<a href="checkout.html"> <i class="fas fa-shopping-cart">   &nbsp; Basket &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; </i>
-					
-					</a>
-					
-					
+					<br />
+					<div data-aos="fade-up">
+						<a href="checkout.html"> 
+						<i id="cartcount">0</i>
+						 <i
+							class="fas fa-shopping-cart" style="font-size: 25px" >  Basket &nbsp; </i>
+						</a>
+
 					</div>
-					
-					
+
+
 				</div>
 			</div>
+
 		</div>
+
 	</header>
+
+	
 	<div class="banner">
 		<div id="carouselExampleIndicators" class="carousel slide"
 			data-ride="carousel">
@@ -199,12 +250,14 @@
 				</div>
 				<div class="col-lg-6 about-info text-left" data-aos="flip-left">
 					<h4 class="sub-hd mb-4">We are the Best</h4>
-						<p>Bake World gourmet cake is made with the finest ingredients 
-						and baked same day in a clean bakery. Send a cake today to honor your loved ones special day! 
-						Each  cake delivery includes a greeting card and arrives in an elegant gift box. 
-						Select your cake flavor below to start your gift delivery.</p>
-					<p class="sup-para mt-2">We not only deliver cakes but a wide variety of baked products, we
-						have specialty in savory baked products, cup cakes, cookies and biscuits </p>
+					<p>Bake World gourmet cake is made with the finest ingredients
+						and baked same day in a clean bakery. Send a cake today to honor
+						your loved ones special day! Each cake delivery includes a
+						greeting card and arrives in an elegant gift box. Select your cake
+						flavor below to start your gift delivery.</p>
+					<p class="sup-para mt-2">We not only deliver cakes but a wide
+						variety of baked products, we have specialty in savory baked
+						products, cup cakes, cookies and biscuits</p>
 					<div class="view my-4">
 						<a href="single.html" class="btn btn-primary read-m">View More</a>
 					</div>
@@ -221,7 +274,7 @@
 			<h3 class="tittle">Best Seller</h3>
 			<div class="row inner-sec">
 				<ul id="flexiselDemo1">
-				<li>
+					<li>
 						<div class="blog-item text-center">
 							<img src="images/5.jpg" alt=" " class="img-fluid rounded-circle" />
 							<div class="floods-text">
@@ -264,190 +317,210 @@
 							</div>
 						</div>
 					</li>
-					
+
 				</ul>
 			</div>
 		</div>
 	</section>
 	<!--//banner-bottom-->
 	<!--/Menu-->
+
 	<section class="banner-bottom menu" id="menu">
 		<div class="container">
 			<h3 class="tittle">Our Menu</h3>
+			
+			<div id="myModal" class="modal">
+
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<p>Item added successfully to your cart!!</p>
+				</div>
+
+			</div>
+			
 			<div class="row inner-sec">
 				<div class="tabs">
 					<ul class="nav nav-pills mb-5 justify-content-center"
 						id="pills-tab" role="tablist">
-						<li class="nav-item">
-							<a class="nav-link active"
-								id="pills-cake-tab" data-toggle="pill" href="#pills-cake"
-								role="tab" aria-controls="pills-cake" aria-selected="true" th:if="${not #lists.isEmpty(cakeMenu)}">
-								Cakes
-							</a>
-						</li>
-						<li class="nav-item"><a class="nav-link"
-							id="pills-cc-tabb" data-toggle="pill" href="#pills-cc"
-							role="tab" aria-controls="pills-cc" aria-selected="false" th:if="${not #lists.isEmpty(ccMenu)}">
-								Cup Cake</a></li>
+						<li class="nav-item"><a class="nav-link active"
+							id="pills-cake-tab" data-toggle="pill" href="#pills-cake"
+							role="tab" aria-controls="pills-cake" aria-selected="true"
+							th:if="${not #lists.isEmpty(cakeMenu)}"> Cakes </a></li>
+						<li class="nav-item"><a class="nav-link" id="pills-cc-tabb"
+							data-toggle="pill" href="#pills-cc" role="tab"
+							aria-controls="pills-cc" aria-selected="false"
+							th:if="${not #lists.isEmpty(ccMenu)}"> Cup Cake</a></li>
 						<li class="nav-item"><a class="nav-link "
 							id="pills-savory-tab" data-toggle="pill" href="#pills-savory"
-							role="tab" aria-controls="pills-savory" aria-selected="false" th:if="${not #lists.isEmpty(savMenu)}">
-							Savory Baked</a></li>
+							role="tab" aria-controls="pills-savory" aria-selected="false"
+							th:if="${not #lists.isEmpty(savMenu)}"> Savory Baked</a></li>
 						<li class="nav-item"><a class="nav-link"
-							id="pills-biscuits-tabb" data-toggle="pill" href="#pills-biscuits"
-							role="tab" aria-controls="pills-biscuits" aria-selected="false" th:if="${not #lists.isEmpty(biscuitMenu)}" >
-							Cookies &amp; Biscuits</a></li>
+							id="pills-biscuits-tabb" data-toggle="pill"
+							href="#pills-biscuits" role="tab" aria-controls="pills-biscuits"
+							aria-selected="false" th:if="${not #lists.isEmpty(biscuitMenu)}">
+								Cookies &amp; Biscuits</a></li>
 
-					
+
 					</ul>
-					
-					
-					
-					
 
-					
-					
 					<div class="tab-content" id="pills-tabContent">
-						
+
 						<div class="tab-pane fade show active" id="pills-cake"
-							role="tabpanel" aria-labelledby="pills-cake-tab" th:if="${not #lists.isEmpty(cakeMenu)}">
-							<div class="menu-grids my-lg-4 my-md-2" >
-								<div class="row inner-menu mt-4" >
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${cakeMenu}" th:if="${cake.id%2==1}">
+							role="tabpanel" aria-labelledby="pills-cake-tab"
+							th:if="${not #lists.isEmpty(cakeMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2">
+								<div class="row inner-menu mt-4">
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
+										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a> </p>
+												<a   href ="#menu" class="blog-btn" data-aos="fade-down" th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
+											
 										</div>
 
-									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${cakeMenu}" th:if="${cake.id%2==0}">
+									</div><br/>
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
+										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a> </p>
+												<a href ="#menu" class="blog-btn" data-aos="fade-down" onmouseup="addToCart(${cake})">Add to cart</a>
 											</div>
 										</div>
 
 									</div>
 								</div>
-							
+
 							</div>
-						
+
 						</div>
+						
 						<div class="tab-pane fade" id="pills-cc" role="tabpanel"
-							aria-labelledby="pills-cc-tab" th:if="${not #lists.isEmpty(ccMenu)}">
-							<div class="menu-grids my-lg-4 my-md-2" >
-								<div class="row inner-menu mt-4" >
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${ccMenu}" th:if="${cake.id%2==1}">
+							aria-labelledby="pills-cc-tab"
+							th:if="${not #lists.isEmpty(ccMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2">
+								<div class="row inner-menu mt-4">
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
+										th:each="cake : ${ccMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
 											</div>
 										</div>
 
 									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${ccMenu}" th:if="${cake.id%2==0}">
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
+										th:each="cake : ${ccMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
 											</div>
 										</div>
 
 									</div>
 								</div>
-							
+
 							</div>
-						
+
 						</div>
-						<div class="tab-pane fade" id="pills-savory"
-							role="tabpanel" aria-labelledby="pills-savory-tab" th:if="${not #lists.isEmpty(savMenu)}">
-							<div class="menu-grids my-lg-4 my-md-2" >
-								<div class="row inner-menu mt-4" >
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${savMenu}" th:if="${cake.id%2==1}">
+						<div class="tab-pane fade" id="pills-savory" role="tabpanel"
+							aria-labelledby="pills-savory-tab"
+							th:if="${not #lists.isEmpty(savMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2">
+								<div class="row inner-menu mt-4">
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
+										th:each="cake : ${savMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
 											</div>
 										</div>
 
 									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${savMenu}" th:if="${cake.id%2==0}">
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
+										th:each="cake : ${savMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+											<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
 											</div>
 										</div>
 
 									</div>
 								</div>
-							
+
 							</div>
-						
+
 						</div>
 						<div class="tab-pane fade" id="pills-biscuits" role="tabpanel"
-							aria-labelledby="pills-biscuits-tab" th:if="${not #lists.isEmpty(biscuitMenu)}">
-							<div class="menu-grids my-lg-4 my-md-2" >
-								<div class="row inner-menu mt-4" >
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down" th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==1}">
+							aria-labelledby="pills-biscuits-tab"
+							th:if="${not #lists.isEmpty(biscuitMenu)}">
+							<div class="menu-grids my-lg-4 my-md-2">
+								<div class="row inner-menu mt-4">
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
+										th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
 											</div>
 										</div>
 
 									</div>
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down" th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==0}">
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
+										th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
-													alt="" />
+												<img th:src="${cake.imageUrl}"
+													class="img-fluid rounded-circle" alt="" />
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2" th:text="${cake.price}"></p>
+												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
 											</div>
 										</div>
 
 									</div>
 								</div>
-							
+
 							</div>
-						
+
 						</div>
 					</div>
 				</div>
@@ -455,7 +528,8 @@
 		</div>
 	</section>
 	<!--//Menu-->
-
+	
+	
 	<!--/blog-->
 	<section class="blog_sec container-fluid">
 		<h3 class="tittle">Latest Blogs</h3>
@@ -655,7 +729,9 @@
 										Erik <span>(Customer)</span>
 									</h3>
 									<i>Stockholm</i>
-									<p>Had a privilege to order cake from Bake World, it was superb, tasty and so fresh, don't forget to try their dominoes style Garlic Bread yummm</p>
+									<p>Had a privilege to order cake from Bake World, it was
+										superb, tasty and so fresh, don't forget to try their dominoes
+										style Garlic Bread yummm</p>
 								</div>
 							</div>
 						</li>
@@ -670,7 +746,8 @@
 										Margareta <span>(Customer)</span>
 									</h3>
 									<i>Stockholm</i>
-									<p>Awesome is the word, nice packaging on time delivery and delicious</p>
+									<p>Awesome is the word, nice packaging on time delivery and
+										delicious</p>
 								</div>
 							</div>
 						</li>
@@ -686,7 +763,8 @@
 										Mohit <span>Customer</span>
 									</h3>
 									<i>Stockholm</i>
-								<p>Vegan eggless cake in stockholm one place to go Bake World ..Love</p>
+									<p>Vegan eggless cake in stockholm one place to go Bake
+										World ..Love</p>
 								</div>
 							</div>
 						</li>
@@ -703,7 +781,8 @@
 			<div class="row">
 				<div class="col-lg-4 footer-grid text-left" data-aos="fade-right">
 					<h3>About US</h3>
-					<p>We are based in Fika Destination of the world Stockholm, Sweden</p>
+					<p>We are based in Fika Destination of the world Stockholm,
+						Sweden</p>
 					<div class="read">
 						<a href="single.html" class="btn btn-primary read-m">Read More</a>
 					</div>
@@ -728,16 +807,20 @@
 						<div class="copyrighttop">
 							<ul>
 								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
-									href="https://www.facebook.com/Bake-World-881719938705439/"> <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/">
+										<i class="fab fa-facebook-f"></i> <span>Facebook</span>
 								</a></li>
-								<li><a class="facebook" href="https://www.facebook.com/Bake-World-881719938705439/"> <i
-										class="fab fa-twitter"></i> <span>Twitter</span>
+								<li><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/">
+										<i class="fab fa-twitter"></i> <span>Twitter</span>
 								</a></li>
 								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
-									href="https://www.facebook.com/Bake-World-881719938705439/"> <i class="fab fa-google-plus-g"></i> <span>Google+</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/">
+										<i class="fab fa-google-plus-g"></i> <span>Google+</span>
 								</a></li>
-								<li><a class="facebook" href="https://www.facebook.com/Bake-World-881719938705439/"> <i
-										class="fab  fa-instagram"></i> <span>Instagram</span>
+								<li><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/">
+										<i class="fab  fa-instagram"></i> <span>Instagram</span>
 								</a></li>
 							</ul>
 						</div>
@@ -821,6 +904,7 @@
 	<!--/ start-smoth-scrolling -->
 	<script src="js/move-top.js"></script>
 	<script src="js/easing.js"></script>
+	
 	<script>
 		jQuery(document).ready(function($) {
 			$(".scroll").click(function(event) {
@@ -850,6 +934,70 @@
 
 		});
 	</script>
+		<script >
+	var count = getCookie("cookiecartcounts");
+	
+	document.getElementById("cartcount").innerHTML = count;
+	
+	
+	</script>
+<script type="text/javascript">
+
+	function addToCart(id)
+	{
+		var tempId = id;
+		$.ajax({
+		    type : "POST",
+		    url : "addToCart",
+		    data : {id:tempId},
+		    timeout : 100000,
+		    success : function(id) {
+		        console.log("SUCCESS: ", id);
+		        display(id);
+		        alert(response);   
+		    },
+		    error : function(e) {
+		        console.log("ERROR: ", e);
+		        return "Please Re-try";
+		    }
+		   
+		});
+		
+		var modal = document.getElementById('myModal');
+
+		var btn = document.getElementById("addtocart");
+
+		
+		var span = document.getElementsByClassName("close")[0];
+		
+		 modal.style.display = "block";
+		
+		
+		 setCookie("cookiecartcounts", 6,365);
+		 var count = getCookie("cookiecartcounts");
+			if(!count){
+				alert("y");
+				console.log(count);
+			document.getElementById("cartcount").innerHTML = count;
+			}
+		span.onclick = function() {
+		    modal.style.display = "none";
+		}
+		
+		window.onclick = function(event) {
+		    if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+		}
+		 
+		 
+	}
+	
+
+
+
+	</script>
+
 	<a href="#home" class="scroll" id="toTop" style="display: block;">
 		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
@@ -860,3 +1008,5 @@
 </body>
 
 </html>
+
+

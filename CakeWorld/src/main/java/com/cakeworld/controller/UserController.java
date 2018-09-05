@@ -2,11 +2,14 @@ package com.cakeworld.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cakeworld.main.UserRepository;
-import com.cakeworld.model.Users;
+import com.cakeworld.model.Menu;
+import com.cakeworld.model.User;
 
 
 @Controller    // This means that this class is a Controller
@@ -25,30 +29,37 @@ public class UserController {
 	private UserRepository userRepository;
 	
 	
+	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.GET) 
-    public Iterable<Users> getUser(Model model) {
-		Iterable<Users> users = userRepository.findAll(); 
+    public Iterable<User> getUser(Model model) {
+		Iterable<User> users = userRepository.findAll(); 
         return users;
     }
 	@RequestMapping(value = "/login", method = RequestMethod.POST) 
-    public String login(@ModelAttribute("users")  Users user,HttpSession session) {
-		Users userPersisted;
+    public String login(@ModelAttribute("users") 
+    		User user,HttpSession session, HttpServletResponse response,
+    		@CookieValue(value="foo" , defaultValue = "hello") String fooCookie) {
+		User userPersisted;
 		if(session.getAttribute("userDBSession")!=null){
-			 userPersisted = (Users)session.getAttribute("userDBSession");
+			 userPersisted = (User)session.getAttribute("userDBSession");
 		}else {
 			userPersisted = userRepository.findByEmail(user.getEmail()).get(0); 
 			session.setAttribute("userDBSession",userPersisted);
 		}
-		
+		System.out.println("Foo Cookie is "+ fooCookie);
+		Cookie a = new Cookie("foo", "bye");
+		a.setMaxAge(1000);
+		response.addCookie(a);
+
 		if(userPersisted.getPassword().equals(user.getPassword()))
 			return "index";
 		
 		return "login";
     }
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST) 
-	    public String registerUser(@ModelAttribute("users")  Users user) {
-			List<Users> emailList = userRepository.findByEmail(user.getEmail());
-			for(Users userPersisted :emailList) {
+	    public String registerUser(@ModelAttribute("users")  User user) {
+			List<User> emailList = userRepository.findByEmail(user.getEmail());
+			for(User userPersisted :emailList) {
 				if(userPersisted.getEmail().equalsIgnoreCase(user.getEmail())){
 					userPersisted.setPassword(user.getPassword());
 					userRepository.save(userPersisted);
@@ -64,7 +75,7 @@ public class UserController {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
-		Users n = new Users();
+		User n = new User();
 		n.setName(name);
 		n.setEmail(email);
 		userRepository.save(n);
@@ -76,7 +87,7 @@ public class UserController {
 		return "Mohit";
 	}
 	@RequestMapping("/all")
-	public @ResponseBody Iterable<Users> getAllUsers() {
+	public @ResponseBody Iterable<User> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}

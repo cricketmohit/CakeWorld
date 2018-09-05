@@ -3,12 +3,12 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.cakeworld.model.Users;
+import com.cakeworld.model.User;
 
 
 
-public interface UserRepository extends CrudRepository<Users, Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 	
-	List<Users> findByEmail(String name);
+	List<User> findByEmail(String name);
 
 }

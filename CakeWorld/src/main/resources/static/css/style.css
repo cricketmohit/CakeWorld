@@ -859,6 +859,18 @@ a.blog-btn {
 	-ms-box-shadow: 4px 4px #0fa09a;
 	-moz-box-shadow: 4px 4px #0fa09a;
 }
+a.blog-btn-normal {
+	font-size: 0.85em;
+	padding: 0.7em 1em;
+	color: #1a404b;
+	letter-spacing: 1px;
+	background: #f3ce00;
+	box-shadow: 4px 4px #0fa09a;
+	-webkit-box-shadow: 4px 4px #0fa09a;
+	-o-box-shadow: 4px 4px #0fa09a;
+	-ms-box-shadow: 4px 4px #0fa09a;
+	-moz-box-shadow: 4px 4px #0fa09a;
+}
 
 a.blog-btn:hover {
 	background: #171717;

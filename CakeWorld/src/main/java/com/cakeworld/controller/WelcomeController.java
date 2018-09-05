@@ -56,6 +56,8 @@ public class WelcomeController {
 		model.addAttribute("biscuitMenu", biscuitMenu);
 		return "index";
 	}
+	
+
 	@RequestMapping("/index") 
 	String entryIndex(Model model) {
 		Iterable<Menu> findAll = menuRepository.findAll(); 

@@ -1,0 +1,25 @@
+#cartcount {
+    font-size: 12px;
+    color: #ffffff;
+    
+    border-radius: 75%;
+    background: #22b9ff;
+    padding: 0 5px;
+    border: 2px  #202cee;
+
+    text-align: center;
+    vertical-align: top;
+}
+
+#addtocart {
+    font-size: 12px;
+    color: #f4ff8d;
+    
+    
+    background: #000000;
+  
+   
+
+    text-align: center;
+   
+}

@@ -1,6 +1,5 @@
 package com.cakeworld.main;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -16,13 +15,5 @@ public class CakeWorldApplication extends SpringBootServletInitializer{
 		SpringApplication.run(CakeWorldApplication.class, args);
 	}
 	
-	@Value(value = "${spring.datasource.url}")
-	String dbName;
-	
 
-	
-	public void run(String... arg) { 
-		System.out.println("1234****"+dbName);
-		
-	}
 }

@@ -24,6 +24,7 @@ public class Menu {
     public String description;
     
     public int price;
+    public String currency;
     
     @ManyToOne
     public Category category;
