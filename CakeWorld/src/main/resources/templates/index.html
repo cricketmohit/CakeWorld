@@ -91,8 +91,7 @@ body {
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
-					<a class="navbar-brand" href="index.html"> <i class=""></i>
-						Bake World
+					<a class="navbar-brand" href="index.html"> <img alt="" src="images/logo.png"></img> 
 					</a>
 				</div>
 
@@ -937,9 +936,10 @@ body {
 		<script >
 	var count = getCookie("cookiecartcounts");
 	
-	document.getElementById("cartcount").innerHTML = count;
+	var menuInCartArray = count.split('*');
+	document.getElementById("cartcount").innerHTML = menuInCartArray.length;
 	
-	
+	 
 	</script>
 <script type="text/javascript">
 
@@ -954,7 +954,6 @@ body {
 		    success : function(id) {
 		        console.log("SUCCESS: ", id);
 		        display(id);
-		        alert(response);   
 		    },
 		    error : function(e) {
 		        console.log("ERROR: ", e);
@@ -972,14 +971,12 @@ body {
 		
 		 modal.style.display = "block";
 		
-		
-		 setCookie("cookiecartcounts", 6,365);
+		 var countCookie = getCookie("cookiecartcounts")+"*"+id;
+		 var menuInCartArray = countCookie.split('*');
+		 setCookie("cookiecartcounts", countCookie,365);
 		 var count = getCookie("cookiecartcounts");
-			if(!count){
-				alert("y");
-				console.log(count);
-			document.getElementById("cartcount").innerHTML = count;
-			}
+		 document.getElementById("cartcount").innerHTML = menuInCartArray.length;
+		
 		span.onclick = function() {
 		    modal.style.display = "none";
 		}

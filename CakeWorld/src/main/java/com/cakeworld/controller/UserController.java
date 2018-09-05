@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cakeworld.main.UserRepository;
-import com.cakeworld.model.Menu;
 import com.cakeworld.model.User;
 
 
@@ -43,8 +42,13 @@ public class UserController {
 		if(session.getAttribute("userDBSession")!=null){
 			 userPersisted = (User)session.getAttribute("userDBSession");
 		}else {
-			userPersisted = userRepository.findByEmail(user.getEmail()).get(0); 
-			session.setAttribute("userDBSession",userPersisted);
+			if(userRepository.findByEmail(user.getEmail())!=null && userRepository.findByEmail(user.getEmail()).size() >0 ){
+				userPersisted = userRepository.findByEmail(user.getEmail()).get(0);
+				session.setAttribute("userDBSession",userPersisted);
+			} else {
+				return  "register";
+			}
+				
 		}
 		System.out.println("Foo Cookie is "+ fooCookie);
 		Cookie a = new Cookie("foo", "bye");
