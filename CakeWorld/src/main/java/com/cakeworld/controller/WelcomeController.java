@@ -1,12 +1,5 @@
 package com.cakeworld.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -134,5 +127,9 @@ public class WelcomeController {
 	@RequestMapping("/single")
 	String single() {
 		return "single";
+	}
+	@RequestMapping("/checkout")
+	String checkout() {
+		return "checkout";
 	}
 }
