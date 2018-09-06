@@ -22,3 +22,18 @@ function getCookie(cname) {
 	   
 	    return "0";
 	}
+
+
+function displayCart(){
+	
+	
+	var cartCookie = getCookie("cookiecartcounts");
+	
+	if(cartCookie=="0"){
+		document.getElementById("cartcount").innerHTML = cartCookie.toString();
+		return"";
+		}
+	var menuInCartArray = cartCookie.split('*');
+	document.getElementById("cartcount").innerHTML = menuInCartArray.length;
+	
+}
