@@ -36,9 +36,6 @@ public class CartController {
 			Cookie a = new Cookie("cart", menuToAdd.getId().toString()); 
 			
 			response.addCookie(a);
-		}else {
-			Menu menuPersisted = menuRepository.findOne(menuToAdd.getId()); 
-			
 		}
 		
 		return "index";
