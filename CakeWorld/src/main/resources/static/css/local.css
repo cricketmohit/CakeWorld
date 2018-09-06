@@ -23,3 +23,17 @@
     text-align: center;
    
 }
+
+.scrollbar {
+
+ padding-right: 10px;
+  
+  margin-right: auto;
+  margin-left: auto;
+overflow-y: scroll !important;
+max-height: 250px;
+min-height:101%;
+background: #ffffff; 
+ 
+}
+

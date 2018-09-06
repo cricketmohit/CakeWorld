@@ -128,8 +128,5 @@ public class WelcomeController {
 	String single() {
 		return "single";
 	}
-	@RequestMapping("/checkout")
-	String checkout() {
-		return "checkout";
-	}
+	
 }

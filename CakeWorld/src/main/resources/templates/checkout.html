@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="js/local.js"></script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
@@ -15,115 +15,115 @@
 	crossorigin="anonymous" />
 <style>
 body {
-  font-family: Arial;
-  font-size: 17px;
-  padding: 8px;
+	font-family: Arial;
+	font-size: 17px;
+	padding: 8px;
 }
+
 .square {
-    height: 75px;
-    width: 75px;
+	height: 75px;
+	width: 75px;
 }
+
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  margin: 0 -16px;
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	-ms-flex-wrap: wrap; /* IE10 */
+	flex-wrap: wrap;
+	margin: 0 -16px;
 }
 
 .col-25 {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
+	-ms-flex: 25%; /* IE10 */
+	flex: 25%;
 }
 
 .col-50 {
-  -ms-flex: 50%; /* IE10 */
-  flex: 50%;
+	-ms-flex: 50%; /* IE10 */
+	flex: 50%;
 }
 
 .col-75 {
-  -ms-flex: 75%; /* IE10 */
-  flex: 75%;
+	-ms-flex: 75%; /* IE10 */
+	flex: 75%;
 }
 
-.col-25,
-.col-50,
-.col-75 {
-  padding: 0 16px;
+.col-25, .col-50, .col-75 {
+	padding: 0 16px;
 }
 
 .container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
+	background-color: #f2f2f2;
+	padding: 5px 20px 15px 20px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
 }
 
 input[type=text] {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
 }
 
 label {
-  margin-bottom: 10px;
-  display: block;
+	margin-bottom: 10px;
+	display: block;
 }
 
 .icon-container {
-  margin-bottom: 20px;
-  padding: 7px 0;
-  font-size: 24px;
+	margin-bottom: 20px;
+	padding: 7px 0;
+	font-size: 24px;
 }
 
 .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 100%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px;
+	margin: 10px 0;
+	border: none;
+	width: 100%;
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 17px;
 }
 
 .btn:hover {
-  background-color: #45a049;
+	background-color: #45a049;
 }
 
 a {
-  color: #2196F3;
+	color: #2196F3;
 }
 
 hr {
-  border: 1px solid lightgrey;
+	border: 1px solid lightgrey;
 }
 
 span.price {
-  float: right;
-  color: grey;
+	float: right;
+	color: grey;
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-  .col-25 {
-    margin-bottom: 20px;
-  }
+@media ( max-width : 800px) {
+	.row {
+		flex-direction: column-reverse;
+	}
+	.col-25 {
+		margin-bottom: 20px;
+	}
 }
 </style>
 </head>
 <body>
-<header>
+	<header>
 		<div class="top-bar_sub container-fluid">
 			<div class="row">
 				<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
@@ -139,7 +139,8 @@ span.price {
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
-					<a class="navbar-brand" href="index.html"> <img alt="" src="images/logo.png"></img> 
+					<a class="navbar-brand" href="index.html"> <img alt=""
+						src="images/logo.png"></img>
 					</a>
 				</div>
 
@@ -169,7 +170,7 @@ span.price {
 						</a></li>
 					</ul>
 					<br />
-					
+
 
 
 				</div>
@@ -178,10 +179,10 @@ span.price {
 		</div>
 
 	</header>
-<div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
+	<div class="row">
+		<div class="col-75">
+			<div class="container">
+				<form action="/action_page.php">
 
 					<div class="row">
 						<div class="col-50">
@@ -297,23 +298,52 @@ span.price {
 
 					</div>
 
-					<input type="submit" value="Place Order" class="btn"/>
-      </form>
-    </div>
-  </div>
-  <div class="col-25">
-    <div class="container">
-      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-      </hr>
-    </div>
-  </div>
-</div>
+					<input type="submit" value="Place Order" class="btn" />
+				</form>
+			</div>
+		</div>
+		<div class="col-25">
+
+
+			<div th:if="not ${checkoutCart.isEmpty()}" class="container" >
+
+				<h4>
+					Cart <span class="price" style="color: black"> <i
+						class="fa fa-shopping-cart"></i> <b></b></span>
+				</h4>
+				<div class="scrollbar">
+					<div th:each="cake : ${checkoutCart}">
+
+
+						<div>
+							<p>
+							 <a  th:text="${cake.value.size()}"></a> <span class="price">
+								<a href="#" th:text="${cake.value[0].name}"></a>
+									<a th:text="${cake.value[0].price}"></a> <a th:text="${cake.value[0].currency}"></a>
+								</span>
+							</p>
+						</div>
+
+
+
+					</div>
+				</div>
+
+				<p>
+					<a href="#">Delivery</a> <span class="price"> 49kr</span>
+				</p>
+
+
+				<p>
+					Total <span class="price" style="color: black"><b>900kr</b></span>
+				</p>
+
+
+			</div>
+
+
+		</div>
+	</div>
 
 </body>
 </html>
