@@ -317,9 +317,10 @@ span.price {
 
 						<div>
 							<p>
-							 <a  th:text="${cake.value.size()}"></a> <span class="price">
-								<a href="#" th:text="${cake.value[0].name}"></a>
-									<a th:text="${cake.value[0].price}"></a> <a th:text="${cake.value[0].currency}"></a>
+							<span class="rh"> <a  th:text="${cake.value.size()}"></a> </span>
+								<span style="float:center;"> <a href="#" style="text-align:center" th:text="${cake.value[0].name}"></a></span>
+								<span style="float:right;">
+									<a th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a th:text="${cake.value[0].currency}"></a>
 								</span>
 							</p>
 						</div>

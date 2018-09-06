@@ -17,7 +17,7 @@
 		window.scrollTo(0, 1);
 	}
 </script>
-<script src="js/local.js"></script>
+<script src="js/local.js" type ="text/javascript"></script> 
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
@@ -936,61 +936,11 @@ body {
 
 		});
 	</script>
-		<script >
+	<script >
 		displayCart();
-	 
 	</script>
 
-	<script type="text/javascript">
 
-	function addToCart(id)
-	{
-		var tempId = id;
-		$.ajax({
-		    type : "POST",
-		    url : "addToCart",
-		    data : {id:tempId},
-		    timeout : 100000,
-		    success : function(id) {
-		        console.log("SUCCESS: ", id);
-		        display(id);
-		    },
-		    error : function(e) {
-		        console.log("ERROR: ", e);
-		        return "Please Re-try";
-		    }
-		   
-		});
-		
-		var modal = document.getElementById('myModal');
-
-		var btn = document.getElementById("addtocart");
-
-		
-		var span = document.getElementsByClassName("close")[0];
-		
-		 modal.style.display = "block";
-		
-		 var countCookie = getCookie("cookiecartcounts")+"*"+id;
-		 var menuInCartArray = countCookie.split('*');
-		 setCookie("cookiecartcounts", countCookie,365);
-		 var count = getCookie("cookiecartcounts");
-		 document.getElementById("cartcount").innerHTML = menuInCartArray.length;
-		
-		span.onclick = function() {
-		    modal.style.display = "none";
-		}
-		
-		window.onclick = function(event) {
-		    if (event.target == modal) {
-		        modal.style.display = "none";
-		    }
-		}
-		 
-		 
-	}
-	
-	</script>
 
 	<a href="#home" class="scroll" id="toTop" style="display: block;">
 		<span id="toTopHover" style="opacity: 1;"> </span>

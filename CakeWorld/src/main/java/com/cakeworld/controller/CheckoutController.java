@@ -20,25 +20,28 @@ public class CheckoutController {
 
 	@Autowired
 	MenuRepository menuRepository;
-	
-	@RequestMapping(value = "/checkout", method = RequestMethod.GET) 
-    public String checkOut( Model model,@CookieValue(value="cookiecartcounts" , defaultValue = "0") String cookiecartcounts) {
-		Map<String, List<Menu>> menuFromDB  = getMenuFromDB(cookiecartcounts.split("\\*")); 
+
+	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	public String checkOut(Model model,
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+		Map<String, List<Menu>> menuFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		model.addAttribute("checkoutCart", menuFromDB);
- 		return "checkout";
-    }
-	
+		return "checkout";
+	}
+
 	public Map<String, List<Menu>> getMenuFromDB(String[] ids) {
 		List<Menu> innerList;
 		Map<String, List<Menu>> menuMap = new HashMap<String, List<Menu>>();
 		for (String id : ids) {
-			Menu menu = menuRepository.findOne(Integer.valueOf(id)); 
-			if(menuMap.get(menu.getName())!=null) {
-				menuMap.get(menu.getName()).add(menu); 
-			}else {
-				innerList = new ArrayList<Menu>();
-				innerList.add(menu);
-				menuMap.put(menu.getName(),innerList); 
+			Menu menu = menuRepository.findOne(Integer.valueOf(id));
+			if (menu != null) {
+				if (menuMap.get(menu.getName()) != null) {
+					menuMap.get(menu.getName()).add(menu);
+				} else {
+					innerList = new ArrayList<Menu>();
+					innerList.add(menu);
+					menuMap.put(menu.getName(), innerList);
+				}
 			}
 		}
 		return menuMap;
