@@ -182,29 +182,26 @@ span.price {
 	<div class="row">
 		<div class="col-75">
 			<div class="container">
-				<form action="">
+				<form action="/placeOrder" method="post" modelAttribute="orders">
 
 					<div class="row">
 						<div class="col-50">
 							<h3>Shipping Address</h3>
 							<br /> <label for="fname"><i class="fa fa-user"></i>
-								Full Name</label> <input type="text" id="fname" name="firstname"
-								placeholder="John M. Doe" /> <label for="email"><i
-								class="fa fa-envelope"></i> Email</label> <input type="text" id="email"
-								name="email" placeholder="john@example.com" /> <label for="adr"><i
-								class="fa fa-address-card-o"></i> Address</label> <input type="text"
-								id="adr" name="address" placeholder="Pilvägen 38" /> <label
+								Full Name</label> <input class="form-control" type="text" id="fname" name="firstname"
+								placeholder="John M. Doe"  required="" /> <label for="email"><i
+								class="fa fa-envelope"></i> Email</label> <input class="form-control" type="email" id="email"
+								name="email" placeholder="john@example.com" required=""/> <label for="adr"><i
+								class="fa fa-address-card-o"></i> Address</label> <input class="form-control" type="text"
+								id="adr" name="address" placeholder="Pilvägen 38" required="" /> <label
 								for="city"><i class="fa fa-institution"></i> City</label> <input
 								type="text" id="city" name="city" value="Stockholm"
-								class="field left" readonly="readonly" />
-
-							<div class="row">
-
-								<div class="col-50">
-									<label for="zip">Pin Code</label> <input type="text" id="zip"
-										name="zip" placeholder="10001" />
-								</div>
-							</div>
+								class="form-control" readonly="readonly" />
+								<label for="zip">Pin Code(5 digit)</label> 
+								<input class="form-control" type="text" pattern="[0-9]{5}"
+										name="zip" placeholder="10001" required=""/>
+								
+							
 						</div>
 
 						<div class="col-50">
@@ -251,8 +248,8 @@ span.price {
 
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5>Swish</h5>
-												<input type="radio" id="contactChoice2" name="contact"
-													value="cash" />
+												<input type="radio" id="swish" name="contact"
+													value="cash" required=""/>
 											</div>
 										</div>
 
@@ -277,8 +274,8 @@ span.price {
 
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5>Cash</h5>
-												<input type="radio" id="contactChoice2" name="contact"
-													value="cash" />
+												<input type="radio" id="cash" name="contact"
+													value="cash" required="" />
 											</div>
 										</div>
 
