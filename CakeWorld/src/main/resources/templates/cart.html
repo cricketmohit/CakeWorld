@@ -3,6 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="js/local.js"></script>
+<script src="js/localList.js"></script>
+
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
@@ -179,51 +181,94 @@ span.price {
 		</div>
 
 	</header>
-	<div class="row">
-	
-		<div class="col-25">
-
-
-			<div th:if="not ${checkoutCart.isEmpty()}" class="container" >
-
-				<h4>
-					Cart <span class="price" style="color: black"> <i
-						class="fa fa-shopping-cart"></i> <b></b></span>
-				</h4>
-				<div class="scrollbar">
-					<div th:each="cake : ${checkoutCart}">
-
-
-						<div>
-							<p>
-							<span class="rh"> <a  th:text="${cake.value.size()}"></a> </span>
-								<span style="float:center;"> <a href="#" style="text-align:center" th:text="${cake.value[0].name}"></a></span>
-								<span style="float:right;">
-									<a th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a th:text="${cake.value[0].currency}"></a>
-								</span>
-							</p>
-						</div>
 
 
 
+
+
+	<div th:if="not ${checkoutCart.isEmpty()}" class="container">
+		<h4>
+			Shopping Cart<i class="fa fa-money" aria-hidden="true"></i>
+		</h4>
+
+		<div class="scrollbarCart">
+			<div th:each="cake : ${checkoutCart}">
+
+				<hr />
+				<div class="row">
+					<div class="col-25">
+						<img class="cartImageSize" th:src="${cake.value[0].imageUrl}"
+							alt="" />
 					</div>
+					<!-- a  th:text="${cake.value.size()}"></a-->
+					<div class="col-25">
+						<span><a href="#" style="text-align: center"
+							th:text="${cake.value[0].name}"></a></span>
+					</div>
+
+					<div class="col-25">
+						<span class="priceCart"
+							th:text="${cake.value[0].price}*${cake.value.size()}"></span> <span
+							class="priceCart" th:text="${cake.value[0].currency}"></span>
+					</div>
+
+					<div class="col-25">
+						<span><a th:text="${cake.value.size()}"></a> </span>
+					</div>
+
+
+
+
 				</div>
-
-				<p>
-					<a href="#">Delivery</a> <span class="price"> 49kr</span>
-				</p>
-
-
-				<p>
-					Total <span class="price" style="color: black"><b>900kr</b></span>
-				</p>
-
 
 			</div>
 
-
 		</div>
+
+
+
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-25"></div>
+
+				<div class="col-25"></div>
+
+
+				<div class="col-25">
+					<span class="lh"><a><b>SubTotal(<i id="totalCount"></i>
+								items <i id="totalPrice"></i>)
+						</b></a> </span>
+				</div>
+
+
+
+
+			</div>
+		</div>
+
 	</div>
+
+	<script type="text/javascript">
+var itemCount=0;
+var totalPrice=0;
+</script>
+	<script th:each="item:${checkoutCart}" th:inline="javascript">
+if(itemCount!=0){
+	itemCount= itemCount+([[${item.value.size()}]]);
+}else{
+	itemCount= ([[${item.value.size()}]]);
+}
+if(totalPrice!=0){
+	totalPrice= totalPrice+([[${item.value[0].price}*${item.value.size()}]]);
+}else{
+	totalPrice= ([[${item.value[0].price}*${item.value.size()}]]);
+}
+document.getElementById("totalCount").innerHTML=itemCount;
+document.getElementById("totalPrice").innerHTML=":"+totalPrice;
+</script>
+
 
 </body>
 </html>

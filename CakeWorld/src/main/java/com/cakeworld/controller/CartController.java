@@ -48,6 +48,7 @@ public class CartController {
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
 		Map<String, List<Menu>> menuFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		model.addAttribute("checkoutCart", menuFromDB);
+		//model.addAttribute("items", new String[] { "a", "b", "c","d" });
 		return "cart";
 	}
 

@@ -38,6 +38,21 @@ function displayCart(){
 	
 }
 
+
+function displayDelievery(){
+	
+	
+	var cartCookie = getCookie("cookiecartcounts");
+	
+	if(cartCookie=="0"){
+		document.getElementById("cartcount").innerHTML = cartCookie.toString();
+		return"";
+		}
+	var menuInCartArray = cartCookie.split('*');
+	document.getElementById("totalCount").innerHTML = menuInCartArray.length;
+	
+}
+
 function addToCart(id)
 {
 	var tempId = id;

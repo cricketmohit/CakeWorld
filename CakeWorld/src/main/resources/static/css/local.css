@@ -24,7 +24,7 @@
    
 }
 
-.scrollbar {
+.scrollbarCheckout {
 
  padding-right: 10px;
   
@@ -36,4 +36,35 @@ min-height:101%;
 background: #ffffff; 
  
 }
+.scrollbarCart {
+
+ padding-right: 10px;
+  
+  margin-right: auto;
+  margin-left: auto;
+overflow-y: scroll !important;
+
+min-height:101%;
+ 
+}
+
+.cartImageSize {
+
+ object-fit: cover;
+  width:130px;
+  height:130px;
+ 
+}
+
+.priceCart {
+color: #ff191e;
+
+ 
+}
+/* Create four equal columns that floats next to each other */
+.columnCart {
+    float: left;
+    width: 25%;
+}
+
 
