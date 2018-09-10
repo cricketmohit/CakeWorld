@@ -182,7 +182,7 @@ span.price {
 	<div class="row">
 		<div class="col-75">
 			<div class="container">
-				<form action="/action_page.php">
+				<form action="">
 
 					<div class="row">
 						<div class="col-50">
@@ -303,48 +303,109 @@ span.price {
 			</div>
 		</div>
 		<div class="col-25">
-
-
-			<div th:if="not ${checkoutCart.isEmpty()}" class="container" >
-
+			<div th:if="not ${checkoutCart.isEmpty()}" class="container">
 				<h4>
 					Cart <span class="price" style="color: black"> <i
-						class="fa fa-shopping-cart"></i> <b></b></span>
+						class="fa fa-shopping-cart"></i>
+					</span>
 				</h4>
 				<div class="scrollbar">
 					<div th:each="cake : ${checkoutCart}">
-
-
 						<div>
 							<p>
-							<span class="rh"> <a  th:text="${cake.value.size()}"></a> </span>
-								<span style="float:center;"> <a href="#" style="text-align:center" th:text="${cake.value[0].name}"></a></span>
-								<span style="float:right;">
-									<a th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a th:text="${cake.value[0].currency}"></a>
+								<span class="rh"> <a th:text="${cake.value.size()}"></a>
+								</span> <span style="float: center;"> <a href="#"
+									style="text-align: center" th:text="${cake.value[0].name}"></a></span>
+								<span style="float: right;"> <a
+									th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a
+									th:text="${cake.value[0].currency}"></a>
 								</span>
 							</p>
 						</div>
-
-
-
 					</div>
 				</div>
 
-				<p>
-					<a href="#">Delivery</a> <span class="price"> 49kr</span>
-				</p>
-
-
-				<p>
-					Total <span class="price" style="color: black"><b>900kr</b></span>
-				</p>
-
+			</div>
+			<div class="row">
+				<div class="col-50">
+					
+						<b>Delivery Charge </b>
+					
+				</div>
+				<div class="col-50">
+					
+						<i id="deliverycharge"></i>
+					
+				</div>
 
 			</div>
+			<div class="row">
+				<div class="col-50">
 
-
+					<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)</b>
+				</div>
+				<div class="col-50">
+					<i id="totalPc"></i>
+				
+					<i id="totalPrice"></i>
+				</div>
+			</div>
+			
+			<br/>
+			<div class="row">
+				<i class= "freeShipping" id="freeShipMsg">Free Shipping above 350kr</i>
+			</div>
 		</div>
 	</div>
 
+
+	<script type="text/javascript">
+var itemCount=0;
+var totalPrice=0;
+var deliveryCharge=0;
+var itemsoritem="item";
+var currency ="kr";
+</script>
+	<script th:each="item:${checkoutCart}" th:inline="javascript">
+	
+if(itemCount!=0){
+	itemCount= itemCount+([[${item.value.size()}]]);
+	
+}else{
+	itemCount= ([[${item.value.size()}]]);
+
+}
+if(totalPrice!=0){
+	totalPrice= totalPrice+([[${item.value[0].price}*${item.value.size()}]]);
+}else{
+	totalPrice= ([[${item.value[0].price}*${item.value.size()}]]);
+	
+}
+if(totalPrice > 350){
+	deliveryCharge=0;
+} else{
+	deliveryCharge=49;
+}
+if(itemCount>1){
+	itemsoritem="items";
+}
+if(deliveryCharge==0){
+	document.getElementById("deliverycharge").innerHTML=": FREE";
+}else{
+document.getElementById("deliverycharge").innerHTML=": "+deliveryCharge+" "+([[${item.value[0].currency}]]);
+}
+document.getElementById("itemsoritem").innerHTML=itemsoritem;
+document.getElementById("totalPc").innerHTML=itemCount;
+currency = ([[${item.value[0].currency}]]);
+</script>
+<script>
+if(deliveryCharge==0){
+	document.getElementById("freeShipMsg").innerHTML="Your order is eligible for free shipping.";
+	var freeShipping = document.getElementById('freeShipMsg');
+	freeShipping.style.color = "#6eff9d";
+}
+var billAmount = totalPrice +deliveryCharge;
+document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
+</script>
 </body>
 </html>

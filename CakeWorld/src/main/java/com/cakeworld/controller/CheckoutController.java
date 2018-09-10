@@ -21,13 +21,15 @@ public class CheckoutController {
 	@Autowired
 	MenuRepository menuRepository;
 
-	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
 	public String checkOut(Model model,
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
 		Map<String, List<Menu>> menuFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		model.addAttribute("checkoutCart", menuFromDB);
 		return "checkout";
 	}
+	
+
 
 	public Map<String, List<Menu>> getMenuFromDB(String[] ids) {
 		List<Menu> innerList;

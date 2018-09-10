@@ -40,3 +40,10 @@ function removeItem(id)
 	
 	
 }
+
+function payment()
+{
+	
+	
+
+}
