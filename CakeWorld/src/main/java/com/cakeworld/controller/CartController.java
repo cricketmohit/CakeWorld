@@ -26,19 +26,15 @@ public class CartController {
 	@Autowired
 	MenuRepository menuRepository;
 	
-	@RequestMapping(value = "/addToCart", method = RequestMethod.POST) 
-    public String addToCart(@ModelAttribute("cart") 
-    		Menu menuToAdd,HttpSession session, HttpServletResponse response,
+	@RequestMapping(value = "/substractFromCart", method = RequestMethod.POST) 
+    public String addToCart(Model model,HttpSession session, HttpServletResponse response,
     		@CookieValue(value="cart" , defaultValue = "0") String fooCookie, @CookieValue(value="cookiecartcounts" , defaultValue = "0") String cookiecartcounts) {
 		System.out.println(cookiecartcounts);
 		
-		if(true) {
-			Cookie a = new Cookie("cart", menuToAdd.getId().toString()); 
-			
-			response.addCookie(a);
-		}
-		
-		return "index";
+		Map<String, List<Menu>> menuFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
+		model.addAttribute("checkoutCart", menuFromDB);
+		return("cart");
+	
     }
 	
 	
@@ -46,9 +42,12 @@ public class CartController {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String checkOut(Model model,
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
+			return "redirect:/index";
+		}
 		Map<String, List<Menu>> menuFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		model.addAttribute("checkoutCart", menuFromDB);
-		//model.addAttribute("items", new String[] { "a", "b", "c","d" });
+	
 		return "cart";
 	}
 

@@ -1,3 +1,4 @@
+
 function setCookie(cname, cvalue, exdays) {
 	    var d = new Date();
 	    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -25,12 +26,9 @@ function getCookie(cname) {
 
 
 function displayCart(){
-	
-	
 	var cartCookie = getCookie("cookiecartcounts");
-	
-	if(cartCookie=="0"){
-		document.getElementById("cartcount").innerHTML = cartCookie.toString();
+	if(cartCookie=="0" || cartCookie==""){
+		document.getElementById("cartcount").innerHTML = 0;
 		return"";
 		}
 	var menuInCartArray = cartCookie.split('*');
@@ -91,7 +89,7 @@ function addToCart(id)
 		}
 		
 	 var countCookie = getCookie("cookiecartcounts");
-	 if(countCookie=="0"){
+	 if(countCookie=="0" || countCookie==""){
 		 countCookie=id;
 	 }else{
 		 countCookie=countCookie+"*"+id;
