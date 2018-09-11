@@ -23,6 +23,7 @@ import com.cakeworld.main.MenuRepository;
 import com.cakeworld.model.Bill;
 import com.cakeworld.model.Menu;
 import com.cakeworld.model.Orders;
+import com.cakeworld.util.Constants;
 import com.cakeworld.util.Email.Email;
 import com.cakeworld.util.Email.EmailService;
 import com.cakeworld.util.Email.EmailTemplate;
@@ -98,12 +99,12 @@ public class CheckoutController {
 	private void sendConfirmationEmail(Bill bill) {
 		String from = "test@thebakeworld.com";
 		String to = bill.getEmail().toString();
-		String subject = "Java Mail with Spring Boot";
+		String subject = Constants.SUBJECTORDERCONFIRMATION;
 		 
 		EmailTemplate template = new EmailTemplate("confirmationEmail.html");
 		 
 		Map<String, String> replacements = new HashMap<String, String>();
-		replacements.put("user", "Pooja");
+		replacements.put("user", bill.name);
 		replacements.put("today", String.valueOf(new Date()));
 		 
 		String message = template.getTemplate(replacements);

@@ -23,4 +23,6 @@ public class Constants {
 	/** The Constant EXIT. */
 	public static final String EXIT = "Exit";
 
+	public static final String SUBJECTORDERCONFIRMATION = "Order Confirmation ";
+
 }
