@@ -7,7 +7,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan({"com.cakeworld.controller"})
+@ComponentScan({"com.cakeworld.controller","com.cakeworld.util.Email"})
 @EntityScan("com.cakeworld.model")
 public class CakeWorldApplication extends SpringBootServletInitializer{
 

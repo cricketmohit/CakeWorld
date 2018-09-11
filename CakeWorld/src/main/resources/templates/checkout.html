@@ -182,13 +182,13 @@ span.price {
 	<div class="row">
 		<div class="col-75">
 			<div class="container">
-				<form action="/placeOrder" method="post" modelAttribute="orders">
+				<form th:action="@{/placeOrder}" method="post" modelAttribute="bill" >
 
 					<div class="row">
 						<div class="col-50">
 							<h3>Shipping Address</h3>
 							<br /> <label for="fname"><i class="fa fa-user"></i>
-								Full Name</label> <input class="form-control" type="text" id="fname" name="firstname"
+								Full Name</label> <input class="form-control" type="text" id="fname" name="name"
 								placeholder="John M. Doe"  required="" /> <label for="email"><i
 								class="fa fa-envelope"></i> Email</label> <input class="form-control" type="email" id="email"
 								name="email" placeholder="john@example.com" required=""/> <label for="adr"><i

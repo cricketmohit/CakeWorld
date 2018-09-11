@@ -1,44 +1,39 @@
 package com.cakeworld.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import lombok.Data;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 @Data
-public class Menu {
-    @Id
+public class Orders{
+	
+	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    public Integer id;
+    public long id;
+  
+    public long price;
     
-    public Integer externalId;
-
-    public String name;
-
-    public String description;
-    
-    public int price;
     public String currency;
     
     @ManyToOne
-    public Category category;
+    public Bill bill;
     
-    public boolean availableToOrder;
+    @OneToOne
+    @JoinColumn(name = "menu_id")
+    public Menu menu;
     
-    public String imageUrl;
+    public String menu_name;
+    
+    public int quantity;
     
     public String toString() {
         return getClass().getName() + "@" + Integer.toHexString(hashCode());
     }
-  
-    }
-
-	
-
-
+}
