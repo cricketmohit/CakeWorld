@@ -1,7 +1,17 @@
 package com.cakeworld.util.Email;
 
+import java.util.Properties;
+
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -30,7 +40,7 @@ public class EmailService {
 
 		if (eParams.isHtml()) {
 			try {
-				sendHtmlMail(eParams);
+				sendHtmlMailViaGoogle(eParams);
 			} catch (MessagingException e) {
 				logger.error("Could not send email to : {} Error = {}", eParams.getToAsList(), e.getMessage());
 			}
@@ -76,6 +86,48 @@ public class EmailService {
 
 		mailSender.send(mailMessage);
 
+	}
+	
+	private void sendHtmlMailViaGoogle(Email eParams) throws MessagingException {
+
+
+		final String username = "thebakeworlds@gmail.com";
+		final String password = "Nagarshyam19*";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "25");
+
+		Session session = Session.getInstance(props,
+		  new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		  });
+
+			MimeMessage message = new MimeMessage(session);
+			
+		   
+			message.setFrom(new InternetAddress("thebakeworlds@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+				InternetAddress.parse(eParams.getTo().get(0))); 
+			message.setSubject(eParams.getSubject());
+			message.setText(eParams.getMessage());
+			if (eParams.getCc().size() > 0) {
+				message.setRecipients(Message.RecipientType.CC,
+						InternetAddress.parse(eParams.getCc().get(0)));
+			}
+			 message.setContent( eParams.getMessage(), "text/html; charset=utf-8" );
+			
+			message.saveChanges();
+			Transport.send(message);
+
+			System.out.println("Done");
+
+		
+	
 	}
 
 }

@@ -31,8 +31,8 @@
   margin-right: auto;
   margin-left: auto;
 overflow-y: scroll !important;
-max-height: 250px;
-min-height:101%;
+max-height: 450px;
+
 background: #ffffff; 
  
 }
@@ -43,8 +43,8 @@ background: #ffffff;
   margin-right: auto;
   margin-left: auto;
 overflow-y: scroll !important;
+max-height: 450px;
 
-min-height:101%;
  
 }
 
