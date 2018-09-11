@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +48,7 @@ public class CheckoutController {
 	}
 	
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.POST)
-	public String placeOrder(Model model,@ModelAttribute("bill")  Bill bill,
+	public String placeOrder(Model model,@ModelAttribute("bill")  Bill bill,HttpServletResponse response,HttpServletRequest request,
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		List<Orders> orderList = new ArrayList<Orders>();
@@ -64,9 +68,31 @@ public class CheckoutController {
 		Bill billPersist = billRepository.save(bill);
 		if(billPersist!=null && billPersist.getId()!=0) {
 			sendConfirmationEmail(bill);
+			clearCart("cookiecartcounts",response,request);
 		}
 		model.addAttribute("bill", billPersist);
 		return "index";
+	}
+	
+	public static Cookie getCookie(HttpServletRequest request, String name) {
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                if (cookie.getName().equals(name)) {
+                    return cookie;
+                }
+            }
+        }
+
+        return null;
+    }
+
+	private void clearCart(String cookiecartcounts, HttpServletResponse response,HttpServletRequest request) { 
+		Cookie cookie = getCookie(request, cookiecartcounts);
+		if (cookie != null) {
+		    cookie.setValue(""); 
+		    response.addCookie(cookie);
+		}
+		
 	}
 
 	private void sendConfirmationEmail(Bill bill) {
