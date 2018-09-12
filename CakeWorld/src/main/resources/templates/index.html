@@ -17,7 +17,7 @@
 		window.scrollTo(0, 1);
 	}
 </script>
-<script src="js/local.js" type ="text/javascript"></script> 
+<script src="js/local.js" type="text/javascript"></script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
@@ -32,43 +32,6 @@
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
-}
-
-
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-.modal-content {
-	background-color: #fefefe;
-	margin: auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 80%;
-}
-
-
-.close {
-	color: #000000;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.close:hover, .close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
 }
 </style>
 </head>
@@ -91,7 +54,8 @@ body {
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
-					<a class="navbar-brand" href="index.html"> <img alt="" src="images/logo.png"></img> 
+					<a class="navbar-brand" href="index.html"> <img alt=""
+						src="images/logo.png"></img>
 					</a>
 				</div>
 
@@ -122,10 +86,9 @@ body {
 					</ul>
 					<br />
 					<div data-aos="fade-up">
-						<a  href="cart.html"> 
-						<i id="cartcount">0</i>
-						 <i
-							class="fas fa-shopping-cart" style="font-size: 25px" >  &nbsp; </i>
+						<a href="cart.html"> <i id="cartcount">0</i> <i
+							class="fas fa-shopping-cart" style="font-size: 25px"> &nbsp;
+						</i>
 						</a>
 
 					</div>
@@ -137,7 +100,19 @@ body {
 		</div>
 
 	</header>
-<div class="header_top" id="home">
+	<div id="myModalOrderPlaced" class="modalOrderPlaced">
+
+		<!-- Modal content -->
+		<div class="modal-contentOrderPlaced">
+
+			<span class="closeOrderPlaced">&times;</span>
+			<p id="orderPlaced">&nbsp;&nbsp;</p>
+
+		</div>
+
+	</div>
+
+	<div class="header_top" id="home">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler navbar-toggler-right mx-auto"
 				type="button" data-toggle="collapse"
@@ -178,7 +153,7 @@ body {
 		</nav>
 
 	</div>
-	
+
 	<div class="banner">
 		<div id="carouselExampleIndicators" class="carousel slide"
 			data-ride="carousel">
@@ -236,7 +211,7 @@ body {
 	</div>
 	<!--//banner-->
 	<!--/nav-->
-	
+
 	<!--//nav-->
 	<!--/inner-content-->
 	<!--/banner-bottom-->
@@ -327,20 +302,22 @@ body {
 	<section class="banner-bottom menu" id="menu">
 		<div class="container">
 			<h3 class="tittle">Our Menu</h3>
-			<a  style="float: right;" href ="/cart" class="blog-btn" data-aos="fade-down" >My cart</a> 
+			<a style="float: right;" href="/cart" class="blog-btn"
+				data-aos="fade-down">My cart</a>
 			<div id="myModal" class="modal">
 
 				<!-- Modal content -->
 				<div class="modal-content">
 					<span class="close">&times;</span>
-					<p>Item added successfully to your cart!! &nbsp;&nbsp;
-					<a   href ="/cart" class="blog-btn" data-aos="fade-down" >My cart</a> 
+					<p>
+						Item added successfully to your cart!! &nbsp;&nbsp; <a
+							href="/cart" class="blog-btn" data-aos="fade-down">My cart</a>
 					</p>
-					
+
 				</div>
 
 			</div>
-			
+
 			<div class="row inner-sec">
 				<div class="tabs">
 					<ul class="nav nav-pills mb-5 justify-content-center"
@@ -382,13 +359,18 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a> </p>
-												<a   href ="#menu" class="blog-btn" data-aos="fade-down" th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
-											
+
 										</div>
 
-									</div><br/>
+									</div>
+									<br />
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
@@ -398,8 +380,12 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a> </p>
-												<a href ="#menu" class="blog-btn" data-aos="fade-down" onmouseup="addToCart(${cake})">Add to cart</a>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													onmouseup="addToCart(${cake})">Add to cart</a>
 											</div>
 										</div>
 
@@ -409,7 +395,7 @@ body {
 							</div>
 
 						</div>
-						
+
 						<div class="tab-pane fade" id="pills-cc" role="tabpanel"
 							aria-labelledby="pills-cc-tab"
 							th:if="${not #lists.isEmpty(ccMenu)}">
@@ -424,7 +410,10 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
 											</div>
 										</div>
 
@@ -438,7 +427,10 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
 											</div>
 										</div>
 
@@ -462,7 +454,10 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
 											</div>
 										</div>
 
@@ -476,7 +471,10 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-											<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
 											</div>
 										</div>
 
@@ -500,7 +498,10 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
 											</div>
 										</div>
 
@@ -514,7 +515,10 @@ body {
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
-												<p class="sub-meta mt-2"> <a th:text="${cake.price}" ></a> <a th:text="${cake.currency}" ></a></p>
+												<p class="sub-meta mt-2">
+													<a th:text="${cake.price}"></a> <a
+														th:text="${cake.currency}"></a>
+												</p>
 											</div>
 										</div>
 
@@ -530,8 +534,8 @@ body {
 		</div>
 	</section>
 	<!--//Menu-->
-	
-	
+
+
 	<!--/blog-->
 	<section class="blog_sec container-fluid">
 		<h3 class="tittle">Latest Blogs</h3>
@@ -827,10 +831,7 @@ body {
 							</ul>
 						</div>
 						<div class="copyrightbottom">
-							<p>
-								© 2018 Baked. All Rights Reserved | Design by <a
-									href="http://w3layouts.com/">W3layouts</a>
-							</p>
+							<p>© 2018 The Bake World. All Rights Reserved</p>
 
 						</div>
 					</div>
@@ -906,7 +907,7 @@ body {
 	<!--/ start-smoth-scrolling -->
 	<script src="js/move-top.js"></script>
 	<script src="js/easing.js"></script>
-	
+
 	<script>
 		jQuery(document).ready(function($) {
 			$(".scroll").click(function(event) {
@@ -936,8 +937,19 @@ body {
 
 		});
 	</script>
-	<script type="text/javascript" >
+	<script type="text/javascript">
 	displayCart();
+	
+	</script>
+	<script th:each="bill:${finalBill}" th:inline="javascript">
+	var orderId=0;
+	orderId= ([[${bill.id}]]);
+	alert(orderId);
+	if(orderId!=0){
+		orderPlaced(orderId);
+	}
+	
+	
 	</script>
 
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cakeworld.main.BillRepository;
 import com.cakeworld.main.MenuRepository;
@@ -43,19 +44,36 @@ public class CheckoutController {
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
 	public String checkOut(Model model,
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
+			return "redirect:/index";
+		}
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
+		model.addAttribute("checkoutCart", menuMapFromDB);
+		return "checkout";
+	}
+
+	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
+	public String checkOutGet(Model model,
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
+		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
+			return "redirect:/index";
+		}
 		model.addAttribute("checkoutCart", menuMapFromDB);
 		return "checkout";
 	}
 	
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.POST)
 	public String placeOrder(Model model,@ModelAttribute("bill")  Bill bill,HttpServletResponse response,HttpServletRequest request,
-			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,RedirectAttributes redirectAttributes) {
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		List<Orders> orderList = new ArrayList<Orders>();
 		int deliveryCharge=0;
 		int subTotal=0;
 		int totalBillPrice=0;
+		if(menuMapFromDB.entrySet()==null || menuMapFromDB.entrySet().size()<1 ) {
+			return "redirect:/index";
+		}
 		for (Map.Entry<String, List<Menu>> entry : menuMapFromDB.entrySet())
 		{
 				Orders order = new Orders();
@@ -64,6 +82,7 @@ public class CheckoutController {
 				order.setPrice(entry.getValue().get(0).getPrice()*entry.getValue().size());
 				order.setCurrency((entry.getValue().get(0).getCurrency()));
 				order.setMenu_name(entry.getValue().get(0).getName());
+				order.setCreationTime(new Date());
 				subTotal=subTotal+entry.getValue().get(0).getPrice()*entry.getValue().size();
 				order.setBill(bill);
 				
@@ -77,13 +96,17 @@ public class CheckoutController {
 		bill.setDeliveryCharge(deliveryCharge);
 		bill.setTotalBillPrice(totalBillPrice);
 		bill.setOrderList(orderList);
+		bill.setCreationTime(new Date());
 		Bill billPersist = billRepository.save(bill);
 		if(billPersist!=null && billPersist.getId()!=0) {
 			sendConfirmationEmail(bill);
 			clearCart("cookiecartcounts",response,request);
 		}
-		model.addAttribute("bill", billPersist);
-		return "index";
+		List<Bill> billPersistList = new ArrayList<Bill>();
+		billPersistList.add(billPersist);
+		
+		redirectAttributes.addFlashAttribute("finalBill", bill);
+		return "redirect:/index";
 	}
 	
 	public static Cookie getCookie(HttpServletRequest request, String name) {
@@ -144,7 +167,7 @@ public class CheckoutController {
 			replacements.put("menuName", order.getMenu_name());
 			replacements.put("imageUrl", order.getMenu().getImageUrl());
 			replacements.put("quantity", String.valueOf(order.getQuantity()));
-			replacements.put("priceWithCurrency", order.getPrice()*order.getQuantity()+" "+order.getCurrency());
+			replacements.put("priceWithCurrency", order.getPrice()+" "+order.getCurrency());
 			String message = template.getTemplate(replacements);
 			htmlBuilder.append(message);
 		}

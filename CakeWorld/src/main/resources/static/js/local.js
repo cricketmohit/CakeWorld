@@ -24,8 +24,28 @@ function getCookie(cname) {
 	    return "0";
 	}
 
+function orderPlaced(orderId){
+	
+	var modalOrderPlaced = document.getElementById('myModalOrderPlaced');
 
+
+	
+	var span = document.getElementsByClassName("closeOrderPlaced")[0];
+	
+	modalOrderPlaced.style.display = "block";
+	document.getElementById("orderPlaced").innerHTML = "Your order is placed successfully, your order number is #"+orderId +", please check your email for more details";
+	 span.onclick = function() {
+		 modalOrderPlaced.style.display = "none";
+		}
+		
+		window.onclick = function(event) {
+		    if (event.target == modalOrderPlaced) {
+		    	modalOrderPlaced.style.display = "none";
+		    }
+		}
+}
 function displayCart(){
+	
 	var cartCookie = getCookie("cookiecartcounts");
 	if(cartCookie=="0" || cartCookie==""){
 		document.getElementById("cartcount").innerHTML = 0;

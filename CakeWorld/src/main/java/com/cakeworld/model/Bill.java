@@ -47,6 +47,8 @@ public class Bill {
     public long deliveryCharge;
     
     public long totalBillPrice;
+    
+    public Date creationTime;
     public String toString() {
         return getClass().getName() + "@" + Integer.toHexString(hashCode());
     }
