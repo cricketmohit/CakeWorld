@@ -47,7 +47,7 @@ public class EmailTemplate {
 
 		if (!AppUtil.isObjectEmpty(cTemplate)) {
 			for (Map.Entry<String, String> entry : replacements.entrySet()) {
-				cTemplate = cTemplate.replace("{{" + entry.getKey() + "}}", entry.getValue());
+				cTemplate = cTemplate.replace("{{" + entry.getKey() + "}}", (entry.getValue() == null) ? "" : entry.getValue());
 			}
 		}
 		

@@ -42,7 +42,11 @@ public class Bill {
     
     public boolean shipped;
     
-  
+    public long subTotal;
+    
+    public long deliveryCharge;
+    
+    public long totalBillPrice;
     public String toString() {
         return getClass().getName() + "@" + Integer.toHexString(hashCode());
     }

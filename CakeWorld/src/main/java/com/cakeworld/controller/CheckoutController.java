@@ -53,6 +53,9 @@ public class CheckoutController {
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		List<Orders> orderList = new ArrayList<Orders>();
+		int deliveryCharge=0;
+		int subTotal=0;
+		int totalBillPrice=0;
 		for (Map.Entry<String, List<Menu>> entry : menuMapFromDB.entrySet())
 		{
 				Orders order = new Orders();
@@ -61,10 +64,18 @@ public class CheckoutController {
 				order.setPrice(entry.getValue().get(0).getPrice()*entry.getValue().size());
 				order.setCurrency((entry.getValue().get(0).getCurrency()));
 				order.setMenu_name(entry.getValue().get(0).getName());
+				subTotal=subTotal+entry.getValue().get(0).getPrice()*entry.getValue().size();
 				order.setBill(bill);
 				
 				orderList.add(order);
 		}
+		if(subTotal<350) {
+			deliveryCharge=49;
+		}
+		totalBillPrice=subTotal+deliveryCharge;
+		bill.setSubTotal(subTotal);
+		bill.setDeliveryCharge(deliveryCharge);
+		bill.setTotalBillPrice(totalBillPrice);
 		bill.setOrderList(orderList);
 		Bill billPersist = billRepository.save(bill);
 		if(billPersist!=null && billPersist.getId()!=0) {
@@ -104,15 +115,41 @@ public class CheckoutController {
 		EmailTemplate template = new EmailTemplate("confirmationEmail.html");
 		 
 		Map<String, String> replacements = new HashMap<String, String>();
-		replacements.put("user", bill.name);
-		replacements.put("today", String.valueOf(new Date()));
-		 
+		replacements.put("name", bill.getName());
+		replacements.put("address", bill.getAddress());
+		replacements.put("zip", String.valueOf(bill.getZip()));
+		replacements.put("city", bill.getCity());
+		replacements.put("deliveryDate", new Date().toString());// Change to Delivery Date
+		replacements.put("slot", bill.getTimeSlot());// Change to slot
+		replacements.put("orderNumber", String.valueOf(bill.getId()));
+		replacements.put("subTotal",String.valueOf(bill.getSubTotal())+" "+bill.getOrderList().get(0).getCurrency());
+		replacements.put("deliveryCharge", String.valueOf(bill.getDeliveryCharge())+" "+bill.getOrderList().get(0).getCurrency());
+		replacements.put("total", String.valueOf(bill.getTotalBillPrice())+" "+bill.getOrderList().get(0).getCurrency());
+		
 		String message = template.getTemplate(replacements);
-		 
+		String orders = getOrderDetails(bill);
+	
+		message = message.replace("#*order*#", orders);
 		Email email = new Email(from, to, subject, message);
 		email.setHtml(true);
 		emailService.send(email);
 		
+	}
+
+	private String getOrderDetails(Bill bill) {
+		StringBuilder htmlBuilder = new StringBuilder();
+		EmailTemplate template = new EmailTemplate("OrderLoop.html");
+		for(Orders order :bill.getOrderList()) {
+			Map<String, String> replacements = new HashMap<String, String>();
+			replacements.put("menuName", order.getMenu_name());
+			replacements.put("imageUrl", order.getMenu().getImageUrl());
+			replacements.put("quantity", String.valueOf(order.getQuantity()));
+			replacements.put("priceWithCurrency", order.getPrice()*order.getQuantity()+" "+order.getCurrency());
+			String message = template.getTemplate(replacements);
+			htmlBuilder.append(message);
+		}
+		
+		return htmlBuilder.toString();
 	}
 
 	public Map<String, List<Menu>> getMenuFromDB(String[] ids) {
