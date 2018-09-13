@@ -217,7 +217,7 @@ span.price {
 							<div class="row">
 								<div class="col-50">
 									<input type="date"
-								name="orderDate" class="form-control" placeholder="" required="" />
+								id="deliveryDate" name="orderDate" class="form-control"  min='2018-01-01' max='2018-12-31' required="" />
 								</div>
 								<div class="col-50">
 										<select name="timeSlot" autocomplete="on"  class="form-control">
@@ -466,6 +466,6 @@ if(deliveryCharge==0){
 var billAmount = totalPrice +deliveryCharge;
 document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 </script>
-	<script>calendar()</script>
+	<script>setDateLimit()</script>
 </body>
 </html>

@@ -25,6 +25,7 @@ import com.cakeworld.model.Bill;
 import com.cakeworld.model.Menu;
 import com.cakeworld.model.Orders;
 import com.cakeworld.util.Constants;
+import com.cakeworld.util.DateUtil;
 import com.cakeworld.util.Email.Email;
 import com.cakeworld.util.Email.EmailService;
 import com.cakeworld.util.Email.EmailTemplate;
@@ -142,8 +143,8 @@ public class CheckoutController {
 		replacements.put("address", bill.getAddress());
 		replacements.put("zip", String.valueOf(bill.getZip()));
 		replacements.put("city", bill.getCity());
-		replacements.put("deliveryDate", new Date().toString());// Change to Delivery Date
-		replacements.put("slot", bill.getTimeSlot());// Change to slot
+		replacements.put("orderDate", DateUtil.getDateFormat(bill.getOrderDate()));// Change to Delivery Date
+		replacements.put("timeSlot", bill.getTimeSlot());// Change to slot
 		replacements.put("orderNumber", String.valueOf(bill.getId()));
 		replacements.put("subTotal",String.valueOf(bill.getSubTotal())+" "+bill.getOrderList().get(0).getCurrency());
 		replacements.put("deliveryCharge", String.valueOf(bill.getDeliveryCharge())+" "+bill.getOrderList().get(0).getCurrency());

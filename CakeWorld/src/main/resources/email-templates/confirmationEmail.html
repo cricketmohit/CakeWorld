@@ -10,7 +10,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oxygen Confirm</title>
+  <title>The Bake World Confirmation</title>
 
   <style type="text/css">
     /* Take care of image borders and formatting, client hacks */
@@ -179,18 +179,7 @@
 
   </style>
 
-  <style type="text/css" media="screen">
-    @import url(http://fonts.googleapis.com/css?family=Oxygen:400,700);
-  </style>
 
-  <style type="text/css" media="screen">
-    @media screen {
-      /* Thanks Outlook 2013! */
-      * {
-        font-family: 'Oxygen', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
-      }
-    }
-  </style>
 
   <style type="text/css" media="only screen and (max-width: 480px)">
     /* Mobile styles */
@@ -303,7 +292,7 @@
           </tr>
           <tr>
             <td class="free-text">
-              We wanted to let you know that we just received your order # {{orderNumber}}. It'll be delivered to you on {{deliveryDate}}
+              We wanted to let you know that we just received your order # {{orderNumber}}. It'll be delivered to you on {{orderDate}}
             </td>
           </tr>
           <!-- tr>
@@ -344,8 +333,8 @@
 															style="border-collapse: separate !important;">
 															<tr>
 																<td class="mini-block"><span class="header-sm">Delivery
-																		Date</span><br /> {{deliveryDate}} <br />
-																	<span class="free-text">{{slot}}</span> <br />
+																		Date</span><br /> {{orderDate}} <br />
+																	<span >{{timeSlot}}</span> <br />
 																	<span class="header-sm">Order</span> <br />
 																	#{{orderNumber}}</td>
 															</tr>
