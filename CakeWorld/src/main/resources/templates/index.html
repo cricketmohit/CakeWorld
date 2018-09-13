@@ -944,7 +944,6 @@ body {
 	<script th:each="bill:${finalBill}" th:inline="javascript">
 	var orderId=0;
 	orderId= ([[${bill.id}]]);
-	alert(orderId);
 	if(orderId!=0){
 		orderPlaced(orderId);
 	}
