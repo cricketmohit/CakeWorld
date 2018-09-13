@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Entity
@@ -30,7 +32,7 @@ public class Bill {
     public String city;
     
     public long zip;
-    
+    @DateTimeFormat(pattern="yyyy-MM-dd") 
 	public Date orderDate;
 	
 	public String timeSlot;

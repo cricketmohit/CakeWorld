@@ -3,11 +3,13 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="js/local.js"></script>
+<script src="js/calendar.js"></script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/local.css" rel="stylesheet" />
+<link href="css/calendar.css" rel="stylesheet" />
 <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
@@ -182,26 +184,81 @@ span.price {
 	<div class="row">
 		<div class="col-75">
 			<div class="container">
-				<form th:action="@{/placeOrder}" method="post" modelAttribute="bill" >
+				<form th:action="@{/placeOrder}" method="post" modelAttribute="bill">
 
 					<div class="row">
 						<div class="col-50">
 							<h3>Shipping Address</h3>
 							<br /> <label for="fname"><i class="fa fa-user"></i>
-								Full Name</label> <input class="form-control" type="text" id="fname" name="name"
-								placeholder="John M. Doe"  required="" /> <label for="email"><i
-								class="fa fa-envelope"></i> Email</label> <input class="form-control" type="email" id="email"
-								name="email" placeholder="john@example.com" required=""/> <label for="adr"><i
-								class="fa fa-address-card-o"></i> Address</label> <input class="form-control" type="text"
-								id="adr" name="address" placeholder="Pilvägen 38" required="" /> <label
-								for="city"><i class="fa fa-institution"></i> City</label> <input
-								type="text" id="city" name="city" value="Stockholm"
-								class="form-control" readonly="readonly" />
-								<label for="zip">Pin Code(5 digit)</label> 
-								<input class="form-control" type="text" pattern="[0-9]{5}"
-										name="zip" placeholder="10001" required=""/>
-								
+								Full Name</label> <input class="form-control" type="text" id="fname"
+								name="name" placeholder="John M. Doe" required="" /> <label
+								for="email"><i class="fa fa-envelope"></i> Email</label> <input
+								class="form-control" type="email" id="email" name="email"
+								placeholder="john@example.com" required="" /> <label for="adr"><i
+								class="fa fa-address-card-o"></i> Address</label> <input
+								class="form-control" type="text" id="adr" name="address"
+								placeholder="Pilvägen 38" required="" /> <label for="city"><i
+								class="fa fa-institution"></i> City</label> <input type="text" id="city"
+								name="city" value="Stockholm" class="form-control"
+								readonly="readonly" /> <label for="zip">Pin Code(5
+								digit)</label> <input class="form-control" type="text"
+								pattern="[0-9]{5}" name="zip" placeholder="10001" required="" />
+
+							<div class="row">
+								<div class="col-50">
+									<label for="zip">Pick Delivery Date</label>
+								</div>
+								<div class="col-50">
+									<label for="zip">Pick Delivery Slot</label>
+								</div>
+
+
+							</div>
+							<div class="row">
+								<div class="col-50">
+									<input type="date"
+								name="orderDate" class="form-control" placeholder="" required="" />
+								</div>
+								<div class="col-50">
+										<select name="timeSlot" autocomplete="on"  class="form-control">
+                                
+                                
+                                    <option value="11:00 to 13:00" data-a-css-class="quantity-option" selected="">
+                                        11:00 to 13:00
+                                    </option>
+                                
+                                    <option value="13:00 to 15:00" data-a-css-class="quantity-option">
+                                       13:00 to 15:00
+                                    </option>
+                                
+                                    <option value="15:00 to 17:00" data-a-css-class="quantity-option">
+                                        15:00 to 17:00
+                                    </option>
+                                
+                                    <option value="17:00 to 19:00" data-a-css-class="quantity-option">
+                                        17:00 to 19:00
+                                    </option>
+                                
+                                  
+                            </select>
+								</div>
+
+
+							</div>
 							
+							
+								
+								<!-- input list="browsers">
+							<datalist id="browsers">
+								<option value="Internet Explorer"></option>
+								<option value="Firefox"></option>
+								<option value="Chrome"></option>
+								<option value="Opera"></option>
+								<option value="Safari"></option>
+							</datalist>
+							</input> -->
+
+
 						</div>
 
 						<div class="col-50">
@@ -248,8 +305,8 @@ span.price {
 
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5>Swish</h5>
-												<input type="radio" id="swish" name="contact"
-													value="cash" required=""/>
+												<input type="radio" id="swish" name="contact" value="cash"
+													required="" />
 											</div>
 										</div>
 
@@ -274,8 +331,8 @@ span.price {
 
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5>Cash</h5>
-												<input type="radio" id="cash" name="contact"
-													value="cash" required="" />
+												<input type="radio" id="cash" name="contact" value="cash"
+													required="" />
 											</div>
 										</div>
 
@@ -295,11 +352,15 @@ span.price {
 
 					</div>
 
+
+
 					<input type="submit" value="Place Order" class="btn" />
 				</form>
 			</div>
 		</div>
 		<div class="col-25">
+
+
 			<div th:if="not ${checkoutCart.isEmpty()}" class="container">
 				<h4>
 					Cart <span class="price" style="color: black"> <i
@@ -325,33 +386,34 @@ span.price {
 			</div>
 			<div class="row">
 				<div class="col-50">
-					
-						<b>Delivery Charge </b>
-					
+
+					<b>Delivery Charge </b>
+
 				</div>
 				<div class="col-50">
-					
-						<i id="deliverycharge"></i>
-					
+
+					<i id="deliverycharge"></i>
+
 				</div>
 
 			</div>
 			<div class="row">
 				<div class="col-50">
 
-					<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)</b>
+					<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)
+					</b>
 				</div>
 				<div class="col-50">
-					<i id="totalPc"></i>
-				
-					<i id="totalPrice"></i>
+					<i id="totalPc"></i> <i id="totalPrice"></i>
 				</div>
 			</div>
-			
-			<br/>
+
+			<br />
 			<div class="row">
-				<i class= "freeShipping" id="freeShipMsg">Free Shipping above 350kr</i>
+				<i class="freeShipping" id="freeShipMsg">Free Shipping above
+					350kr</i>
 			</div>
+
 		</div>
 	</div>
 
@@ -395,7 +457,7 @@ document.getElementById("itemsoritem").innerHTML=itemsoritem;
 document.getElementById("totalPc").innerHTML=itemCount;
 currency = ([[${item.value[0].currency}]]);
 </script>
-<script>
+	<script>
 if(deliveryCharge==0){
 	document.getElementById("freeShipMsg").innerHTML="Your order is eligible for free shipping.";
 	var freeShipping = document.getElementById('freeShipMsg');
@@ -404,5 +466,6 @@ if(deliveryCharge==0){
 var billAmount = totalPrice +deliveryCharge;
 document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 </script>
+	<script>calendar()</script>
 </body>
 </html>
