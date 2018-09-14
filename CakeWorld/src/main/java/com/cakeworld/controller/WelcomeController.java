@@ -1,3 +1,4 @@
+
 package com.cakeworld.controller;
 
 import java.util.ArrayList;
@@ -6,7 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cakeworld.main.MenuRepository;
 import com.cakeworld.model.Menu;
@@ -16,7 +19,9 @@ public class WelcomeController {
 
 	@Autowired
 	private MenuRepository menuRepository;
-
+	
+	
+	
 	@RequestMapping("/")
 	String entry(Model model) {
 		Iterable<Menu> findAll = menuRepository.findAll(); 
@@ -94,6 +99,7 @@ public class WelcomeController {
 		
 		return "index";
 	}
+	@ExceptionHandler
 	@RequestMapping("/404")
 	String noPage() {
 		return "404";
@@ -106,7 +112,7 @@ public class WelcomeController {
 
 	@RequestMapping("/blog")
 	String blog() {
-		return "blog";
+		return "404";
 	}
 
 	@RequestMapping("/contact")
