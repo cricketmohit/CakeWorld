@@ -24,6 +24,8 @@ public class WelcomeController {
 		List<Menu> ccMenu = new ArrayList<Menu>();
 		List<Menu> savMenu = new ArrayList<Menu>();
 		List<Menu> biscuitMenu = new ArrayList<Menu>();
+		List<Menu> galleryMenu = new ArrayList<Menu>();
+		
 		for (Menu menu : findAll) {
 			switch(menu.getCategory().getId()) {
 			case 1:
@@ -41,12 +43,16 @@ public class WelcomeController {
 			default :
 				break;
 			}
+			if(galleryMenu.size()<13) {
+				galleryMenu.add(menu);
+			}
 			
 		}
 		model.addAttribute("cakeMenu", cakeMenu);
 		model.addAttribute("ccMenu", ccMenu);
 		model.addAttribute("savMenu", savMenu);
 		model.addAttribute("biscuitMenu", biscuitMenu);
+		model.addAttribute("galleryMenu", galleryMenu);
 		return "index";
 	}
 	
@@ -58,6 +64,7 @@ public class WelcomeController {
 		List<Menu> ccMenu = new ArrayList<Menu>();
 		List<Menu> savMenu = new ArrayList<Menu>();
 		List<Menu> biscuitMenu = new ArrayList<Menu>();
+		List<Menu> galleryMenu = new ArrayList<Menu>();
 		for (Menu menu : findAll) {
 			switch(menu.getCategory().getId()) {
 			case 1:
@@ -75,12 +82,15 @@ public class WelcomeController {
 			default :
 				break;
 			}
-			
+			if(galleryMenu.size()<13) {
+				galleryMenu.add(menu);
+			}
 		}
 		model.addAttribute("cakeMenu", cakeMenu);
 		model.addAttribute("ccMenu", ccMenu);
 		model.addAttribute("savMenu", savMenu);
 		model.addAttribute("biscuitMenu", biscuitMenu);
+		model.addAttribute("galleryMenu", galleryMenu);
 		
 		return "index";
 	}

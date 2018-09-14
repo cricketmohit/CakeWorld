@@ -4,7 +4,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Bake World</title>
+<title>The Bake World</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="utf-8" />
 <meta name="keywords" content="Bake world" />
@@ -86,8 +86,8 @@ body {
 					</ul>
 					<br />
 					<div data-aos="fade-up">
-						<a href="cart.html"> <i id="cartcount">0</i> <i
-							class="fas fa-shopping-cart" style="font-size: 25px"> &nbsp;
+						<a id="cartBox" href="cart.html"> <i id="cartBoxOverlap"
+							class="fas fa-shopping-cart"> <i id="cartcount">0</i>
 						</i>
 						</a>
 
@@ -128,12 +128,12 @@ body {
 					<li class="nav-item active"><a class="nav-link"
 						href="index.html">Home <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">About</a>
-					</li>
 					<li class="nav-item"><a class="nav-link scroll" href="#menu">Menu</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a>
-					</li>
+					<li class="nav-item"><a class="nav-link" href="about.html">About
+							Us</a></li>
+
+
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -168,23 +168,16 @@ body {
 				<div class="carousel-item active">
 					<div class="carousel-caption">
 						<h3>
-							Bakers Delight Your <span>Local Baker</span>
+							The Bake World Your <span>Own Baker</span>
 						</h3>
 
 					</div>
 				</div>
-				<div class="carousel-item item2">
-					<div class="carousel-caption">
-						<h3>
-							Freshly baked all day <span>Every day!</span>
-						</h3>
 
-					</div>
-				</div>
 				<div class="carousel-item item3">
 					<div class="carousel-caption">
 						<h3>
-							Bakers Delight Your <span>Local Baker</span>
+							Baking is delight with <span>Your Local Baker</span>
 						</h3>
 
 					</div>
@@ -215,87 +208,10 @@ body {
 	<!--//nav-->
 	<!--/inner-content-->
 	<!--/banner-bottom-->
-	<section class="banner-bottom">
-		<div class="container">
-			<h3 class="tittle">We bake love</h3>
-			<div class="row inner-sec">
-				<div class="col-lg-6 about-img" data-aos="flip-right">
-					<img src="images/ab.jpg" class="img-fluid" alt="" />
-				</div>
-				<div class="col-lg-6 about-info text-left" data-aos="flip-left">
-					<h4 class="sub-hd mb-4">We are the Best</h4>
-					<p>Bake World gourmet cake is made with the finest ingredients
-						and baked same day in a clean bakery. Send a cake today to honor
-						your loved ones special day! Each cake delivery includes a
-						greeting card and arrives in an elegant gift box. Select your cake
-						flavor below to start your gift delivery.</p>
-					<p class="sup-para mt-2">We not only deliver cakes but a wide
-						variety of baked products, we have specialty in savory baked
-						products, cup cakes, cookies and biscuits</p>
-					<div class="view my-4">
-						<a href="single.html" class="btn btn-primary read-m">View More</a>
-					</div>
 
-					<img src="images/banner3.jpg" class="img-fluid" alt="" />
-				</div>
-			</div>
-		</div>
-	</section>
 	<!--//banner-bottom-->
 	<!--/banner-bottom-->
-	<section class="grid-info-section">
-		<div class="container">
-			<h3 class="tittle">Best Seller</h3>
-			<div class="row inner-sec">
-				<ul id="flexiselDemo1">
-					<li>
-						<div class="blog-item text-center">
-							<img src="images/5.jpg" alt=" " class="img-fluid rounded-circle" />
-							<div class="floods-text">
-								<h3>Choco Lava Cake with nuts</h3>
 
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="blog-item text-center">
-							<img src="images/1.jpg" alt=" " class="img-fluid rounded-circle" />
-							<div class="floods-text">
-								<h3>Chocolate Cup Cake</h3>
-
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="blog-item text-center">
-							<img src="images/2.jpg" alt=" " class="img-fluid rounded-circle" />
-							<div class="floods-text">
-								<h3>Choco Chips Cookie</h3>
-
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="blog-item text-center">
-							<img src="images/3.jpg" alt=" " class="img-fluid rounded-circle" />
-							<div class="floods-text">
-								<h3>Red Velvet Cup Cake</h3>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="blog-item text-center">
-							<img src="images/4.jpg" alt=" " class="img-fluid rounded-circle" />
-							<div class="floods-text">
-								<h3>Carrot Cake with tutti fruity</h3>
-							</div>
-						</div>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</section>
 	<!--//banner-bottom-->
 	<!--/Menu-->
 
@@ -348,14 +264,18 @@ body {
 						<div class="tab-pane fade show active" id="pills-cake"
 							role="tabpanel" aria-labelledby="pills-cake-tab"
 							th:if="${not #lists.isEmpty(cakeMenu)}">
+
 							<div class="menu-grids my-lg-4 my-md-2">
+
 								<div class="row inner-menu mt-4">
+
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+											<div class="col-md-4 proj_gallery_grid">
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -374,7 +294,7 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
+											<div class="col-md-4 proj_gallery_grid">
 												<img th:src="${cake.imageUrl}"
 													class="img-fluid rounded-circle" alt="" />
 											</div>
@@ -389,11 +309,11 @@ body {
 											</div>
 										</div>
 
+
 									</div>
+
 								</div>
-
 							</div>
-
 						</div>
 
 						<div class="tab-pane fade" id="pills-cc" role="tabpanel"
@@ -404,9 +324,10 @@ body {
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${ccMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+											<div class="col-md-4 proj_gallery_grid">
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -414,6 +335,8 @@ body {
 													<a th:text="${cake.price}"></a> <a
 														th:text="${cake.currency}"></a>
 												</p>
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
 										</div>
 
@@ -421,9 +344,10 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${ccMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+											<div class="col-md-4 proj_gallery_grid">
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -431,6 +355,8 @@ body {
 													<a th:text="${cake.price}"></a> <a
 														th:text="${cake.currency}"></a>
 												</p>
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
 										</div>
 
@@ -448,9 +374,10 @@ body {
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${savMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+											<div class="col-md-4 proj_gallery_grid">
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -458,6 +385,8 @@ body {
 													<a th:text="${cake.price}"></a> <a
 														th:text="${cake.currency}"></a>
 												</p>
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
 										</div>
 
@@ -465,9 +394,10 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${savMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+											<div class="col-md-4 proj_gallery_grid">
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -475,6 +405,8 @@ body {
 													<a th:text="${cake.price}"></a> <a
 														th:text="${cake.currency}"></a>
 												</p>
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
 										</div>
 
@@ -492,9 +424,10 @@ body {
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+											<div class="col-md-4 proj_gallery_grid">
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -502,6 +435,8 @@ body {
 													<a th:text="${cake.price}"></a> <a
 														th:text="${cake.currency}"></a>
 												</p>
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
 										</div>
 
@@ -509,9 +444,10 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-5 menu-img">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+											<div class="col-md-4 proj_gallery_grid">
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -519,6 +455,7 @@ body {
 													<a th:text="${cake.price}"></a> <a
 														th:text="${cake.currency}"></a>
 												</p>
+
 											</div>
 										</div>
 
@@ -537,181 +474,67 @@ body {
 
 
 	<!--/blog-->
-	<section class="blog_sec container-fluid">
-		<h3 class="tittle">Latest Blogs</h3>
-		<div class="row inner-sec">
-			<div class="col-lg-6 banner-btm-left">
-				<div class="banner-btm-top">
-					<div class="banner-btm-inner a1 text-left">
-						<div class="blog_date">
 
-							<h4>Feb.05.2018</h4>
-
-						</div>
-						<h6>
-							<a href="single.html">Malted wheat flake bread</a>
-						</h6>
-						<p class="paragraph">Aenean orci erat, placerat id pulvinar
-							nec, tincidunt vel eros.</p>
-
-						<a href="single.html" class="blog-btn" data-aos="fade-down">Know
-							More</a>
-					</div>
-					<div class="banner-btm-inner a2"></div>
-				</div>
-				<div class="banner-btm-bottom">
-					<div class="banner-btm-inner a3"></div>
-					<div class="banner-btm-inner a4 text-left">
-						<div class="blog_date">
-
-							<h4>Feb.18.2018</h4>
-
-						</div>
-						<h6>
-							<a href="single.html">Malted wheat flake bread</a>
-						</h6>
-						<p class="paragraph">Aenean orci erat, placerat id pulvinar
-							nec, tincidunt vel eros.</p>
-
-						<a href="single.html" class="blog-btn" data-aos="fade-down">Know
-							More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 banner-btm-left">
-				<div class="banner-btm-top">
-					<div class="banner-btm-inner a1 text-left">
-						<div class="blog_date">
-
-							<h4>Mar.25.2018</h4>
-
-						</div>
-						<h6>
-							<a href="single.html">Malted wheat flake bread</a>
-						</h6>
-						<p class="paragraph">Aenean orci erat, placerat id pulvinar
-							nec, tincidunt vel eros.</p>
-
-						<a href="single.html" class="blog-btn" data-aos="fade-down">Know
-							More</a>
-					</div>
-					<div class="banner-btm-inner a5"></div>
-				</div>
-				<div class="banner-btm-bottom">
-					<div class="banner-btm-inner a6"></div>
-					<div class="banner-btm-inner a4 text-left">
-						<div class="blog_date">
-
-							<h4>Mar.30.2018</h4>
-
-						</div>
-						<h6>
-							<a href="single.html">Malted wheat flake bread</a>
-						</h6>
-						<p class="paragraph">Aenean orci erat, placerat id pulvinar
-							nec, tincidunt vel eros.</p>
-
-						<a href="single.html" class="blog-btn" data-aos="fade-down">Know
-							More</a>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</section>
 	<!--//blog-->
 	<!--/Gallry-->
 	<section class="banner-bottom">
 		<div class="container">
 			<h3 class="tittle">Our Gallery</h3>
-			<div class="row inner-sec">
+			<div th:if="${not #lists.isEmpty(galleryMenu)}">
+				<div class="row inner-sec">
 
-				<div class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
-					<div class="section_1_gallery_grid">
-						<a
-							title="Donec sapien massa, placerat ac sodales ac, feugiat quis est."
-							href="images/p1.jpg">
-							<div class="section_1_gallery_grid1">
-								<img src="images/p1.jpg" alt=" " class="img-fluid" />
-								<div class="proj_gallery_grid1_pos">
-									<h3>Baked Food</h3>
-									<p>Add some text</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="section_1_gallery_grid" data-aos="zoom-in">
-						<a
-							title="Donec sapien massa, placerat ac sodales ac, feugiat quis est."
-							href="images/p2.jpg">
-							<div class="section_1_gallery_grid1">
-								<img src="images/p2.jpg" alt=" " class="img-fluid" />
-								<div class="proj_gallery_grid1_pos">
-									<h3>Baked Food</h3>
-									<p>Add some text</p>
-								</div>
-							</div>
-						</a>
-					</div>
+					<div th:each="cake : ${galleryMenu}" th:if="${cake.id%3==1}"
+						class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
 
-				</div>
-				<div class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
-					<div class="section_1_gallery_grid">
-						<a
-							title="Donec sapien massa, placerat ac sodales ac, feugiat quis est."
-							href="images/p4.jpg">
-							<div class="section_1_gallery_grid1">
-								<img src="images/p4.jpg" alt=" " class="img-fluid" />
-								<div class="proj_gallery_grid1_pos">
-									<h3>Baked Food</h3>
-									<p>Add some text</p>
+						<div class="section_1_gallery_grid">
+							<a th:title="${cake.description}" th:href="${cake.imageUrl}">
+								<div class="section_1_gallery_grid1">
+									<img th:src="${cake.imageUrl}" alt=" " class="img-fluid" />
+									<div class="proj_gallery_grid1_pos">
+										<h3 th:text="${cake.category.categoryType}"></h3>
+										<p th:text="${cake.name}"></p>
+									</div>
 								</div>
-							</div>
-						</a>
-					</div>
-					<div class="section_1_gallery_grid" data-aos="zoom-in">
-						<a
-							title="Donec sapien massa, placerat ac sodales ac, feugiat quis est."
-							href="images/p5.jpg">
-							<div class="section_1_gallery_grid1">
-								<img src="images/p5.jpg" alt=" " class="img-fluid" />
-								<div class="proj_gallery_grid1_pos">
-									<h3>Baked Food</h3>
-									<p>Add some text</p>
-								</div>
-							</div>
-						</a>
-					</div>
+							</a>
 
-				</div>
-				<div class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
-					<div class="section_1_gallery_grid">
-						<a
-							title="Donec sapien massa, placerat ac sodales ac, feugiat quis est."
-							href="images/p3.jpg">
-							<div class="section_1_gallery_grid1">
-								<img src="images/p3.jpg" alt=" " class="img-fluid" />
-								<div class="proj_gallery_grid1_pos">
-									<h3>Baked Food</h3>
-									<p>Add some text</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="section_1_gallery_grid" data-aos="zoom-in">
-						<a
-							title="Donec sapien massa, placerat ac sodales ac, feugiat quis est."
-							href="images/p2.jpg">
-							<div class="section_1_gallery_grid1">
-								<img src="images/p2.jpg" alt=" " class="img-fluid" />
-								<div class="proj_gallery_grid1_pos">
-									<h3>Baked Food</h3>
-									<p>Add some text</p>
-								</div>
-							</div>
-						</a>
-					</div>
+						</div>
 
+
+					</div>
+					<div th:each="cake : ${galleryMenu}" th:if="${cake.id%3==2}"
+						class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
+						<div class="section_1_gallery_grid">
+							<a th:title="${cake.description}" th:href="${cake.imageUrl}">
+								<div class="section_1_gallery_grid1">
+									<img th:src="${cake.imageUrl}" alt=" " class="img-fluid" />
+									<div class="proj_gallery_grid1_pos">
+										<h3 th:text="${cake.category.categoryType}"></h3>
+										<p th:text="${cake.name}"></p>
+									</div>
+								</div>
+							</a>
+
+						</div>
+
+
+					</div>
+					<div th:each="cake : ${galleryMenu}" th:if="${cake.id%3==0}"
+						class="col-md-4 proj_gallery_grid" data-aos="zoom-in">
+						<div class="section_1_gallery_grid">
+							<a th:title="${cake.description}" th:href="${cake.imageUrl}">
+								<div class="section_1_gallery_grid1">
+									<img th:src="${cake.imageUrl}" alt=" " class="img-fluid" />
+									<div class="proj_gallery_grid1_pos">
+										<h3 th:text="${cake.category.categoryType}"></h3>
+										<p th:text="${cake.name}"></p>
+									</div>
+								</div>
+							</a>
+
+						</div>
+
+
+					</div>
 				</div>
 			</div>
 		</div>
