@@ -10,5 +10,5 @@ import com.cakeworld.model.User;
 
 public interface SubscribeRepository  extends CrudRepository<SubscribedEmail, Integer> {
 
-	List<SubscribedEmail> findByEmailId(String name);
+	List<SubscribedEmail> findByEmailId(String email);
 }

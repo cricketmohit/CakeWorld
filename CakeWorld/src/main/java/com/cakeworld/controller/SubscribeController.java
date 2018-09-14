@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cakeworld.main.ContactRepository;
 import com.cakeworld.main.SubscribeRepository;
+import com.cakeworld.model.ContactUs;
 import com.cakeworld.model.SubscribedEmail;
 import com.cakeworld.util.Constants;
 import com.cakeworld.util.Email.Email;
@@ -23,6 +25,8 @@ public class SubscribeController {
 	
 	@Autowired
 	private SubscribeRepository subscribeRepository;
+	@Autowired
+	private ContactRepository contactRepository;
 	
 	@Autowired
 	EmailService emailService;
@@ -41,6 +45,33 @@ public class SubscribeController {
 		}
 		
     }
+	
+	@RequestMapping(value = "/contactus", method = RequestMethod.POST) 
+    public String contactUs(@ModelAttribute("contactus")  ContactUs contactus, Model model) {
+		
+			 ContactUs contactPersited = contactRepository.save(contactus);
+				model.addAttribute("subs",contactPersited);
+				sendContactEmail(contactPersited);
+		        return "redirect:/index";
+		
+		
+    }
+
+	private void sendContactEmail(ContactUs contactPersited) {
+		
+		String from = "test@thebakeworld.com";
+		String to = "thebakeworlds@gmail.com";
+		String subject = contactPersited.getSubject();
+		
+		String message = "Person Email: "+contactPersited.getEmailId() +" Person Name :"+contactPersited.getName()+" \n"+" Message: "+contactPersited.getMessage();
+		
+	
+		
+		Email email = new Email(from, to, subject, message);
+		email.setHtml(true);
+		emailService.send(email);
+		
+	}
 
 	private void sendSubscribeEmail(SubscribedEmail subscribe) {
 		String from = "test@thebakeworld.com";

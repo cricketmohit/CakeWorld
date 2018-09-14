@@ -221,26 +221,26 @@ body {
 		<br/>
 		<div class="container">
 			<div class="contact_grid_right">
-				<form action="#" method="post">
-					<div class="row contact_left_grid">
+				<form th:action="@{/contactus}" method="post" modelAttribute="contactus" >
+								<div class="row contact_left_grid">
 						<div class="col-md-6 con-left">
 							<div class="form-group" data-aos="fade-down">
 								<label for="validationCustom01 my-2">Name</label>
-								<input class="form-control" type="text" name="Name" placeholder="" required=""/>
+								<input class="form-control" type="text" name="name" placeholder="" required=""/>
 							</div>
 							<div class="form-group" data-aos="fade-down">
 								<label for="exampleFormControlInput1">Email</label>
-								<input class="form-control" type="email" name="Email" placeholder="" required=""/>
+								<input class="form-control" type="email" name="emailId" placeholder="" required=""/>
 							</div>
 							<div class="form-group" data-aos="fade-down">
 								<label for="validationCustom03 my-2">Subject</label>
-								<input class="form-control" type="text" name="Subject" placeholder="" required=""/>
+								<input class="form-control" type="text" name="subject" placeholder="" required=""/>
 							</div>
 						</div>
 						<div class="col-md-6 con-right">
 							<div class="form-group" data-aos="fade-down">
 								<label for="textarea">Message</label><br/>
-								<input class="form-control" type="text" name="textarea" placeholder="" required=""/>
+								<input class="form-control" type="text" name="message" placeholder="" required=""/>
 							</div>
 							<button type="submit" class=" btn btn-primary submit mb-4" >Submit</button>
 
