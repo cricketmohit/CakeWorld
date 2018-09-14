@@ -115,7 +115,15 @@ public class WelcomeController {
 	}
 
 	@RequestMapping("/gallery")
-	String gallery() {
+	String gallery(Model model) {
+		Iterable<Menu> findAll = menuRepository.findAll(); 
+		List<Menu> galleryMenu = new ArrayList<Menu>();
+		
+		for (Menu menu : findAll) {
+				galleryMenu.add(menu);
+		
+		}
+		model.addAttribute("galleryMenu", galleryMenu);
 		return "gallery";
 	}
 

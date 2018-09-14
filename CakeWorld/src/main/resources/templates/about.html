@@ -1,15 +1,9 @@
-<!--
-	Author: W3layouts
-	Author URL: http://w3layouts.com
-	License: Creative Commons Attribution 3.0 Unported
-	License URL: http://creativecommons.org/licenses/by/3.0/
--->
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title> Bake World</title>
+<title>The Bake World</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="utf-8" />
 <meta name="keywords" content="Bake world" />
@@ -22,22 +16,23 @@
 		window.scrollTo(0, 1);
 	}
 </script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
-
+<script src="js/local.js" type="text/javascript"></script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/fontawesome-all.css" rel="stylesheet" />
+<link href="css/local.css" rel="stylesheet" />
 <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
-<link href="//fonts.googleapis.com/css?family=Poiret+One"
-	rel="stylesheet" />
-<link
-	href="//fonts.googleapis.com/css?family=Lato:100i,300,300i,400,400i,700,700i,900"
-	rel="stylesheet" />
-<link
-	href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700"
-	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	crossorigin="anonymous" />
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 </head>
 
 <body>
@@ -46,8 +41,11 @@
 		<div class="top-bar_sub container-fluid">
 			<div class="row">
 				<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
-					<span>Welcome!</span> <span class="mx-lg-4 mx-md-2  mx-1">
-						<a href="login.html"> <i class="fas fa-lock"></i> Sign In
+					<span> <a href="index.html"> <i class="fa fa-home"></i>
+							Welcome!
+					</a>
+					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a href="login.html">
+							<i class="fa fa-lock"></i> Sign In
 					</a>
 					</span> <span> <a href="register.html"> <i class="far fa-user"></i>
 							Register
@@ -55,8 +53,8 @@
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
-					<a class="navbar-brand" href="index.html"> <i
-						class="fab fa-gitkraken"></i> Bake World
+					<a class="navbar-brand" href="index.html"> <img alt=""
+						src="images/logo.png"></img>
 					</a>
 				</div>
 
@@ -64,70 +62,91 @@
 
 					<ul class="social_list1 mt-4">
 
-						<li><a href="#" class="facebook1 mx-2"> <i
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="facebook1 mx-2"> <i
 								class="fab fa-facebook-f"></i>
 
 						</a></li>
-						<li><a href="#" class="twitter2"> <i
-								class="fab fa-twitter"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="twitter2"> <i class="fab fa-twitter"></i>
 
 						</a></li>
-						<li><a href="#" class="dribble3 mx-2"> <i
-								class="fab fa-dribbble"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="instagram3"> <i
+								class="fab fa-instagram"></i>
 						</a></li>
-						<li><a href="#" class="pin"> <i
-								class="fab fa-pinterest-p"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="pin"> <i class="fab fa-google-plus"></i>
 						</a></li>
 					</ul>
+					<br />
+					<div data-aos="fade-up">
+						<a id="cartBox" href="cart.html"> <i id="cartBoxOverlap"
+							class="fas fa-shopping-cart"> <i id="cartcount">0</i>
+						</i>
+						</a>
+
+					</div>
+
+
 				</div>
 			</div>
+
 		</div>
+
 	</header>
-	
-	<!--/banner-->
-	<div class="banner-inner">
+	<div id="myModalOrderPlaced" class="modalOrderPlaced">
+
+		<!-- Modal content -->
+		<div class="modal-contentOrderPlaced">
+
+			<span class="closeOrderPlaced">&times;</span>
+			<p id="orderPlaced">&nbsp;&nbsp;</p>
+
+		</div>
+
 	</div>
-	<!--//banner-->
+	
+
 	<!--/nav-->
 	<div class="header_top" id="home">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-			    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler navbar-toggler-right mx-auto"
+				type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Home
-							<span class="sr-only">(current)</span>
-						</a>
+					<li class="nav-item "><a class="nav-link"
+						href="index.html">Home <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html#menu">Menu</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Menu</a>
-					</li>
-					<li class="nav-item active">
-						<a class="nav-link" href="about.html">About</a>
-					</li>
-					
-					<li class="nav-item">
-						<a class="nav-link" href="blog.html">Blog</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-						    aria-expanded="false">
-							Drop Down
-						</a>
+					<li class="nav-item active"><a class="nav-link" href="about.html">About
+							Us</a></li>
+
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Others </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#"></a>
-								<a class="dropdown-item" href="gallery.html">Gallery</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="404.html">Services</a>
-							</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="contact.html">Contact</a>
+							<a class="dropdown-item" href="#"></a> <a class="dropdown-item"
+								href="gallery.html">Gallery</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="404.html">Services</a>
+
+						</div></li>
+					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
 
 				</ul>
@@ -135,6 +154,10 @@
 		</nav>
 
 	</div>
+		<!--/banner-->
+	<div class="banner-inner">
+	</div>
+	<!--//banner-->
 	<!--//nav-->
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item">
@@ -151,17 +174,17 @@
 					<img src="images/ab.jpg" class="img-fluid" alt="" />
 				</div>
 				<div class="col-lg-6 about-info text-left" data-aos="flip-left">
-					<h4 class="sub-hd mb-4">We are the Best</h4>
+					<h4 class="sub-hd mb-4">We are the Best in Eggless Baking</h4>
 					<p>Bake World gourmet cake is made with the finest ingredients
 						and baked same day in a clean bakery. Send a cake today to honor
 						your loved ones special day! Each cake delivery includes a
 						greeting card and arrives in an elegant gift box. Select your cake
-						flavor below to start your gift delivery.</p>
+						flavor to start your gift delivery.</p>
 					<p class="sup-para mt-2">We not only deliver cakes but a wide
 						variety of baked products, we have specialty in savory baked
 						products, cup cakes, cookies and biscuits</p>
 					<div class="view my-4">
-						<a href="single.html" class="btn btn-primary read-m">View More</a>
+						<a href="index.html#menu" class="btn btn-primary read-m">View More</a>
 					</div>
 
 					<img src="images/banner3.jpg" class="img-fluid" alt="" />
@@ -177,25 +200,25 @@
 				<ul id="flexiselDemo1">
 					<li>
 						<div class="blog-item text-center">
-							<img src="images/5.jpg" alt=" " class="img-fluid rounded-circle" />
+							<img src="https://s3.us-east-2.amazonaws.com/bakeworldimages/chocolateCake.JPG" alt=" " class="img-fluid rounded-circle" />
 							<div class="floods-text">
-								<h3>Choco Lava Cake with nuts</h3>
+								<h3>Chocolate Cake with nuts</h3>
 
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="blog-item text-center">
-							<img src="images/1.jpg" alt=" " class="img-fluid rounded-circle" />
+							<img src="https://s3.us-east-2.amazonaws.com/bakeworldimages/satisfying.jpg" alt=" " class="img-fluid rounded-circle" />
 							<div class="floods-text">
-								<h3>Chocolate Cup Cake</h3>
+								<h3>Strawberry Cup Cake</h3>
 
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="blog-item text-center">
-							<img src="images/2.jpg" alt=" " class="img-fluid rounded-circle" />
+							<img src="https://s3.us-east-2.amazonaws.com/bakeworldimages/chocochipcookie.jpg" alt=" " class="img-fluid rounded-circle" />
 							<div class="floods-text">
 								<h3>Choco Chips Cookie</h3>
 
@@ -204,7 +227,7 @@
 					</li>
 					<li>
 						<div class="blog-item text-center">
-							<img src="images/3.jpg" alt=" " class="img-fluid rounded-circle" />
+							<img src="https://s3.us-east-2.amazonaws.com/bakeworldimages/redvelvetcupcake.jpg" alt=" " class="img-fluid rounded-circle" />
 							<div class="floods-text">
 								<h3>Red Velvet Cup Cake</h3>
 							</div>
@@ -212,9 +235,9 @@
 					</li>
 					<li>
 						<div class="blog-item text-center">
-							<img src="images/4.jpg" alt=" " class="img-fluid rounded-circle" />
+							<img src="https://s3.us-east-2.amazonaws.com/bakeworldimages/garlicbreadcorn.jpg" alt=" " class="img-fluid rounded-circle" />
 							<div class="floods-text">
-								<h3>Carrot Cake with tutti fruity</h3>
+								<h3>Stuffed Garlic Bread</h3>
 							</div>
 						</div>
 					</li>
@@ -224,7 +247,7 @@
 		</div>
 	</section>
 	<!--//seller-->
-	<section class="blog_sec container-fluid">
+	<!-- section class="blog_sec container-fluid">
 		<h3 class="tittle">Latest Blogs</h3>
 		<div class="row inner-sec">
 			<div class="col-lg-6 banner-btm-left">
@@ -305,8 +328,8 @@
 			</div>
 
 		</div>
-	</section>
-	<section class="banner-bottom">
+	</section-->
+	<!--  section class="banner-bottom">
 		<div class="container-fluid">
 			<h3 class="tittle">Our Experts</h3>
 			<div class="row inner-sec team-sec">
@@ -388,7 +411,7 @@
 					</div>
 			</div>
 		</div>
-	</section>
+	</section-->
 	<!--reviews_sec-->
 	<section class="banner-bottom reviews_sec">
 		<div class="container">
