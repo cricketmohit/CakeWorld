@@ -624,8 +624,8 @@ body {
 					<h2>Subscribe for hot updates</h2>
 					<div class="subscribe-main text-left">
 						<div class="subscribe-form">
-							<form action="#" method="post" class="subscribe_form">
-								<input class="form-control" type="email"
+							<form th:action="@{/subscribe}" method="post" modelAttribute="subscribe"  class="subscribe_form">
+								<input class="form-control" name="emailId" type="email"
 									placeholder="Enter your email..." required="" />
 								<button type="submit" class="btn btn-primary submit">Submit</button>
 							</form>
