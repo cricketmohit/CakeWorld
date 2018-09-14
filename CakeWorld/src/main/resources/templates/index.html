@@ -295,8 +295,9 @@ body {
 										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
 											<div class="col-md-4 proj_gallery_grid">
-												<img th:src="${cake.imageUrl}"
-													class="img-fluid rounded-circle" alt="" />
+												<a th:href="${cake.imageUrl}"><img
+													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
+													alt="" /></a>
 											</div>
 											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
 												<h5 th:text="${cake.name}"></h5>
@@ -455,7 +456,8 @@ body {
 													<a th:text="${cake.price}"></a> <a
 														th:text="${cake.currency}"></a>
 												</p>
-
+												<a href="#menu" class="blog-btn" data-aos="fade-down"
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
 										</div>
 

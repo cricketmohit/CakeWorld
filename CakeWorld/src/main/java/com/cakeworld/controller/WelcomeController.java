@@ -43,7 +43,7 @@ public class WelcomeController {
 			default :
 				break;
 			}
-			if(galleryMenu.size()<13) {
+			if(galleryMenu.size()<12) {
 				galleryMenu.add(menu);
 			}
 			
@@ -82,7 +82,7 @@ public class WelcomeController {
 			default :
 				break;
 			}
-			if(galleryMenu.size()<13) {
+			if(galleryMenu.size()<12) {
 				galleryMenu.add(menu);
 			}
 		}
