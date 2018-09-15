@@ -143,6 +143,7 @@ public class CheckoutController {
 		replacements.put("address", bill.getAddress());
 		replacements.put("zip", String.valueOf(bill.getZip()));
 		replacements.put("city", bill.getCity());
+		replacements.put("phone",  String.valueOf(bill.getPhone()));
 		replacements.put("orderDate", DateUtil.getDateFormat(bill.getOrderDate()));// Change to Delivery Date
 		replacements.put("timeSlot", bill.getTimeSlot());// Change to slot
 		replacements.put("orderNumber", String.valueOf(bill.getId()));

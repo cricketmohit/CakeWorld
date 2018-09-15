@@ -40,7 +40,11 @@
     text-align: center;
    
 }
-
+.redColor {
+textcolor: #ff1e0d;
+  background: #ff1e0d;
+ 
+}
 .scrollbarCheckout {
 
  padding-right: 10px;

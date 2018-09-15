@@ -1,15 +1,8 @@
-<!--
-	Author: W3layouts
-	Author URL: http://w3layouts.com
-	License: Creative Commons Attribution 3.0 Unported
-	License URL: http://creativecommons.org/licenses/by/3.0/
--->
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title> Bake World</title>
+<title>The Bake World</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="utf-8" />
 <meta name="keywords" content="Bake world" />
@@ -22,22 +15,23 @@
 		window.scrollTo(0, 1);
 	}
 </script>
+<script src="js/local.js" type="text/javascript"></script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
 	media="screen" property="" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/fontawesome-all.css" rel="stylesheet" />
+<link href="css/local.css" rel="stylesheet" />
 <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
-<link href="//fonts.googleapis.com/css?family=Poiret+One"
-	rel="stylesheet" />
-<link
-	href="//fonts.googleapis.com/css?family=Lato:100i,300,300i,400,400i,700,700i,900"
-	rel="stylesheet" />
-<link
-	href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700"
-	rel="stylesheet" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"/>
-	
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+	integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	crossorigin="anonymous" />
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
 </head>
 
 <body>
@@ -46,8 +40,11 @@
 		<div class="top-bar_sub container-fluid">
 			<div class="row">
 				<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
-					<span>Welcome !</span> <span class="mx-lg-4 mx-md-2  mx-1">
-						<a href="login.html"> <i class="fas fa-lock"></i> Sign In
+					<span> <a href="index.html"> <i class="fa fa-home"></i>
+							Welcome!
+					</a>
+					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a href="login.html">
+							<i class="fa fa-lock"></i> Sign In
 					</a>
 					</span> <span> <a href="register.html"> <i class="far fa-user"></i>
 							Register
@@ -55,8 +52,8 @@
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
-					<a class="navbar-brand" href="index.html"> <i
-						class="fab fa-gitkraken"></i> Bake World
+					<a class="navbar-brand" href="index.html"> <img alt=""
+						src="images/logo.png"></img>
 					</a>
 				</div>
 
@@ -64,29 +61,39 @@
 
 					<ul class="social_list1 mt-4">
 
-						<li><a href="#" class="facebook1 mx-2"> <i
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="facebook1 mx-2"> <i
 								class="fab fa-facebook-f"></i>
 
 						</a></li>
-						<li><a href="#" class="twitter2"> <i
-								class="fab fa-twitter"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="twitter2"> <i class="fab fa-twitter"></i>
 
 						</a></li>
-						<li><a href="#" class="dribble3 mx-2"> <i
-								class="fab fa-dribbble"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="instagram3"> <i
+								class="fab fa-instagram"></i>
 						</a></li>
-						<li><a href="#" class="pin"> <i
-								class="fab fa-pinterest-p"></i>
+						<li><a
+							href="https://www.facebook.com/Bake-World-881719938705439/"
+							target="_blank" class="pin"> <i class="fab fa-google-plus"></i>
 						</a></li>
 					</ul>
+				
+
+
 				</div>
 			</div>
+
 		</div>
+
 	</header>
 	
 	<!--/banner-->
-	<div class="banner-inner">
-	</div>
+	
 	<!--//banner-->
 	<!--/nav-->
 	<div class="header_top" id="home">
@@ -148,6 +155,7 @@
 		<div class="container">
 			<h3 class="tittle">Sign In Now</h3>
 			<div class="row inner-sec">
+				
 				<div class="login p-5 bg-dark mx-auto mw-100">
 					<form th:action="@{/login}" method="post" modelAttribute="users">
 						<div class="form-group">
@@ -155,11 +163,15 @@
 							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email" placeholder="" required=""/>
 							
 						</div>
+						<font color="red" id="usernameValidate" ></font><br/>
+				
 						<div class="form-group">
 							<label for="exampleInputPassword1 mb-2">Password</label>
 							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name = "password" required=""/>
 							
 						</div>
+						<font color="red" id="passwordValidate" ></font><br/>
+						<font color="red" id="forgotPasswordValidate" ></font>
 						<div class="form-check mb-2">
 							<input type="checkbox" class="form-check-input" id="exampleCheck1"/>
 							<label class="form-check-label" for="exampleCheck1">Keep me sign in </label>
@@ -176,6 +188,23 @@
 			</div>
 		</div>
 	</section>
+	<script   th:inline="javascript">
+	
+	/*<![CDATA[*/
+
+    var message = /*[[${userInvalid}]]*/ 'default';
+    var message1 = /*[[${incorrectPassword}]]*/ 'default';
+   
+
+	/*]]>*/
+	if(message=="userInvalid"){
+	document.getElementById("usernameValidate").innerHTML="Invalid Email, please register or check email id";
+	}
+	if(message1=="incorrectPassword"){
+	document.getElementById("passwordValidate").innerHTML="Incorrect Password, please check !";
+	document.getElementById("forgotPasswordValidate").innerHTML="If you forget your password, please click Forgot Password";
+	}
+	</script>
 	<!--//main-->
 	<!--footer-->
 	<footer>

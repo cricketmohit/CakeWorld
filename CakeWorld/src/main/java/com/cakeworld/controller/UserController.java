@@ -39,20 +39,19 @@ public class UserController {
     }
 	@RequestMapping(value = "/login", method = RequestMethod.POST) 
     public String login(@ModelAttribute("users") 
-    		User user,Model model,HttpSession session, HttpServletResponse response,
+    		User user,Model model, HttpServletResponse response,
     		@CookieValue(value="foo" , defaultValue = "hello") String fooCookie) {
 		User userPersisted;
-		if(session.getAttribute("userDBSession")!=null){
-			 userPersisted = (User)session.getAttribute("userDBSession");
-		}else {
+		
 			if(userRepository.findByEmail(user.getEmail())!=null && userRepository.findByEmail(user.getEmail()).size() >0 ){
 				userPersisted = userRepository.findByEmail(user.getEmail()).get(0);
-				session.setAttribute("userDBSession",userPersisted);
+				
 			} else {
-				return  "register";
+				model.addAttribute("userInvalid","userInvalid");
+				return  "login";
 			}
 				
-		}
+		
 		
 		if(userPersisted.getPassword().equals(user.getPassword())) {
 			Iterable<Menu> findAll = menuRepository.findAll(); 
@@ -84,9 +83,12 @@ public class UserController {
 			model.addAttribute("savMenu", savMenu);
 			model.addAttribute("biscuitMenu", biscuitMenu);
 			return "index";
+		}else {
+			model.addAttribute("incorrectPassword","incorrectPassword");
+			return "login";
 		}
 		
-		return "login";
+		
     }
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST) 
 	    public String registerUser(@ModelAttribute("users")  User user) {
