@@ -150,7 +150,7 @@ public class WelcomeController {
 
 	@RequestMapping("/single")
 	String single() {
-		return "single";
+		return "404";
 	}
 	
 }
