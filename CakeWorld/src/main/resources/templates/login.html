@@ -105,8 +105,8 @@ body {
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item "><a class="nav-link"
-						href="index.html">Home <span class="sr-only">(current)</span>
+					<li class="nav-item "><a class="nav-link" href="index.html">Home
+							<span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link scroll" href="#menu">Menu</a>
 					</li>
@@ -142,10 +142,15 @@ body {
 	<section class="banner-bottom">
 		<div class="container">
 			<h3 class="tittle">Sign In Now</h3>
-			<div class="row inner-sec">
 
+
+			<div class="row inner-sec">
+				
 				<div class="login p-5 bg-dark mx-auto mw-100">
-					<form  method="post" modelAttribute="users">
+				<a class="price"> <font color="white" id="changed"
+					style="text-align: centre"></font><br />
+				</a><br/>
+					<form method="post" modelAttribute="users">
 						<div class="form-group">
 							<label for="exampleInputEmail1 mb-2">Email address</label> <input
 								type="email" class="form-control" id="emailLogin"
@@ -169,20 +174,21 @@ body {
 								for="exampleCheck1">Keep me sign in </label>
 
 						</div>
-						<button type="submit" th:action="@{/login}" class="btn btn-primary submit mb-4">Sign
-							In</button>
+						<button type="submit" th:action="@{/login}"
+							class="btn btn-primary submit mb-4">Sign In</button>
 
 
 					</form>
-					<form th:action="@{/forgotPassword}" method="post" modelAttribute="users">
-					<p>
+					<form th:action="@{/forgotPassword}" method="post"
+						modelAttribute="users">
+						<p>
 							<a href="register.html"> Don't have an account? Register Now!</a>
 
 						</p>
 						<button type="submit" class="btn btn-primary submit">Forgot
 							Password?</button>
-						
-					
+
+
 					</form>
 				</div>
 			</div>
@@ -195,7 +201,7 @@ body {
     var message = /*[[${userInvalid}]]*/ 'default';
     var message1 = /*[[${incorrectPassword}]]*/ 'default';
     var email = /*[[${emailLogin}]]*/ 'default';
-   
+    var changed = /*[[${changed}]]*/ 'default';
 
 	/*]]>*/
 	if(message=="userInvalid"){
@@ -207,6 +213,10 @@ body {
 
 	document.getElementById("emailLogin").value = email;
 	}
+	
+	if(changed=="changed"){
+		document.getElementById("changed").innerHTML="Password changed successfully";
+		}
 	</script>
 	<!--//main-->
 	<!--footer-->
@@ -215,10 +225,10 @@ body {
 			<div class="row">
 				<div class="col-lg-4 footer-grid text-left" data-aos="fade-right">
 					<h3>About US</h3>
-					<p>Curabitur non nulla sit amet nisl tempus convallis quis ac
-						lectus. lacinia eget consectetur sed, convallis at tellus..</p>
+					<p>We are based in Fika Destination of the world Stockholm,
+						Sweden</p>
 					<div class="read">
-						<a href="single.html" class="btn btn-primary read-m">Read More</a>
+						<a href="about.html" class="btn btn-primary read-m">Read More</a>
 					</div>
 				</div>
 				<!-- subscribe -->
@@ -227,38 +237,39 @@ body {
 					<h2>Subscribe for hot updates</h2>
 					<div class="subscribe-main text-left">
 						<div class="subscribe-form">
-							<form action="#" method="post" class="subscribe_form">
-								<input class="form-control" type="email"
+							<form th:action="@{/subscribe}" method="post" modelAttribute="subscribe"  class="subscribe_form">
+								<input class="form-control" name="emailId" type="email"
 									placeholder="Enter your email..." required="" />
 								<button type="submit" class="btn btn-primary submit">Submit</button>
 							</form>
 
 						</div>
-						<p>We respect your privacy.No spam ever!</p>
+						<p>We respect your privacy. No spam ever!</p>
 					</div>
 					<!-- //subscribe -->
 					<div class="footer-cpy text-left">
 						<div class="copyrighttop">
 							<ul>
 								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
-									href="#"> <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab fa-facebook-f"></i> <span>Facebook</span>
 								</a></li>
-								<li><a class="facebook" href="#"> <i
-										class="fab fa-twitter"></i> <span>Twitter</span>
+								<li><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab fa-twitter"></i> <span>Twitter</span>
 								</a></li>
 								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
-									href="#"> <i class="fab fa-google-plus-g"></i> <span>Google+</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab fa-google-plus-g"></i> <span>Google+</span>
 								</a></li>
-								<li><a class="facebook" href="#"> <i
-										class="fab fa-pinterest-p"></i> <span>Pinterest</span>
+								<li><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab  fa-instagram"></i> <span>Instagram</span>
 								</a></li>
 							</ul>
 						</div>
 						<div class="copyrightbottom">
-							<p>
-								© 2018 Baked. All Rights Reserved | Design by <a
-									href="http://w3layouts.com/">W3layouts</a>
-							</p>
+							<p>© 2018 The Bake World. All Rights Reserved</p>
 
 						</div>
 					</div>

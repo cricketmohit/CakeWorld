@@ -25,6 +25,8 @@ public class Constants {
 
 	public static final String SUBJECTORDERCONFIRMATION = "Order Confirmation ";
 	
+	public static final String SUBJECTREGISTERCONFIRMATION = "Registration Confirmation ";
+	
 	public static final String SUBJECTSUBSCRIPTION = "Thank You for Subscribing ";
 
 

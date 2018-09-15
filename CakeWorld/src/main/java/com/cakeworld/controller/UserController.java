@@ -1,7 +1,9 @@
 package com.cakeworld.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +22,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cakeworld.main.MenuRepository;
 import com.cakeworld.main.UserRepository;
 import com.cakeworld.model.Menu;
+import com.cakeworld.model.SubscribedEmail;
 import com.cakeworld.model.User;
+import com.cakeworld.util.Constants;
+import com.cakeworld.util.Email.Email;
+import com.cakeworld.util.Email.EmailService;
+import com.cakeworld.util.Email.EmailTemplate;
 
 
 @Controller    // This means that this class is a Controller
@@ -31,12 +38,12 @@ public class UserController {
 	private UserRepository userRepository;
 	@Autowired
 	private MenuRepository menuRepository;
-	
+	@Autowired
+	EmailService emailService;
 	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.GET) 
-    public Iterable<User> getUser(Model model) {
-		Iterable<User> users = userRepository.findAll(); 
-        return users;
+    public String getUser(Model model) {
+		return "redirect:index";
     }
 	@RequestMapping(value = "/forgotPassword", method = RequestMethod.POST) 
     public String forgotPassword(Model model) {
@@ -52,7 +59,7 @@ public class UserController {
 				userPersisted = userRepository.findByEmail(user.getEmail()).get(0);
 				userPersisted.setPassword(user.getPassword());
 				userRepository.save(userPersisted);
-				
+				redirectAttributes.addFlashAttribute("changed", "changed");
 			} else {
 				
 				redirectAttributes.addFlashAttribute("userInvalid", "userInvalid");
@@ -124,12 +131,35 @@ public class UserController {
 				if(userPersisted.getEmail().equalsIgnoreCase(user.getEmail())){
 					userPersisted.setPassword(user.getPassword());
 					userRepository.save(userPersisted);
-				return"login";	
+					sendRegisterEmail(user);
+				return "redirect:/login";
 				}
 			}
 		 	userRepository.save(user);
-	        return "login";
+			sendRegisterEmail(user);
+	        return "redirect:/login";
 	    }
+	
+	private void sendRegisterEmail(User user) {
+		String from = "test@thebakeworld.com";
+		String to = user.getEmail();
+		String subject = Constants.SUBJECTREGISTERCONFIRMATION;
+		 
+		EmailTemplate template = new EmailTemplate("registerEmail.html");
+		 
+		Map<String, String> replacements = new HashMap<String, String>();
+		
+		
+		String message = template.getTemplate(replacements);
+		
+	
+		
+		Email email = new Email(from, to, subject, message);
+		email.setHtml(true);
+		emailService.send(email);
+		
+	}
+	
 	@RequestMapping("/add")// Map ONLY GET Requests
 	public @ResponseBody String addNewUser (@RequestParam String name
 			, @RequestParam String email) {
