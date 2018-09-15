@@ -29,6 +29,8 @@ public class Bill {
     
     public String  address;
     
+    public long phone;
+    
     public String city;
     
     public long zip;

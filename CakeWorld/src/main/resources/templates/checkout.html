@@ -194,17 +194,41 @@ span.price {
 								name="name" placeholder="John M. Doe" required="" /> <label
 								for="email"><i class="fa fa-envelope"></i> Email</label> <input
 								class="form-control" type="email" id="email" name="email"
-								placeholder="john@example.com" required="" /> <label for="adr"><i
-								class="fa fa-address-card-o"></i> Address</label> <input
+								placeholder="john@example.com" required="" /> <label
+								for="phone"><i class="fa fa-mobile"></i> Phone</label> <input
+								class="form-control" type="number" id="phone" name="phone"
+								placeholder="0739566663" required="" /> <label for="adr"><i
+								class="fa fa-address-card"></i> Address</label> <input
 								class="form-control" type="text" id="adr" name="address"
 								placeholder="Pilvägen 38" required="" /> <label for="city"><i
-								class="fa fa-institution"></i> City</label> <input type="text" id="city"
+								class="fa fa-building"></i> City</label> <input type="text" id="city"
 								name="city" value="Stockholm" class="form-control"
-								readonly="readonly" /> <label for="zip">Pin Code(5
+								readonly="readonly" /> <label class="fa fa-building" for="zip">Pin Code(5
 								digit)</label> <input class="form-control" type="text"
 								pattern="[0-9]{5}" name="zip" placeholder="10001" required="" />
+							<label for="zip" class="fa fa-calendar"> Pick Delivery Date</label> <input type="date"
+								id="deliveryDate" name="orderDate" class="form-control"
+								min='2018-01-01' max='2018-12-31' required="" /> <label
+								for="zip" class="fa fa-clock"> Pick Delivery Slot</label> <select name="timeSlot"
+								autocomplete="on" class="form-control">
 
-							<div class="row">
+
+								<option value="11:00 to 13:00"
+									data-a-css-class="quantity-option" selected="">11:00
+									to 13:00</option>
+
+								<option value="13:00 to 15:00"
+									data-a-css-class="quantity-option">13:00 to 15:00</option>
+
+								<option value="15:00 to 17:00"
+									data-a-css-class="quantity-option">15:00 to 17:00</option>
+
+								<option value="17:00 to 19:00"
+									data-a-css-class="quantity-option">17:00 to 19:00</option>
+
+
+							</select>
+							<!-- div class="row">
 								<div class="col-50">
 									<label for="zip">Pick Delivery Date</label>
 								</div>
@@ -213,8 +237,8 @@ span.price {
 								</div>
 
 
-							</div>
-							<div class="row">
+							</div -->
+							<!--  div class="row">
 								<div class="col-50">
 									<input type="date"
 								id="deliveryDate" name="orderDate" class="form-control"  min='2018-01-01' max='2018-12-31' required="" />
@@ -244,11 +268,11 @@ span.price {
 								</div>
 
 
-							</div>
-							
-							
-								
-								<!-- input list="browsers">
+						</div-->
+
+
+
+						<!-- input list="browsers">
 							<datalist id="browsers">
 								<option value="Internet Explorer"></option>
 								<option value="Firefox"></option>
@@ -259,12 +283,12 @@ span.price {
 							</input> -->
 
 
-						</div>
+					</div>
 
-						<div class="col-50">
-							<h3>Payments</h3>
-							<br />
-							<!-- label for="fname">Accepted Cards</label>
+					<div class="col-50">
+						<h3>Payments</h3>
+						<br />
+						<!-- label for="fname">Accepted Cards</label>
             <div class="icon-container">
               <i class="fab fa-cc-visa"></i>
               <i class="fab fa-cc-amex" style="color:blue;"></i>
@@ -287,134 +311,133 @@ span.price {
               </div>
             </div-->
 
-							<div class="menu-grids my-lg-4 my-md-2">
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-										<div class="row mt-2">
-											<div>
-												<img src="/images/swish.png" width="50%" height="50%" alt="" />
-											</div>
-
-
+						<div class="menu-grids my-lg-4 my-md-2">
+							<div class="row inner-menu mt-4">
+								<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+									<div class="row mt-2">
+										<div>
+											<img src="/images/swish.png" width="50%" height="50%" alt="" />
 										</div>
 
-									</div>
-									<br />
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-										<div class="row mt-2">
-
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Swish</h5>
-												<input type="radio" id="swish" name="contact" value="cash"
-													required="" />
-											</div>
-										</div>
 
 									</div>
 
 								</div>
-								<div class="row inner-menu mt-4">
-									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-										<div class="row mt-2">
-											<div>
-												<img id="cartcount" src="/images/cash.jpeg" width="70%"
-													height="100%" alt="" />
-											</div>
+								<br />
+								<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+									<div class="row mt-2">
 
-
+										<div class="col-md-7 menu-img-info mt-4 mt-md-2">
+											<h5>Swish</h5>
+											<input type="radio" id="swish" name="contact" value="cash"
+												required="" />
 										</div>
-
-									</div>
-									<br />
-									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-										<div class="row mt-2">
-
-											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-												<h5>Cash</h5>
-												<input type="radio" id="cash" name="contact" value="cash"
-													required="" />
-											</div>
-										</div>
-
 									</div>
 
 								</div>
-								<br /> <br /> <i>We accept swish payment as of now, please
-									press Place Order button and swish to +46 739566663 to complete
-									your order</i> <br /> <br /> <b>We also accept cash on
-									delivery, for convenience please provide exact change, however
-									in case of no exact change, a fee of 10 Kr will be levy on
-									total amount. </b>
+
 							</div>
+							<div class="row inner-menu mt-4">
+								<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+									<div class="row mt-2">
+										<div>
+											<img id="cartcount" src="/images/cash.jpeg" width="70%"
+												height="100%" alt="" />
+										</div>
 
 
+									</div>
+
+								</div>
+								<br />
+								<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+									<div class="row mt-2">
+
+										<div class="col-md-7 menu-img-info mt-4 mt-md-2">
+											<h5>Cash</h5>
+											<input type="radio" id="cash" name="contact" value="cash"
+												required="" />
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+							<br /> <br /> <i>We accept swish payment as of now, please
+								press Place Order button and swish to +46 739566663 to complete
+								your order</i> <br /> <br /> <b>We also accept cash on
+								delivery, for convenience please provide exact change, however
+								in case of no exact change, a fee of 10 Kr will be levy on total
+								amount. </b>
 						</div>
 
+
 					</div>
-
-
-
-					<input type="submit" value="Place Order" class="btn" />
-				</form>
 			</div>
+
+
+
+			<input type="submit" value="Place Order" class="btn" />
+			</form>
 		</div>
-		<div class="col-25">
+	</div>
+	<div class="col-25">
 
 
-			<div th:if="not ${checkoutCart.isEmpty()}" class="container">
-				<h4>
-					Cart <span class="price" style="color: black"> <i
-						class="fa fa-shopping-cart"></i>
-					</span>
-				</h4>
-				<div class="scrollbar">
-					<div th:each="cake : ${checkoutCart}">
-						<div>
-							<p>
-								<span class="rh"> <a th:text="${cake.value.size()}"></a>
-								</span> <span style="float: center;"> <a href="#"
-									style="text-align: center" th:text="${cake.value[0].name}"></a></span>
-								<span style="float: right;"> <a
-									th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a
-									th:text="${cake.value[0].currency}"></a>
-								</span>
-							</p>
-						</div>
+		<div th:if="not ${checkoutCart.isEmpty()}" class="container">
+			<h4>
+				Cart <span class="price" style="color: black"> <i
+					class="fa fa-shopping-cart"></i>
+				</span>
+			</h4>
+			<div class="scrollbar">
+				<div th:each="cake : ${checkoutCart}">
+					<div>
+						<p>
+							<span class="rh"> <a th:text="${cake.value.size()}"></a>
+							</span> <span style="float: center;"> <a href="#"
+								style="text-align: center" th:text="${cake.value[0].name}"></a></span>
+							<span style="float: right;"> <a
+								th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a
+								th:text="${cake.value[0].currency}"></a>
+							</span>
+						</p>
 					</div>
 				</div>
-
-			</div>
-			<div class="row">
-				<div class="col-50">
-
-					<b>Delivery Charge </b>
-
-				</div>
-				<div class="col-50">
-
-					<i id="deliverycharge"></i>
-
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="col-50">
-
-					<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)
-					</b>
-				</div>
-				<div class="col-50">
-					<i id="totalPc"></i> <i id="totalPrice"></i>
-				</div>
-			</div>
-
-			<br />
-			<div class="row">
-				<i class="freeShipping" id="freeShipMsg">Free Shipping above
-					350kr</i>
 			</div>
 
 		</div>
+		<div class="row">
+			<div class="col-50">
+
+				<b>Delivery Charge </b>
+
+			</div>
+			<div class="col-50">
+
+				<i id="deliverycharge"></i>
+
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-50">
+
+				<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)
+				</b>
+			</div>
+			<div class="col-50">
+				<i id="totalPc"></i> <i id="totalPrice"></i>
+			</div>
+		</div>
+
+		<br />
+		<div class="row">
+			<i class="freeShipping" id="freeShipMsg">Free Shipping above
+				350kr</i>
+		</div>
+
+	</div>
 	</div>
 
 

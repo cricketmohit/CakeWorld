@@ -426,12 +426,13 @@ body {
 									<img src="images/t1.jpg" alt=" " class="img-fluid" />
 								</div>
 								<div class="col-md-9 testimonials_grid text-left">
-									<h3>Gretchen
-										<span>(Customer)</span>
+									<h3>
+										Erik <span>(Customer)</span>
 									</h3>
-									<i>United States</i>
-									<p>Maecenas interdum, metus vitae tincidunt porttitor,Proin eget gravida odio. Donec ullamcorper est eu magna quam
-										egestas sem, ac scelerisque nisl nibh vel lacus. Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+									<i>Stockholm</i>
+									<p>Had a privilege to order cake from Bake World, it was
+										superb, tasty and so fresh, don't forget to try their dominoes
+										style Garlic Bread yummm</p>
 								</div>
 							</div>
 						</li>
@@ -442,12 +443,12 @@ body {
 									<img src="images/t2.jpg" alt=" " class="img-fluid" />
 								</div>
 								<div class="col-md-9 testimonials_grid text-left">
-									<h3>Josephine Lee
-										<span>Customer</span>
+									<h3>
+										Margareta <span>(Customer)</span>
 									</h3>
-									<i>United States</i>
-									<p>Maecenas interdum, metus vitae tincidunt porttitor,Proin eget gravida odio. Donec ullamcorper est eu magna quam
-										egestas sem, ac scelerisque nisl nibh vel lacus. Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+									<i>Stockholm</i>
+									<p>Awesome is the word, nice packaging on time delivery and
+										delicious</p>
 								</div>
 							</div>
 						</li>
@@ -456,15 +457,15 @@ body {
 								<div class="col-md-3 testimonials_grid-inn">
 
 
-									<img src="images/t1.jpg" alt=" " class="img-fluid" />
+									<img src="images/team1.jpg" alt=" " class="img-fluid" />
 								</div>
 								<div class="col-md-9 testimonials_grid text-left">
-									<h3>Mark Olson
-										<span>Customer</span>
+									<h3>
+										Mohit <span>Customer</span>
 									</h3>
-									<i>United States</i>
-									<p>Maecenas interdum, metus vitae tincidunt porttitor,Proin eget gravida odio. Donec ullamcorper est eu magna quam
-										egestas sem, ac scelerisque nisl nibh vel lacus. Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+									<i>Stockholm</i>
+									<p>Vegan eggless cake in stockholm one place to go Bake
+										World ..Love</p>
 								</div>
 							</div>
 						</li>
@@ -474,66 +475,58 @@ body {
 		</div>
 	</section>
 	<!---->
-
-	<!--//main-->
+	<!--//inner-content-->
 	<!--footer-->
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 footer-grid text-left" data-aos="fade-right" >
+				<div class="col-lg-4 footer-grid text-left" data-aos="fade-right">
 					<h3>About US</h3>
-					<p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. lacinia eget consectetur sed, convallis at tellus..</p>
+					<p>We are based in Fika Destination of the world Stockholm,
+						Sweden</p>
 					<div class="read">
-						<a href="single.html" class="btn btn-primary read-m">Read More</a>
+						<a href="about.html" class="btn btn-primary read-m">Read More</a>
 					</div>
 				</div>
 				<!-- subscribe -->
-				<div class="col-lg-8 subscribe-main footer-grid text-left" data-aos="fade-left">
+				<div class="col-lg-8 subscribe-main footer-grid text-left"
+					data-aos="fade-left">
 					<h2>Subscribe for hot updates</h2>
 					<div class="subscribe-main text-left">
 						<div class="subscribe-form">
-							<form action="#" method="post" class="subscribe_form">
-								<input class="form-control" type="email" placeholder="Enter your email..." required=""/>
+							<form th:action="@{/subscribe}" method="post" modelAttribute="subscribe"  class="subscribe_form">
+								<input class="form-control" name="emailId" type="email"
+									placeholder="Enter your email..." required="" />
 								<button type="submit" class="btn btn-primary submit">Submit</button>
 							</form>
 
 						</div>
-						<p>We respect your privacy.No spam ever!</p>
+						<p>We respect your privacy. No spam ever!</p>
 					</div>
 					<!-- //subscribe -->
 					<div class="footer-cpy text-left">
 						<div class="copyrighttop">
 							<ul>
-								<li class="mx-lg-3 mx-md-2 mx-1">
-									<a class="facebook" href="#">
-										<i class="fab fa-facebook-f"></i>
-										<span>Facebook</span>
-									</a>
-								</li>
-								<li>
-									<a class="facebook" href="#">
-										<i class="fab fa-twitter"></i>
-										<span>Twitter</span>
-									</a>
-								</li>
-								<li class="mx-lg-3 mx-md-2 mx-1">
-									<a class="facebook" href="#">
-										<i class="fab fa-google-plus-g"></i>
-										<span>Google+</span>
-									</a>
-								</li>
-								<li>
-									<a class="facebook" href="#">
-										<i class="fab fa-pinterest-p"></i>
-										<span>Pinterest</span>
-									</a>
-								</li>
+								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab fa-facebook-f"></i> <span>Facebook</span>
+								</a></li>
+								<li><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab fa-twitter"></i> <span>Twitter</span>
+								</a></li>
+								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab fa-google-plus-g"></i> <span>Google+</span>
+								</a></li>
+								<li><a class="facebook"
+									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
+										<i class="fab  fa-instagram"></i> <span>Instagram</span>
+								</a></li>
 							</ul>
 						</div>
 						<div class="copyrightbottom">
-							<p>© 2018 Baked. All Rights Reserved | Design by
-								<a href="http://w3layouts.com/">W3layouts</a>
-							</p>
+							<p>© 2018 The Bake World. All Rights Reserved</p>
 
 						</div>
 					</div>
