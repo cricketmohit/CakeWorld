@@ -82,7 +82,7 @@ body {
 							target="_blank" class="pin"> <i class="fab fa-google-plus"></i>
 						</a></li>
 					</ul>
-				
+
 
 
 				</div>
@@ -91,51 +91,46 @@ body {
 		</div>
 
 	</header>
-	
+
 	<!--/banner-->
-	
+
 	<!--//banner-->
 	<!--/nav-->
 	<div class="header_top" id="home">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-			    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler navbar-toggler-right mx-auto"
+				type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Home
+					<li class="nav-item"><a class="nav-link" href="index.html">Home
 							<span class="sr-only">(current)</span>
-						</a>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="about.html">About</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="about.html">About</a>
+					<li class="nav-item"><a class="nav-link" href="index.html">Menu</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Menu</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="blog.html">Blog</a>
+					<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a>
 					</li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-						    aria-expanded="false">
-							Drop Down
-						</a>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Drop Down </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="#"></a>
-								<a class="dropdown-item" href="gallery.html">Gallery</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="404.html">Services</a>
-	
-							</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="contact.html">Contact</a>
+							<a class="dropdown-item" href="#"></a> <a class="dropdown-item"
+								href="gallery.html">Gallery</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="404.html">Services</a>
+
+						</div></li>
+					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a>
 					</li>
 
 				</ul>
@@ -145,9 +140,7 @@ body {
 	</div>
 	<!--//nav-->
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item">
-			<a href="index.html">Home</a>
-		</li>
+		<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 		<li class="breadcrumb-item active">Signin</li>
 	</ol>
 	<!--/main-->
@@ -155,45 +148,58 @@ body {
 		<div class="container">
 			<h3 class="tittle">Sign In Now</h3>
 			<div class="row inner-sec">
-				
+
 				<div class="login p-5 bg-dark mx-auto mw-100">
-					<form th:action="@{/login}" method="post" modelAttribute="users">
+					<form  method="post" modelAttribute="users">
 						<div class="form-group">
-							<label for="exampleInputEmail1 mb-2">Email address</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email" placeholder="" required=""/>
-							
+							<label for="exampleInputEmail1 mb-2">Email address</label> <input
+								type="email" class="form-control" id="emailLogin"
+								aria-describedby="emailHelp" name="email" placeholder=""
+								required="" />
+
 						</div>
-						<font color="red" id="usernameValidate" ></font><br/>
-				
+						<font color="red" id="usernameValidate"></font><br />
+
 						<div class="form-group">
-							<label for="exampleInputPassword1 mb-2">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" name = "password" required=""/>
-							
+							<label for="exampleInputPassword1 mb-2">Password</label> <input
+								type="password" class="form-control" id="exampleInputPassword1"
+								placeholder="" name="password" required="" />
+
 						</div>
-						<font color="red" id="passwordValidate" ></font><br/>
-						<font color="red" id="forgotPasswordValidate" ></font>
+						<font color="red" id="passwordValidate"></font><br /> <font
+							color="red" id="forgotPasswordValidate"></font>
 						<div class="form-check mb-2">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-							<label class="form-check-label" for="exampleCheck1">Keep me sign in </label>
-							<a href="forgetPassword.html" style="color: white" class = "forgot info"> Forgot Password?</a>
+							<input type="checkbox" class="form-check-input"
+								id="exampleCheck1" /> <label class="form-check-label"
+								for="exampleCheck1">Keep me sign in </label>
+
 						</div>
-						<button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
-						 
-					
-						<p>
+						<button type="submit" th:action="@{/login}" class="btn btn-primary submit mb-4">Sign
+							In</button>
+
+
+					</form>
+					<form th:action="@{/forgotPassword}" method="post" >
+					<p>
 							<a href="register.html"> Don't have an account? Register Now!</a>
+
 						</p>
+						<button type="submit" class="btn btn-primary submit">Forgot
+							Password?</button>
+						
+					
 					</form>
 				</div>
 			</div>
 		</div>
 	</section>
-	<script   th:inline="javascript">
+	<script th:inline="javascript">
 	
 	/*<![CDATA[*/
 
     var message = /*[[${userInvalid}]]*/ 'default';
     var message1 = /*[[${incorrectPassword}]]*/ 'default';
+    var email = /*[[${emailLogin}]]*/ 'default';
    
 
 	/*]]>*/
@@ -203,6 +209,8 @@ body {
 	if(message1=="incorrectPassword"){
 	document.getElementById("passwordValidate").innerHTML="Incorrect Password, please check !";
 	document.getElementById("forgotPasswordValidate").innerHTML="If you forget your password, please click Forgot Password";
+
+	document.getElementById("emailLogin").value = email;
 	}
 	</script>
 	<!--//main-->
@@ -210,20 +218,23 @@ body {
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 footer-grid text-left" data-aos="fade-right" >
+				<div class="col-lg-4 footer-grid text-left" data-aos="fade-right">
 					<h3>About US</h3>
-					<p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. lacinia eget consectetur sed, convallis at tellus..</p>
+					<p>Curabitur non nulla sit amet nisl tempus convallis quis ac
+						lectus. lacinia eget consectetur sed, convallis at tellus..</p>
 					<div class="read">
 						<a href="single.html" class="btn btn-primary read-m">Read More</a>
 					</div>
 				</div>
 				<!-- subscribe -->
-				<div class="col-lg-8 subscribe-main footer-grid text-left" data-aos="fade-left">
+				<div class="col-lg-8 subscribe-main footer-grid text-left"
+					data-aos="fade-left">
 					<h2>Subscribe for hot updates</h2>
 					<div class="subscribe-main text-left">
 						<div class="subscribe-form">
 							<form action="#" method="post" class="subscribe_form">
-								<input class="form-control" type="email" placeholder="Enter your email..." required=""/>
+								<input class="form-control" type="email"
+									placeholder="Enter your email..." required="" />
 								<button type="submit" class="btn btn-primary submit">Submit</button>
 							</form>
 
@@ -234,35 +245,24 @@ body {
 					<div class="footer-cpy text-left">
 						<div class="copyrighttop">
 							<ul>
-								<li class="mx-lg-3 mx-md-2 mx-1">
-									<a class="facebook" href="#">
-										<i class="fab fa-facebook-f"></i>
-										<span>Facebook</span>
-									</a>
-								</li>
-								<li>
-									<a class="facebook" href="#">
-										<i class="fab fa-twitter"></i>
-										<span>Twitter</span>
-									</a>
-								</li>
-								<li class="mx-lg-3 mx-md-2 mx-1">
-									<a class="facebook" href="#">
-										<i class="fab fa-google-plus-g"></i>
-										<span>Google+</span>
-									</a>
-								</li>
-								<li>
-									<a class="facebook" href="#">
-										<i class="fab fa-pinterest-p"></i>
-										<span>Pinterest</span>
-									</a>
-								</li>
+								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
+									href="#"> <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+								</a></li>
+								<li><a class="facebook" href="#"> <i
+										class="fab fa-twitter"></i> <span>Twitter</span>
+								</a></li>
+								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
+									href="#"> <i class="fab fa-google-plus-g"></i> <span>Google+</span>
+								</a></li>
+								<li><a class="facebook" href="#"> <i
+										class="fab fa-pinterest-p"></i> <span>Pinterest</span>
+								</a></li>
 							</ul>
 						</div>
 						<div class="copyrightbottom">
-							<p>© 2018 Baked. All Rights Reserved | Design by
-								<a href="http://w3layouts.com/">W3layouts</a>
+							<p>
+								© 2018 Baked. All Rights Reserved | Design by <a
+									href="http://w3layouts.com/">W3layouts</a>
 							</p>
 
 						</div>
@@ -277,9 +277,11 @@ body {
 	<!-- js -->
 	<script src="js/jquery-2.2.3.min.js"></script>
 	<!-- //js -->
-	 <!-- /js files -->
-	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css" media="all" />
-	<link href='css/aos-animation.css' rel='stylesheet prefetch' type="text/css" media="all" />
+	<!-- /js files -->
+	<link href='css/aos.css' rel='stylesheet prefetch' type="text/css"
+		media="all" />
+	<link href='css/aos-animation.css' rel='stylesheet prefetch'
+		type="text/css" media="all" />
 	<script src='js/aos.js'></script>
 	<script src="js/aosindex.js"></script>
 	<!-- //js files -->
@@ -326,14 +328,25 @@ body {
 </body>
 <style>
 .forgot {
-    color: #4CAF50;
-    padding: 6px;
-    
+	color: #4CAF50;
+	padding: 6px;
 }
-.success {background-color: #4CAF50;} /* Green */
-.info {background-color: #2196F3;} /* Blue */
-.warning {background-color: #ff9800;} /* Orange */
-.danger {background-color: #f44336;} /* Red */ 
-.other {background-color: #e7e7e7; color: black;} /* Gray */ 
+
+.success {
+	background-color: #4CAF50;
+} /* Green */
+.info {
+	background-color: #2196F3;
+} /* Blue */
+.warning {
+	background-color: #ff9800;
+} /* Orange */
+.danger {
+	background-color: #f44336;
+} /* Red */
+.other {
+	background-color: #e7e7e7;
+	color: black;
+} /* Gray */
 </style>
 </html>

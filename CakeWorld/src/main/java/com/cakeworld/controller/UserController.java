@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cakeworld.main.MenuRepository;
 import com.cakeworld.main.UserRepository;
@@ -38,7 +38,7 @@ public class UserController {
         return users;
     }
 	@RequestMapping(value = "/login", method = RequestMethod.POST) 
-    public String login(@ModelAttribute("users") 
+    public ModelAndView login(@ModelAttribute("users") 
     		User user,Model model, HttpServletResponse response,
     		@CookieValue(value="foo" , defaultValue = "hello") String fooCookie) {
 		User userPersisted;
@@ -48,7 +48,7 @@ public class UserController {
 				
 			} else {
 				model.addAttribute("userInvalid","userInvalid");
-				return  "login";
+				  return new ModelAndView("login");
 			}
 				
 		
@@ -82,10 +82,11 @@ public class UserController {
 			model.addAttribute("ccMenu", ccMenu);
 			model.addAttribute("savMenu", savMenu);
 			model.addAttribute("biscuitMenu", biscuitMenu);
-			return "index";
+			return new ModelAndView("index");
 		}else {
 			model.addAttribute("incorrectPassword","incorrectPassword");
-			return "login";
+			model.addAttribute("emailLogin",user.getEmail());
+			return new ModelAndView("login");
 		}
 		
 		
