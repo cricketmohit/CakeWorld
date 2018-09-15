@@ -386,8 +386,8 @@ span.price {
 
 		<div th:if="not ${checkoutCart.isEmpty()}" class="container">
 			<h4>
-				Cart <span class="price" style="color: black"> <i
-					class="fa fa-shopping-cart"></i>
+				Cart <span class="price" style="color: black"> <a href="cart.html"><i 
+					class="fa fa-shopping-cart"></i></a>
 				</span>
 			</h4>
 			<div class="scrollbar">
@@ -484,7 +484,7 @@ currency = ([[${item.value[0].currency}]]);
 if(deliveryCharge==0){
 	document.getElementById("freeShipMsg").innerHTML="Your order is eligible for free shipping.";
 	var freeShipping = document.getElementById('freeShipMsg');
-	freeShipping.style.color = "#6eff9d";
+	freeShipping.style.color = "#ec5a84";
 }
 var billAmount = totalPrice +deliveryCharge;
 document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
