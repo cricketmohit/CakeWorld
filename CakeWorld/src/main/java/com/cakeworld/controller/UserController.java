@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cakeworld.main.MenuRepository;
 import com.cakeworld.main.UserRepository;
@@ -36,6 +37,31 @@ public class UserController {
     public Iterable<User> getUser(Model model) {
 		Iterable<User> users = userRepository.findAll(); 
         return users;
+    }
+	@RequestMapping(value = "/forgotPassword", method = RequestMethod.POST) 
+    public String forgotPassword(Model model) {
+		return "forgotpassword";
+    }
+	@RequestMapping(value = "/changePassword", method = RequestMethod.POST) 
+    public String changePassword(@ModelAttribute("users") 
+    		User user,Model model, HttpServletResponse response,
+    		@CookieValue(value="foo" , defaultValue = "hello") String fooCookie,RedirectAttributes redirectAttributes) {
+		User userPersisted;
+		
+			if(userRepository.findByEmail(user.getEmail())!=null && userRepository.findByEmail(user.getEmail()).size() >0 ){
+				userPersisted = userRepository.findByEmail(user.getEmail()).get(0);
+				userPersisted.setPassword(user.getPassword());
+				userRepository.save(userPersisted);
+				
+			} else {
+				
+				redirectAttributes.addFlashAttribute("userInvalid", "userInvalid");
+				  return "redirect:/login";
+			}
+			return "redirect:/login";
+		
+		
+		
     }
 	@RequestMapping(value = "/login", method = RequestMethod.POST) 
     public ModelAndView login(@ModelAttribute("users") 
