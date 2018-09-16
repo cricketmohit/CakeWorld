@@ -42,13 +42,20 @@ body {
 		<div class="top-bar_sub container-fluid">
 			<div class="row">
 				<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
-					<span> <a href="index.html"> <i class="fa fa-home"></i>
+					<span> <a> <i class="fa fa-home"></i></a> <a id="welcome" href="index.html">  
 							Welcome!
+				</a>
+					</span> 
+					 <span class="mx-lg-4 mx-md-2  mx-1"><a hidden="" id="logout" href="logout"><i class="fas fa-sign-out-alt"></i> Logout
 					</a>
-					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a href="login.html">
-							<i class="fa fa-lock"></i> Sign In
-					</a>
-					</span> <span> <a href="register.html"> <i class="far fa-user"></i>
+					</span>
+					
+					<span class="mx-lg-4 mx-md-2  mx-1"> <a  id="userSign" href="login.html">
+							<i class="fa fa-lock"></i> Sign In</a>
+					
+					</span>
+					
+					<span> <a id="register" href="register.html"> <i class="far fa-user"></i>
 							Register
 					</a>
 					</span>
@@ -306,7 +313,7 @@ body {
 														th:text="${cake.currency}"></a>
 												</p>
 												<a href="#menu" class="blog-btn" data-aos="fade-down"
-													onmouseup="addToCart(${cake})">Add to cart</a>
+													th:onclick="|addToCart('${cake.id}')|">Add to cart</a>
 											</div>
 										</div>
 
@@ -783,6 +790,24 @@ body {
 	</a>
 	<!-- //Custom-JavaScript-File-Links -->
 	<script src="js/bootstrap.js"></script>
+
+<script th:inline="javascript">
+	
+	/*<![CDATA[*/
+
+    var loggedInUser = /*[[${loggedInUser}]]*/ 'default';
+  
+	/*]]>*/
+	if(loggedInUser!=null){
+	document.getElementById("welcome").innerHTML="Welcome "+loggedInUser+"!";
+	 document.getElementById("register").setAttribute("hidden", "");
+	 document.getElementById("userSign").setAttribute("hidden", "");
+	 document.getElementById("logout").removeAttribute("hidden");
+	}
+	
+	</script>
+
+
 
 
 </body>
