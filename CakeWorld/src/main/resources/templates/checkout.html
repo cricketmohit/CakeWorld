@@ -433,6 +433,19 @@ span.price {
 		<div class="row">
 			<div class="col-50">
 
+				<b>Discount </b>
+
+			</div>
+			<div class="col-50">
+
+				<i id="discountOnLogin"></i>
+
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-50">
+
 				<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)
 				</b>
 			</div>
@@ -445,6 +458,11 @@ span.price {
 		<div class="row">
 			<i class="freeShipping" id="freeShipMsg">Free Shipping above
 				350kr</i>
+		</div>
+		
+		<br />
+		<div class="row">
+			<i class="loginDiscount" id="loginDiscount">Please sign in to get 5% additional discount</i>
 		</div>
 
 	</div>
@@ -481,6 +499,7 @@ if(totalPrice > 350){
 if(itemCount>1){
 	itemsoritem="items";
 }
+
 if(deliveryCharge==0){
 	document.getElementById("deliverycharge").innerHTML=": FREE";
 }else{
@@ -490,17 +509,38 @@ document.getElementById("itemsoritem").innerHTML=itemsoritem;
 document.getElementById("totalPc").innerHTML=itemCount;
 currency = ([[${item.value[0].currency}]]);
 </script>
-	<script>
+
+<script th:inline="javascript">
+
+/*<![CDATA[*/
+
+var discount = /*[[${discountEligible}]]*/ 'default';
+
+/*]]>*/
+
 if(deliveryCharge==0){
 	document.getElementById("freeShipMsg").innerHTML="Your order is eligible for free shipping.";
 	var freeShipping = document.getElementById('freeShipMsg');
 	freeShipping.style.color = "#ec5a84";
 }
 var billAmount = totalPrice +deliveryCharge;
+if(discount=="discountEligible"){
+document.getElementById("discountOnLogin").innerHTML=": "+totalPrice*5/100+" "+currency;
+billAmount=billAmount-totalPrice*5/100;
+}
+
+
+
+
 document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 </script>
-	<script>setDateLimit()</script>
-	<script th:inline="javascript">
+
+
+
+
+<script>setDateLimit()</script>
+
+<script th:inline="javascript">
 	
 	/*<![CDATA[*/
 
@@ -512,6 +552,9 @@ document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 	 document.getElementById("register").setAttribute("hidden", "");
 	 document.getElementById("userSign").setAttribute("hidden", "");
 	 document.getElementById("logout").setAttribute("style","display:block");
+	 document.getElementById("loginDiscount").innerHTML="Congratulations, you are eligible for 5% discount";
+	 var freeShipping = document.getElementById('loginDiscount');
+		freeShipping.style.color = "#ec5a84";
 	}
 	
 	</script>

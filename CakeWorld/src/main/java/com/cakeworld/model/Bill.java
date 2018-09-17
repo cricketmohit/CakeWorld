@@ -48,6 +48,8 @@ public class Bill {
     
     public long subTotal;
     
+    public long discount;
+    
     public long deliveryCharge;
     
     public long totalBillPrice;

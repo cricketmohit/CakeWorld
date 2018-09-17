@@ -64,6 +64,7 @@ public class CheckoutController {
 		if (!userEmailCookie.equalsIgnoreCase("")) {
 			User user = userRepository.findByEmail(userEmailCookie).get(0);
 			model.addAttribute("loggedInUser", user.getName());
+			model.addAttribute("discountEligible", "discountEligible");
 		}
 		return "checkout";
 	}
@@ -81,6 +82,7 @@ public class CheckoutController {
 		if (!userEmailCookie.equalsIgnoreCase("")) {
 			User user = userRepository.findByEmail(userEmailCookie).get(0);
 			model.addAttribute("loggedInUser", user.getName());
+			model.addAttribute("discountEligible", "discountEligible");
 		}
 		return "checkout";
 	}
@@ -92,9 +94,10 @@ public class CheckoutController {
 			RedirectAttributes redirectAttributes) {
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		List<Orders> orderList = new ArrayList<Orders>();
-		int deliveryCharge=0;
-		int subTotal=0;
-		int totalBillPrice=0;
+		long deliveryCharge=0;
+		long discount =0;
+		long subTotal=0;
+		long totalBillPrice=0;
 		if(menuMapFromDB.entrySet()==null || menuMapFromDB.entrySet().size()<1 ) {
 			return "redirect:/index";
 		}
@@ -115,8 +118,12 @@ public class CheckoutController {
 		if(subTotal<350) {
 			deliveryCharge=49;
 		}
-		totalBillPrice=subTotal+deliveryCharge;
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			discount=subTotal*5/100;
+		}
+		totalBillPrice=subTotal+deliveryCharge-discount;
 		bill.setSubTotal(subTotal);
+		bill.setDiscount(discount); 
 		bill.setDeliveryCharge(deliveryCharge);
 		bill.setTotalBillPrice(totalBillPrice);
 		bill.setOrderList(orderList);
@@ -170,9 +177,13 @@ public class CheckoutController {
 		if (!userEmailCookie.equalsIgnoreCase("")) {
 			User user = userRepository.findByEmail(userEmailCookie).get(0);
 			replacements.put("userName", user.getName());
+			replacements.put("discount","-"+String.valueOf(bill.getDiscount())+" "+bill.getOrderList().get(0).getCurrency());
+			
 		
 		}else {
 			replacements.put("userName", bill.getName());
+			replacements.put("discount",String.valueOf(bill.getDiscount())+" "+bill.getOrderList().get(0).getCurrency());
+			
 		}
 		
 		replacements.put("name", bill.getName());

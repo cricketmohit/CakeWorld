@@ -91,6 +91,9 @@ color: #ff191e;
    color: #ff191e;
 }
 
+.loginDiscount {
+   color: #ff191e;
+}
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
