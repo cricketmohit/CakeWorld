@@ -143,10 +143,7 @@ public class UserController {
     		User user,Model model, HttpServletResponse response, HttpServletRequest request,
     		 @CookieValue(value="cookiecartcounts" , defaultValue = "0") String cookieCartCounts, 
     		 @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie,RedirectAttributes redirectAttributes) {
-		if (!userEmailCookie.equalsIgnoreCase("")) {
-			Cart cart = cartRepository.findByLoggedInUser(userEmailCookie);
-			model.addAttribute("loggedInUser", cart);
-		}
+	
 		User userPersisted;
 		
 			if(userRepository.findByEmail(user.getEmail())!=null && userRepository.findByEmail(user.getEmail()).size() >0 ){

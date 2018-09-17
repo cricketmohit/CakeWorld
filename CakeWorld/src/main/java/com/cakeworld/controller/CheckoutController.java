@@ -87,7 +87,8 @@ public class CheckoutController {
 	
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.POST)
 	public String placeOrder(Model model,@ModelAttribute("bill")  Bill bill,HttpServletResponse response,HttpServletRequest request,
-			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie,
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
+			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie,
 			RedirectAttributes redirectAttributes) {
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		List<Orders> orderList = new ArrayList<Orders>();
@@ -122,7 +123,7 @@ public class CheckoutController {
 		bill.setCreationTime(new Date());
 		Bill billPersist = billRepository.save(bill);
 		if(billPersist!=null && billPersist.getId()!=0) {
-			sendConfirmationEmail(bill);
+			sendConfirmationEmail(bill,userEmailCookie);
 			clearCart("cookiecartcounts",response,request,userEmailCookie);
 		}
 		List<Bill> billPersistList = new ArrayList<Bill>();
@@ -158,7 +159,7 @@ public class CheckoutController {
 		
 	}
 
-	private void sendConfirmationEmail(Bill bill) {
+	private void sendConfirmationEmail(Bill bill, String userEmailCookie) {
 		String from = "test@thebakeworld.com";
 		String to = bill.getEmail().toString();
 		String subject = Constants.SUBJECTORDERCONFIRMATION;
@@ -166,6 +167,14 @@ public class CheckoutController {
 		EmailTemplate template = new EmailTemplate("confirmationEmail.html");
 		 
 		Map<String, String> replacements = new HashMap<String, String>();
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			replacements.put("userName", user.getName());
+		
+		}else {
+			replacements.put("userName", bill.getName());
+		}
+		
 		replacements.put("name", bill.getName());
 		replacements.put("address", bill.getAddress());
 		replacements.put("zip", String.valueOf(bill.getZip()));
