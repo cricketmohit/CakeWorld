@@ -10,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.assertj.core.internal.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,11 +23,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cakeworld.main.BillRepository;
 import com.cakeworld.main.CartRepository;
 import com.cakeworld.main.MenuRepository;
+import com.cakeworld.main.PincodeRepository;
 import com.cakeworld.main.UserRepository;
 import com.cakeworld.model.Bill;
 import com.cakeworld.model.Cart;
 import com.cakeworld.model.Menu;
 import com.cakeworld.model.Orders;
+import com.cakeworld.model.Pincode;
 import com.cakeworld.model.User;
 import com.cakeworld.util.Constants;
 import com.cakeworld.util.DateUtil;
@@ -50,6 +53,9 @@ public class CheckoutController {
 	UserRepository userRepository;
 	
 	@Autowired
+	PincodeRepository pincodeRepository;
+	
+	@Autowired
 	EmailService emailService;
 
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
@@ -60,6 +66,9 @@ public class CheckoutController {
 			return "redirect:/index";
 		}
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
+		List<Pincode> pincodeList = pincodeRepository.findPincode(); 
+		
+		model.addAttribute("pincodeList", pincodeList);
 		model.addAttribute("checkoutCart", menuMapFromDB);
 		if (!userEmailCookie.equalsIgnoreCase("")) {
 			User user = userRepository.findByEmail(userEmailCookie).get(0);
@@ -77,6 +86,8 @@ public class CheckoutController {
 		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
 			return "redirect:/index";
 		}
+		List<Pincode> pincodeList = pincodeRepository.findPincode();
+		model.addAttribute("pincodeList", pincodeList);
 		
 		model.addAttribute("checkoutCart", menuMapFromDB);
 		if (!userEmailCookie.equalsIgnoreCase("")) {

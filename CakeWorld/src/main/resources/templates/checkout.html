@@ -213,8 +213,8 @@ span.price {
 								placeholder="Pilvägen 38" required="" /> <label for="city"><i
 								class="fa fa-building"></i> City</label> <input type="text" id="city"
 								name="city" value="Stockholm" class="form-control"
-								readonly="readonly" /> <label class="fa fa-building" for="zip">Pin Code(5
-								digit)</label> <input class="form-control" type="text"
+								readonly="readonly" /> <label  class="fa fa-building" for="zip">Pin Code(5
+								digit)</label> <input id="zipInput" class="form-control" type="text"
 								pattern="[0-9]{5}" name="zip" placeholder="10001" required="" />
 							<label for="zip" class="fa fa-calendar"> Pick Delivery Date</label> <input type="date"
 								id="deliveryDate" name="orderDate" class="form-control"
@@ -558,5 +558,11 @@ document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 	}
 	
 	</script>
+	
+	
+<script th:each="pin:${pincodeList}"  th:inline="javascript">
+alert(([[${pin.pincode}]]));
+
+</script>
 </body>
 </html>
