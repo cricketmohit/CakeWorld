@@ -46,9 +46,6 @@ body {
 							Welcome!
 				</a>
 					</span> 
-					 <span class="mx-lg-4 mx-md-2  mx-1"><a hidden="" id="logout" href="logout"><i class="fas fa-sign-out-alt"></i> Logout
-					</a>
-					</span>
 					
 					<span class="mx-lg-4 mx-md-2  mx-1"> <a  id="userSign" href="login.html">
 							<i class="fa fa-lock"></i> Sign In</a>
@@ -58,6 +55,9 @@ body {
 					<span> <a id="register" href="register.html"> <i class="far fa-user"></i>
 							Register
 					</a>
+					</span>
+					 <span class="mx-lg-4 mx-md-2  mx-1">
+					 <a style="display: none; font-size: 0" id="logout" href="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
@@ -802,7 +802,7 @@ body {
 	document.getElementById("welcome").innerHTML="Welcome "+loggedInUser+"!";
 	 document.getElementById("register").setAttribute("hidden", "");
 	 document.getElementById("userSign").setAttribute("hidden", "");
-	 document.getElementById("logout").removeAttribute("hidden");
+	 document.getElementById("logout").setAttribute("style","display:block");
 	}
 	
 	</script>

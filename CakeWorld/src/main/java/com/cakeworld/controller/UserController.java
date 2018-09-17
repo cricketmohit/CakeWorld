@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cakeworld.main.CartRepository;
 import com.cakeworld.main.MenuRepository;
 import com.cakeworld.main.UserRepository;
+import com.cakeworld.model.Cart;
 import com.cakeworld.model.Menu;
 import com.cakeworld.model.User;
 import com.cakeworld.util.Constants;
@@ -41,6 +43,8 @@ public class UserController {
 	private UserRepository userRepository;
 	@Autowired
 	private MenuRepository menuRepository;
+	@Autowired
+	private CartRepository cartRepository;
 	@Autowired
 	EmailService emailService;
 	
@@ -136,8 +140,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
     public ModelAndView login(@ModelAttribute("users") 
-    		User user,Model model, HttpServletResponse response,
-    		@CookieValue(value="foo" , defaultValue = "hello") String fooCookie, RedirectAttributes redirectAttributes) {
+    		User user,Model model, HttpServletResponse response, HttpServletRequest request,
+    		 @CookieValue(value="cookiecartcounts" , defaultValue = "0") String cookieCartCounts, RedirectAttributes redirectAttributes) {
 		User userPersisted;
 		
 			if(userRepository.findByEmail(user.getEmail())!=null && userRepository.findByEmail(user.getEmail()).size() >0 ){
@@ -178,6 +182,44 @@ public class UserController {
 					galleryMenu.add(menu);
 				}
 			}
+			// Adding cart in db for this user
+			if (!cookieCartCounts.equals("") && !cookieCartCounts.equals("0")) {
+				Cart cartPersisted = cartRepository.findByLoggedInUser(user.getEmail());
+				if (cartPersisted != null) {
+					if (!cartPersisted.getCookieCartCounts().isEmpty()) {
+						String cartCookiePersisted = cartPersisted.getCookieCartCounts();
+						cookieCartCounts = cookieCartCounts + "*" + cartCookiePersisted;
+					}
+					cartPersisted.setCookieCartCounts(cookieCartCounts);
+					cartRepository.save(cartPersisted);
+					for (Cookie cookie : request.getCookies()) {
+						if (cookie.getName().equals("cookiecartcounts")) {
+							cookie.setValue(cookieCartCounts);
+							response.addCookie(cookie);
+							break;
+						}
+					}
+				} else {
+					Cart newCart = new Cart(user.getEmail(), cookieCartCounts);
+					cartRepository.save(newCart);
+				}
+
+			} else {
+				Cart cartPersisted = cartRepository.findByLoggedInUser(user.getEmail());
+				if (cartPersisted != null) {
+					if (!cartPersisted.getCookieCartCounts().isEmpty()) {
+						String cartCookiePersisted = cartPersisted.getCookieCartCounts();
+						cookieCartCounts = cartCookiePersisted;
+						Cookie cookie = new Cookie("cookiecartcounts", cookieCartCounts);
+						cookie.setValue(cookieCartCounts);
+						response.addCookie(cookie);
+
+					}
+
+				}
+
+			}
+			
 			model.addAttribute("cakeMenu", cakeMenu);
 			model.addAttribute("ccMenu", ccMenu);
 			model.addAttribute("savMenu", savMenu);
