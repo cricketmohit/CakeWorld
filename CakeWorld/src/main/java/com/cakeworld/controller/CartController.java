@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cakeworld.main.CartRepository;
 import com.cakeworld.main.MenuRepository;
@@ -119,8 +120,9 @@ public class CartController {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String checkOut(Model model,
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
-			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie, RedirectAttributes redirectAttributes) {
 		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
+			redirectAttributes.addFlashAttribute("emptyCart", "emptyCart");
 			return "redirect:/index";
 		}
 		Map<String, List<Menu>> menuFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));

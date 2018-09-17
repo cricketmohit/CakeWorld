@@ -122,27 +122,47 @@ public class WelcomeController {
 
 	@ExceptionHandler
 	@RequestMapping("/404")
-	String noPage() {
+	String noPage(Model model, @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "404";
 	}
 
 	@RequestMapping("/about")
-	String about() {
+	String about(Model model, @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "about";
 	}
 
 	@RequestMapping("/blog")
-	String blog() {
+	String blog(	Model model, @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "404";
 	}
 
 	@RequestMapping("/contact")
-	String contact() {
+	String contact(	Model model, @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "contact";
 	}
 
 	@RequestMapping("/gallery")
-	String gallery(Model model) {
+	String gallery(Model model, @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		Iterable<Menu> findAll = menuRepository.findAll();
 		List<Menu> galleryMenu = new ArrayList<Menu>();
 
@@ -154,24 +174,29 @@ public class WelcomeController {
 		return "gallery";
 	}
 
-	@RequestMapping("/home")
-	String home() {
-		return "home";
-	}
+	
 
 	@RequestMapping("/login")
-	String login() {
+	String login(Model model, @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "login";
 	}
 
 	@RequestMapping("/register")
-	String register() {
+	String register(Model model, @CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "register";
 	}
 
 	@RequestMapping("/single")
 	String single() {
-		return "404";
+		return "redirect:/404";
 	}
 
 }

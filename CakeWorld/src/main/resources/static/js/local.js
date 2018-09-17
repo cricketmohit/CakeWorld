@@ -33,7 +33,16 @@ function orderPlaced(orderId){
 	var span = document.getElementsByClassName("closeOrderPlaced")[0];
 	
 	modalOrderPlaced.style.display = "block";
+	if(orderId==="contactSoon"){
+		document.getElementById("orderPlaced").innerHTML="We will contact you as soon as possible!";
+	} else if(orderId==="subs") {
+		document.getElementById("orderPlaced").innerHTML="Thanks for Subscribing, we will notify you with latest offers and menu";
+	}else if(orderId==="emptyCart") {
+		document.getElementById("orderPlaced").innerHTML="Your Cart is empty, please add items from 4 different menu below";
+	}
+	else{
 	document.getElementById("orderPlaced").innerHTML = "Your order is placed successfully, your order number is #"+orderId +", please check your email for more details";
+	}
 	 span.onclick = function() {
 		 modalOrderPlaced.style.display = "none";
 		}

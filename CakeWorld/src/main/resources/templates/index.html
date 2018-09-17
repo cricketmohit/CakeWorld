@@ -808,8 +808,45 @@ body {
 	
 	</script>
 
+<script th:inline="javascript">
+	
+	/*<![CDATA[*/
 
+    var contact = /*[[${contactSoon}]]*/ 'default';
+  
+	/*]]>*/
+	if(contact==="contactSoon"){
+		orderPlaced(contact);
+	} 
+	
+	</script>
 
+<script th:inline="javascript">
+	
+	/*<![CDATA[*/
+
+    var contact = /*[[${subs}]]*/ 'default';
+  
+	/*]]>*/
+	
+	if(contact==="subs"){
+		orderPlaced(contact);
+	}
+	
+	</script>
+<script th:inline="javascript">
+	
+	/*<![CDATA[*/
+
+    var contact = /*[[${emptyCart}]]*/ 'default';
+  
+	/*]]>*/
+	
+	if(contact==="emptyCart"){
+		orderPlaced(contact);
+	}
+	
+	</script>
 
 </body>
 
