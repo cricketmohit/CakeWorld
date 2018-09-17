@@ -20,10 +20,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cakeworld.main.BillRepository;
+import com.cakeworld.main.CartRepository;
 import com.cakeworld.main.MenuRepository;
+import com.cakeworld.main.UserRepository;
 import com.cakeworld.model.Bill;
+import com.cakeworld.model.Cart;
 import com.cakeworld.model.Menu;
 import com.cakeworld.model.Orders;
+import com.cakeworld.model.User;
 import com.cakeworld.util.Constants;
 import com.cakeworld.util.DateUtil;
 import com.cakeworld.util.Email.Email;
@@ -40,33 +44,51 @@ public class CheckoutController {
 	BillRepository billRepository;
 	
 	@Autowired
+	CartRepository cartRepository;
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
 	EmailService emailService;
 
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)
 	public String checkOut(Model model,
-			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
+			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
 		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
 			return "redirect:/index";
 		}
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		model.addAttribute("checkoutCart", menuMapFromDB);
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "checkout";
 	}
 
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
 	public String checkOutGet(Model model,
-			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
+			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
 			return "redirect:/index";
 		}
+		
 		model.addAttribute("checkoutCart", menuMapFromDB);
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "checkout";
 	}
 	
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.POST)
 	public String placeOrder(Model model,@ModelAttribute("bill")  Bill bill,HttpServletResponse response,HttpServletRequest request,
-			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,RedirectAttributes redirectAttributes) {
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie,
+			RedirectAttributes redirectAttributes) {
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		List<Orders> orderList = new ArrayList<Orders>();
 		int deliveryCharge=0;
@@ -101,7 +123,7 @@ public class CheckoutController {
 		Bill billPersist = billRepository.save(bill);
 		if(billPersist!=null && billPersist.getId()!=0) {
 			sendConfirmationEmail(bill);
-			clearCart("cookiecartcounts",response,request);
+			clearCart("cookiecartcounts",response,request,userEmailCookie);
 		}
 		List<Bill> billPersistList = new ArrayList<Bill>();
 		billPersistList.add(billPersist);
@@ -122,7 +144,12 @@ public class CheckoutController {
         return null;
     }
 
-	private void clearCart(String cookiecartcounts, HttpServletResponse response,HttpServletRequest request) { 
+	private void clearCart(String cookiecartcounts, HttpServletResponse response,HttpServletRequest request, String userEmailCookie) { 
+		
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			Cart cart = cartRepository.findByLoggedInUser(userEmailCookie);
+			cartRepository.delete(cart);
+		}
 		Cookie cookie = getCookie(request, cookiecartcounts);
 		if (cookie != null) {
 		    cookie.setValue(""); 

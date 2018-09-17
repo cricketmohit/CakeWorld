@@ -23,6 +23,7 @@ import com.cakeworld.main.MenuRepository;
 import com.cakeworld.main.UserRepository;
 import com.cakeworld.model.Cart;
 import com.cakeworld.model.Menu;
+import com.cakeworld.model.User;
 
 @Controller
 public class CartController {
@@ -117,13 +118,17 @@ public class CartController {
 
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String checkOut(Model model,
-			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
+			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
 		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
 			return "redirect:/index";
 		}
 		Map<String, List<Menu>> menuFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
 		model.addAttribute("checkoutCart", menuFromDB);
-	
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+		}
 		return "cart";
 	}
 
