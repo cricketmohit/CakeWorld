@@ -68,7 +68,13 @@ max-height: 450px;
 
  
 }
+.productImageSize {
 
+ object-fit: cover;
+  width:500px;
+  height:500px;
+ 
+}
 .cartImageSize {
 
  object-fit: cover;

@@ -15,8 +15,8 @@
 	}
 </script>
 <script src="js/jquery-2.2.3.min.js"></script>
-<script src="js/localList.js" type ="text/javascript"></script> 
-<script src="js/local.js" type ="text/javascript"></script> 
+<script src="js/localList.js" type="text/javascript"></script>
+<script src="js/local.js" type="text/javascript"></script>
 <link rel="shortcut icon" type="image/x-icon" href="images/logo.png" />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="css/flexslider.css" type="text/css"
@@ -136,9 +136,34 @@ span.price {
 		margin-bottom: 20px;
 	}
 }
+
+* {box-sizing: border-box;}
+
+.img-zoom-container {
+
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 200px;
+  height: 200px;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 500px;
+  height: 500px;
+  display:none
+  
+}
+
 </style>
 </head>
-<body>
+<body id="productPageBodyId">
 	<header>
 		<div class="top-bar_sub container-fluid">
 			<div class="row">
@@ -189,7 +214,13 @@ span.price {
 						</a></li>
 					</ul>
 					<br />
+					<div data-aos="fade-up">
+						<a id="cartBox" href="cart.html"> <i id="cartBoxOverlap"
+							class="fas fa-shopping-cart"> <i id="cartcount">0</i>
+						</i>
+						</a>
 
+					</div>
 
 
 				</div>
@@ -198,127 +229,50 @@ span.price {
 		</div>
 
 	</header>
-
-
-
-
-
-	<div th:if="not ${checkoutCart.isEmpty()}" class="container">
-		<h4>
-			Shopping Cart<i class="fa fa-money" aria-hidden="true"></i>
-		</h4>
-
-		<div class="scrollbarCart">
-			<div th:each="cake : ${checkoutCart}">
-
-				<hr />
-				<div class="row">
-					<div class="col-25">
-						<img class="cartImageSize" th:src="${cake.value[0].imageUrl}"
-							alt="" />
-					</div>
-					<!-- a  th:text="${cake.value.size()}"></a-->
-					<div class="col-25">
-						<span><a href="#" style="text-align: center"
-							th:text="${cake.value[0].name}"></a></span>
-					</div>
-
-					<div class="col-25">
-						<span class="priceCart"
-							th:text="${cake.value[0].price}*${cake.value.size()}"></span> <span
-							class="priceCart" th:text="${cake.value[0].currency}"></span>
-					</div>
-
-					<div class="col-25">
-						<span><a th:text="${cake.value.size()}"></a>&nbsp;&nbsp; </span> <a
-							href="cart" class="fas fa-plus"
-							th:onclick="|increaseItem('${cake.value[0].id}')|">&nbsp;&nbsp;</a>
-						<a href="cart" class="fas fa-minus"
-							th:onclick="|removeItem('${cake.value[0].id}')|"></a>
-					</div>
-				</div>
+	<p id="demo"></p>
+	<div>
+		<div class="row">
+			<div class="col-25">
 				
-			</div>
-			<hr />
-			<div class="row">
-
-				<div class="col-25"></div>
-
-				<div class="col-25"></div>
-				<div class="col-25">
+				<div class="img-zoom-container">
+					<img id="myimage" th:src="${product.imageUrl}" width="500" height="500" alt=""/>
 					
 				</div>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-75">
-				
-
+			<div style="color:#70b6b2" class="col-25">
+				<div class="img-zoom-container">
+					
+					<div id="myresult" class="img-zoom-result"></div>
+				</div>
+				<span style="color:#70b6b2" th:text="${product.name}"></span> <br/> Price: <span style="color:#70b6b2"
+					th:text="${product.price}"></span> <span style="color:#70b6b2"
+					th:text="${product.currency}"></span><br/>
+					<span style="color:#70b6b2" th:text="${product.description}"></span>
 			</div>
+
 			<div class="col-25">
-				<span class="rh"><a><b>SubTotal( <i id="totalCount"></i>
-							<i id="itemsoritem"></i> <i id="totalPrice"></i> )
-					</b></a> </span>
-
+				<form action="/index" method="post">
+					<button class="btn">Continue Shopping</button>
+				</form>
 			</div>
-		</div>
 
+		</div>
 
 
 
 	</div>
-	<div class="row">
-		<div class="col-25">
-			
-		</div>
-		<div class="col-25">
-			<form action="/checkout" method="post"><button class="btn" onclick="payment()">Proceed to payment</button></form>
-		</div>
-		<div class="col-25">
-			
-		</div>
 
-
-	</div>
 	<script type="text/javascript">
-var itemCount=0;
-var totalPrice=0;
-var itemsoritem="item";
-</script>
-	<script th:each="item:${checkoutCart}" th:inline="javascript">
-if(itemCount!=0){
-	itemCount= itemCount+([[${item.value.size()}]]);
-}else{
-	itemCount= ([[${item.value.size()}]]);
-}
-if(totalPrice!=0){
-	totalPrice= totalPrice+([[${item.value[0].price}*${item.value.size()}]]);
-}else{
-	totalPrice= ([[${item.value[0].price}*${item.value.size()}]]);
-}
-document.getElementById("totalCount").innerHTML=itemCount;
-document.getElementById("totalPrice").innerHTML=": "+totalPrice +" "+([[${item.value[0].currency}]]);
-if(itemCount>1){
-	itemsoritem="items";
-}
-document.getElementById("itemsoritem").innerHTML=itemsoritem;
-</script>
-<script th:inline="javascript">
-	
-	/*<![CDATA[*/
-
-    var loggedInUser = /*[[${loggedInUser}]]*/ 'default';
-  
-	/*]]>*/
-	if(loggedInUser!=null){
-	document.getElementById("welcome").innerHTML="Welcome "+loggedInUser+"!";
-	 document.getElementById("register").setAttribute("hidden", "");
-	 document.getElementById("userSign").setAttribute("hidden", "");
-	 document.getElementById("logout").setAttribute("style","display:block");
-	}
-	
+		displayCart();
 	</script>
+	<script>
+// Initiate zoom effect:
+imageZoom("myimage", "myresult");
+</script>
+
+
 
 </body>
+
 </html>

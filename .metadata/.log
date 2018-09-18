@@ -11168,3 +11168,9 @@ Binding(COMMAND+R,
 
 !ENTRY org.eclipse.jface.text 2 0 2018-09-18 22:15:10.233
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-09-18 23:05:36.127
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-09-18 23:05:36.128
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
