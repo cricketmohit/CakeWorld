@@ -130,25 +130,18 @@ span.price {
 		<div class="top-bar_sub container-fluid">
 			<div class="row">
 				<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
-					<span> <a href="index.html"><i class="fa fa-home"></i> 
-					</a><a id="welcome" href="index.html">
-						Welcome!
-				</a>
-					</span> 
-					
-					<span class="mx-lg-4 mx-md-2  mx-1"> <a  id="userSign" href="login.html">
-							<i class="fa fa-lock"></i> 
-							Sign In</a>
-					
-					</span>
-					
-					<span> <a id="register" href="register.html"> <i class="far fa-user"></i>
-							Register
+					<span> <a href="index.html"><i class="fa fa-home"></i> </a><a
+						id="welcome" href="index.html"> Welcome! </a>
+					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a id="userSign"
+						href="login.html"> <i class="fa fa-lock"></i> Sign In
 					</a>
-					</span>
-					 <span class="mx-lg-4 mx-md-2  mx-1">
-					 <a style="display: none; font-size: 0" id="logout" href="logout"><i class="fas fa-sign-out-alt"></i>
-					 		Logout</a>
+
+					</span> <span> <a id="register" href="register.html"> <i
+							class="far fa-user"></i> Register
+					</a>
+					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a
+						style="display: none; font-size: 0" id="logout" href="logout"><i
+							class="fas fa-sign-out-alt"></i> Logout</a>
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
@@ -214,17 +207,21 @@ span.price {
 								placeholder="Pilvägen 38" required="" /> <label for="city"><i
 								class="fa fa-building"></i> City</label> <input type="text" id="city"
 								name="city" value="Stockholm" class="form-control"
-								readonly="readonly" /> <label  class="fa fa-building" for="zip">Pin Code(5
-								digit)</label> <input id="zipInput" class="form-control" type="text"
-								pattern="[0-9]{5}" name="zip" placeholder="10001" required="" />
-								<p id="zipNotValid" style="display: none;font-size: 8px"  ><font color="red" >We do not deliver to this pin code as of now, please choose within Stockholm Urban area</font>
-								 </p>
-								
-							<label for="zip" class="fa fa-calendar"> Pick Delivery Date</label> <input type="date"
-								id="deliveryDate" name="orderDate" class="form-control"
-								min='2018-01-01' max='2018-12-31' required="" /> <label
-								for="zip" class="fa fa-clock"> Pick Delivery Slot</label> <select name="timeSlot"
-								autocomplete="on" class="form-control">
+								readonly="readonly" /> <label class="fa fa-building" for="zip">Pin
+								Code(5 digit)</label> <input id="zipInput" class="form-control"
+								type="text" pattern="[0-9]{5}" name="zip" placeholder="10001"
+								required="" />
+							<p id="zipNotValid" style="display: none; font-size: 8px">
+								<font color="red">We do not deliver to this pin code as
+									of now, please choose within Stockholm Urban area</font>
+							</p>
+
+							<label for="zip" class="fa fa-calendar"> Pick Delivery
+								Date</label> <input type="date" id="deliveryDate" name="orderDate"
+								class="form-control" min='2018-01-01' max='2018-12-31'
+								required="" /> <label for="zip" class="fa fa-clock">
+								Pick Delivery Slot</label> <select name="timeSlot" autocomplete="on"
+								class="form-control">
 
 
 								<option value="11:00 to 13:00"
@@ -286,7 +283,7 @@ span.price {
 
 
 
-						<!-- input list="browsers">
+							<!-- input list="browsers">
 							<datalist id="browsers">
 								<option value="Internet Explorer"></option>
 								<option value="Firefox"></option>
@@ -297,12 +294,12 @@ span.price {
 							</input> -->
 
 
-					</div>
+						</div>
 
-					<div class="col-50">
-						<h3>Payments</h3>
-						<br />
-						<!-- label for="fname">Accepted Cards</label>
+						<div class="col-50">
+							<h3>Payments</h3>
+							<br />
+							<!-- label for="fname">Accepted Cards</label>
             <div class="icon-container">
               <i class="fab fa-cc-visa"></i>
               <i class="fab fa-cc-amex" style="color:blue;"></i>
@@ -325,170 +322,180 @@ span.price {
               </div>
             </div-->
 
-						<div class="menu-grids my-lg-4 my-md-2">
-							<div class="row inner-menu mt-4">
-								<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-									<div class="row mt-2">
-										<div>
-											<img src="/images/swish.png" width="50%" height="50%" alt="" />
+							<div class="menu-grids my-lg-4 my-md-2">
+								<div class="row inner-menu mt-4">
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+										<div class="row mt-2">
+											<div>
+												<img src="/images/swish.png" width="50%" height="50%" alt="" />
+											</div>
+
+
 										</div>
 
+									</div>
+									<br />
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+										<div class="row mt-2">
+
+											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
+												<h5>Swish</h5>
+												<input type="radio" id="swish" name="contact" value="cash"
+													required="" />
+											</div>
+										</div>
 
 									</div>
 
 								</div>
-								<br />
-								<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-									<div class="row mt-2">
+								<div class="row inner-menu mt-4">
+									<div class="col-md-6 menu-grid-left" data-aos="fade-down">
+										<div class="row mt-2">
+											<div>
+												<img id="cartcount" src="/images/cash.jpeg" width="70%"
+													height="100%" alt="" />
+											</div>
 
-										<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-											<h5>Swish</h5>
-											<input type="radio" id="swish" name="contact" value="cash"
-												required="" />
+
 										</div>
+
+									</div>
+									<br />
+									<div class="col-md-6 menu-grid-right" data-aos="fade-down">
+										<div class="row mt-2">
+
+											<div class="col-md-7 menu-img-info mt-4 mt-md-2">
+												<h5>Cash</h5>
+												<input type="radio" id="cash" name="contact" value="cash"
+													required="" />
+											</div>
+										</div>
+
 									</div>
 
 								</div>
-
+								<br /> <br /> <i>We accept swish payment as of now, please
+									press Place Order button and swish to +46 739566663 to complete
+									your order</i> <br /> <br /> <b>We also accept cash on
+									delivery, for convenience please provide exact change, however
+									in case of no exact change, a fee of 10 Kr will be levy on
+									total amount. </b>
 							</div>
-							<div class="row inner-menu mt-4">
-								<div class="col-md-6 menu-grid-left" data-aos="fade-down">
-									<div class="row mt-2">
-										<div>
-											<img id="cartcount" src="/images/cash.jpeg" width="70%"
-												height="100%" alt="" />
-										</div>
 
 
-									</div>
-
-								</div>
-								<br />
-								<div class="col-md-6 menu-grid-right" data-aos="fade-down">
-									<div class="row mt-2">
-
-										<div class="col-md-7 menu-img-info mt-4 mt-md-2">
-											<h5>Cash</h5>
-											<input type="radio" id="cash" name="contact" value="cash"
-												required="" />
-										</div>
-									</div>
-
-								</div>
-
-							</div>
-							<br /> <br /> <i>We accept swish payment as of now, please
-								press Place Order button and swish to +46 739566663 to complete
-								your order</i> <br /> <br /> <b>We also accept cash on
-								delivery, for convenience please provide exact change, however
-								in case of no exact change, a fee of 10 Kr will be levy on total
-								amount. </b>
 						</div>
-
-
 					</div>
+
+
+
+					<input type="submit" value="Place Order" class="btn" />
+				</form>
 			</div>
-
-
-
-			<input type="submit" value="Place Order" class="btn" />
-			</form>
 		</div>
-	</div>
-	<div class="col-25">
+		<div class="col-25">
 
 
-		<div th:if="not ${checkoutCart.isEmpty()}" class="container">
-			<h4>
-				Cart <span class="price" style="color: black"> <a href="cart.html"><i 
-					class="fa fa-shopping-cart"></i></a>
-				</span>
-			</h4>
-			<div class="scrollbar">
-				<div th:each="cake : ${checkoutCart}">
-					<div>
-						<p>
-							<span class="rh"> <a th:text="${cake.value.size()}"></a>
-							</span> <span style="float: center;"> <a href="#"
-								style="text-align: center" th:text="${cake.value[0].name}"></a></span>
-							<span style="float: right;"> <a
-								th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a
-								th:text="${cake.value[0].currency}"></a>
-							</span>
-						</p>
+			<div th:if="not ${checkoutCart.isEmpty()}" class="container">
+
+
+				
+
+
+
+
+				<h4>
+					Cart
+				
+					<span class="price" > <a
+						href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+					</span>
+				</h4>
+				<div class="scrollbar">
+					<div th:each="cake : ${checkoutCart}">
+						<div>
+							<p>
+								<span class="rh"> <a th:text="${cake.value.size()}"></a>
+								</span> <span style="float: center;"> <a href="#"
+									style="text-align: center" th:text="${cake.value[0].name}"></a></span>
+								<span style="float: right;"> <a
+									th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a
+									th:text="${cake.value[0].currency}"></a>
+								</span>
+							</p>
+						</div>
 					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-50">
+
+					<b>Total Item Cost </b>
+
+				</div>
+				<div class="col-50">
+
+					<i id="subtotal"></i>
+
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-50">
+
+					<b>Delivery Charge </b>
+
+				</div>
+				<div class="col-50">
+
+					<i id="deliverycharge"></i>
+
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-50">
+
+					<b>Discount </b>
+
+				</div>
+				<div class="col-50">
+
+					<i id="discountOnLogin"></i>
+
+				</div>
+
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-50">
+
+					<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)
+					</b>
+				</div>
+				<div class="col-50">
+					<i id="totalPc"></i> <i id="totalPrice"></i>
 				</div>
 			</div>
 
-		</div>
+			<hr />
 			<div class="row">
-			<div class="col-50">
-
-				<b>Total Item Cost </b>
-
+				<i class="freeShipping" id="freeShipMsg">Free Shipping above
+					350kr</i>
 			</div>
-			<div class="col-50">
-
-				<i id="subtotal"></i>
-
+			<br />
+			<div class="row">
+				<i class="loginDiscount" id="loginDiscount">Please sign in to
+					get 5% additional discount</i>
 			</div>
+			<br />
 
-		</div>	
-		<div class="row">
-			<div class="col-50">
+			
 
-				<b>Delivery Charge </b>
 
-			</div>
-			<div class="col-50">
 
-				<i id="deliverycharge"></i>
-
-			</div>
 
 		</div>
-		<div class="row">
-			<div class="col-50">
-
-				<b>Discount </b>
-
-			</div>
-			<div class="col-50">
-
-				<i id="discountOnLogin"></i>
-
-			</div>
-
-		</div>
-			<hr/>
-		<div class="row">
-			<div class="col-50">
-
-				<b>Amount Payable (<i id="totalPc"></i> <i id="itemsoritem"></i>)
-				</b>
-			</div>
-			<div class="col-50">
-				<i id="totalPc"></i> <i id="totalPrice"></i>
-			</div>
-		</div>
-	
-		<hr/>
-		<div class="row">
-			<i class="freeShipping" id="freeShipMsg">Free Shipping above
-				350kr</i>
-		</div>
-		<br/>
-		<div class="row">
-			<i class="loginDiscount" id="loginDiscount">Please sign in to get 5% additional discount</i>
-		</div>
-		<br />
-	
-		
-	
-		
-		
-
-	</div>
 	</div>
 
 
@@ -533,7 +540,7 @@ document.getElementById("totalPc").innerHTML=itemCount;
 currency = ([[${item.value[0].currency}]]);
 </script>
 
-<script th:inline="javascript">
+	<script th:inline="javascript">
 
 /*<![CDATA[*/
 
@@ -565,9 +572,9 @@ document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 
 
 
-<script>setDateLimit()</script>
+	<script>setDateLimit()</script>
 
-<script th:inline="javascript">
+	<script th:inline="javascript">
 	
 	/*<![CDATA[*/
 
@@ -585,9 +592,10 @@ document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 	}
 	
 	</script>
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script th:inline="javascript" >
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script th:inline="javascript">
 
 $(document).ready(function(){
 	
