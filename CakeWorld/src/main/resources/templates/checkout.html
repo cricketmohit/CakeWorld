@@ -216,8 +216,8 @@ span.price {
 								readonly="readonly" /> <label  class="fa fa-building" for="zip">Pin Code(5
 								digit)</label> <input id="zipInput" class="form-control" type="text"
 								pattern="[0-9]{5}" name="zip" placeholder="10001" required="" />
-								
-								<font style="display: none" color="red" id="zipNotValid"> We do not deliver to this pin code as of now, please choose within Stockholm Urban area</font> 
+								<p id="zipNotValid" style="display: none;font-size: 8px"  ><font color="red" >We do not deliver to this pin code as of now, please choose within Stockholm Urban area</font>
+								 </p>
 								
 							<label for="zip" class="fa fa-calendar"> Pick Delivery Date</label> <input type="date"
 								id="deliveryDate" name="orderDate" class="form-control"
@@ -578,7 +578,8 @@ $(document).ready(function(){
     	    success : function(id) {
     	
     	    if(id==="notFound"){
-    	    	document.getElementById("zipNotValid").setAttribute("style", "display:block");
+    	    	document.getElementById("zipNotValid").setAttribute("style", "display:block;font-size:14px");
+    	    	document.getElementById("zipInput").value='';
     	    }
     	    if(id==="found"){
     	    	document.getElementById("zipNotValid").setAttribute("style", "display:none");
