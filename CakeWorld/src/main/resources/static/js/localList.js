@@ -101,6 +101,7 @@ function imageZoom(imgID, resultID) {
   img.addEventListener("touchmove", moveLens);
   function moveLens(e) {
 	  lens.setAttribute("style", "display:block");
+	  result.setAttribute("style", "display:block");
     var pos, x, y,p,q;
     /*prevent any other actions that may occur when moving over the image:*/
     e.preventDefault();
@@ -120,14 +121,17 @@ function imageZoom(imgID, resultID) {
 
     if(p - (lens.offsetWidth / 2) + 10 > img.width - lens.offsetWidth){
     	 lens.setAttribute("style", "display:none");
+    	 result.setAttribute("style", "display:none");
     }
    
     if(q - (lens.offsetHeight / 2) + 10 > img.height - lens.offsetWidth){
    	 lens.setAttribute("style", "display:none");
+   	 result.setAttribute("style", "display:none");
     }
    
  	if(q + (lens.offsetHeight / 2) - 10 < 0){
      	 lens.setAttribute("style", "display:none");
+     	 result.setAttribute("style", "display:none");
    	
    }
     /*set the position of the lens:*/
