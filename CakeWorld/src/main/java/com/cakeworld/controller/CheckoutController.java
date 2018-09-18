@@ -10,7 +10,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.assertj.core.internal.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -228,7 +227,11 @@ public class CheckoutController {
 		replacements.put("timeSlot", bill.getTimeSlot());// Change to slot
 		replacements.put("orderNumber", String.valueOf(bill.getId()));
 		replacements.put("subTotal",String.valueOf(bill.getSubTotal())+" "+bill.getOrderList().get(0).getCurrency());
-		replacements.put("deliveryCharge", String.valueOf(bill.getDeliveryCharge())+" "+bill.getOrderList().get(0).getCurrency());
+		if(bill.getDeliveryCharge()==0) {
+			replacements.put("deliveryCharge", "FREE");
+		}else {
+			replacements.put("deliveryCharge", String.valueOf(bill.getDeliveryCharge())+" "+bill.getOrderList().get(0).getCurrency());
+		}
 		replacements.put("total", String.valueOf(bill.getTotalBillPrice())+" "+bill.getOrderList().get(0).getCurrency());
 		
 		String message = template.getTemplate(replacements);

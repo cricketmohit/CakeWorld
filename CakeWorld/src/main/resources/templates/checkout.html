@@ -420,6 +420,19 @@ span.price {
 			</div>
 
 		</div>
+			<div class="row">
+			<div class="col-50">
+
+				<b>Total Item Cost </b>
+
+			</div>
+			<div class="col-50">
+
+				<i id="subtotal"></i>
+
+			</div>
+
+		</div>	
 		<div class="row">
 			<div class="col-50">
 
@@ -446,6 +459,7 @@ span.price {
 			</div>
 
 		</div>
+			<hr/>
 		<div class="row">
 			<div class="col-50">
 
@@ -456,17 +470,22 @@ span.price {
 				<i id="totalPc"></i> <i id="totalPrice"></i>
 			</div>
 		</div>
-
-		<br />
+	
+		<hr/>
 		<div class="row">
 			<i class="freeShipping" id="freeShipMsg">Free Shipping above
 				350kr</i>
 		</div>
-		
-		<br />
+		<br/>
 		<div class="row">
 			<i class="loginDiscount" id="loginDiscount">Please sign in to get 5% additional discount</i>
 		</div>
+		<br />
+	
+		
+	
+		
+		
 
 	</div>
 	</div>
@@ -494,7 +513,7 @@ if(totalPrice!=0){
 	totalPrice= ([[${item.value[0].price}*${item.value.size()}]]);
 	
 }
-if(totalPrice > 350){
+if(totalPrice > 349){
 	deliveryCharge=0;
 } else{
 	deliveryCharge=49;
@@ -528,13 +547,17 @@ if(deliveryCharge==0){
 }
 var billAmount = totalPrice +deliveryCharge;
 if(discount=="discountEligible"){
-document.getElementById("discountOnLogin").innerHTML=": "+totalPrice*5/100+" "+currency;
-billAmount=billAmount-totalPrice*5/100;
+document.getElementById("discountOnLogin").innerHTML=": -"+Math.trunc(totalPrice*5/100)+" "+currency;
+billAmount=billAmount-Math.trunc(totalPrice*5/100);
+}else{
+	document.getElementById("discountOnLogin").innerHTML=":  0 "+currency;
+	
 }
 
 
 
 
+document.getElementById("subtotal").innerHTML=": "+totalPrice+" "+currency;
 document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 </script>
 
