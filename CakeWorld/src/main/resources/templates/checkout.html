@@ -216,6 +216,9 @@ span.price {
 								readonly="readonly" /> <label  class="fa fa-building" for="zip">Pin Code(5
 								digit)</label> <input id="zipInput" class="form-control" type="text"
 								pattern="[0-9]{5}" name="zip" placeholder="10001" required="" />
+								
+								<font style="display: none" color="red" id="zipNotValid"> We do not deliver to this pin code as of now, please choose within Stockholm Urban area</font> 
+								
 							<label for="zip" class="fa fa-calendar"> Pick Delivery Date</label> <input type="date"
 								id="deliveryDate" name="orderDate" class="form-control"
 								min='2018-01-01' max='2018-12-31' required="" /> <label
@@ -559,10 +562,40 @@ document.getElementById("totalPrice").innerHTML=": "+billAmount+" "+currency;
 	
 	</script>
 	
-	
-<script th:each="pin:${pincodeList}"  th:inline="javascript">
-alert(([[${pin.pincode}]]));
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script th:inline="javascript" >
 
+$(document).ready(function(){
+	
+    $("#zipInput").blur(function(){
+    	var userPincode =  	document.getElementById("zipInput").value;
+   
+    	$.ajax({
+    	    type : "POST",
+    	    url : "checkPinCode",
+    	    data : {pincode:userPincode},
+    	    timeout : 100000,
+    	    success : function(id) {
+    	
+    	    if(id==="notFound"){
+    	    	document.getElementById("zipNotValid").setAttribute("style", "display:block");
+    	    }
+    	    if(id==="found"){
+    	    	document.getElementById("zipNotValid").setAttribute("style", "display:none");
+    	    }
+    	      	
+    	        console.log("SUCCESS: ");
+    	        
+    	    },
+    	    error : function(e) {
+    	        console.log("ERROR: ", e);
+    	        return "Please Re-try";
+    	    }
+    	   
+    	});
+  
+    });
+});
 </script>
 </body>
 </html>

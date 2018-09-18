@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cakeworld.main.BillRepository;
@@ -66,9 +67,8 @@ public class CheckoutController {
 			return "redirect:/index";
 		}
 		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
-		List<Pincode> pincodeList = pincodeRepository.findPincode(); 
 		
-		model.addAttribute("pincodeList", pincodeList);
+		
 		model.addAttribute("checkoutCart", menuMapFromDB);
 		if (!userEmailCookie.equalsIgnoreCase("")) {
 			User user = userRepository.findByEmail(userEmailCookie).get(0);
@@ -77,6 +77,30 @@ public class CheckoutController {
 		}
 		return "checkout";
 	}
+	
+	@RequestMapping(value = "/checkPinCode", method = RequestMethod.POST)
+	public @ResponseBody String checkPinCode(@ModelAttribute("pincode") String userPincode, Model model, 
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
+			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
+		Map<String, List<Menu>> menuMapFromDB = getMenuFromDB(cookiecartcounts.split("\\*"));
+		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
+			return "redirect:/index";
+		}
+		
+		model.addAttribute("checkoutCart", menuMapFromDB);
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+			User user = userRepository.findByEmail(userEmailCookie).get(0);
+			model.addAttribute("loggedInUser", user.getName());
+			model.addAttribute("discountEligible", "discountEligible");
+		}
+		
+		Pincode findPincode = pincodeRepository.findPincode(userPincode); 
+		if(findPincode!=null && findPincode.getPincode().equalsIgnoreCase(userPincode)) {
+			return "found";
+		}
+		return "notFound";
+	}
+
 
 	@RequestMapping(value = "/checkout", method = RequestMethod.GET)
 	public String checkOutGet(Model model,
@@ -86,8 +110,6 @@ public class CheckoutController {
 		if(cookiecartcounts.equals("")|| cookiecartcounts.equals("0")){
 			return "redirect:/index";
 		}
-		List<Pincode> pincodeList = pincodeRepository.findPincode();
-		model.addAttribute("pincodeList", pincodeList);
 		
 		model.addAttribute("checkoutCart", menuMapFromDB);
 		if (!userEmailCookie.equalsIgnoreCase("")) {
