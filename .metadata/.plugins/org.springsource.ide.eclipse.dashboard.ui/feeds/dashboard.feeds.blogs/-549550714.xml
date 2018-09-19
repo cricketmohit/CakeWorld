@@ -5,7 +5,46 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2018-09-18T20:33:31Z</updated>
+  <updated>2018-09-18T23:02:38Z</updated>
+  <entry>
+    <title>This Week in Spring - September 18th, 2018</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/09/18/this-week-in-spring-september-18th-2018" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2018-09-18:3400</id>
+    <updated>2018-09-18T23:02:38Z</updated>
+    <content type="html">&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! It&amp;rsquo;s the week before SpringOne Platform and things are &lt;em&gt;crazy&lt;/em&gt;! We have so much to cover - as usual! - but FIRST! ..some poetry (with apologies to Clement Clark Moore)&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&amp;rsquo;twas the week before SpringOne Platform, when all throughout Spring;&lt;br/&gt;Not a creature was stirring, just the computers and things;&lt;br/&gt;the expectations were raised by the community with care;&lt;br/&gt;in hopes that &lt;a href="http://twitter.com/SpringRod"&gt;SpringRod&lt;/a&gt; would be there;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That&amp;rsquo;s right! this year is fixing to be AMAZING! We&amp;rsquo;re going to have Spring founder Rod Johnson, Jenny Zhang, Siew Choo Soh, Neha Narkhede, Matt Raible, Ray Tsang, Lauren Knausenberger, Juergen Hoeller, Bruno Borges, Andrew Clay Shafer and allllll the rest of the Spring team! It feels like a minute ago (December!) that we just had the last one so I can&amp;rsquo;t believe how quickly this one has arrived, but I can&amp;rsquo;t wait! &lt;/p&gt;
+&lt;p&gt;Right now I&amp;rsquo;m bouncing between San Francisco, CA; Atlanta, GA; Columbus, GA; Los Angeles, CA and I&amp;rsquo;m enjoying the conferences and customers with whom I&amp;rsquo;m visiting but I&amp;rsquo;m really excited to be at SpringOne Platform and so counting down the days!&lt;/p&gt;
+&lt;p&gt;Just think? The next time I write this roundup, I&amp;rsquo;ll be in Washington DC for SpringOne Platform 2018! &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/09/18/spring-cloud-data-flow-1-7-m1-released"&gt;Spring Cloud Data Flow 1.7 M1 released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/09/17/introducing-spring-data-jdbc"&gt;Introducing Spring Data JDBC&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring IO Platform lead Andy Wilkinson has &lt;a href="https://spring.io/blog/2018/09/13/spring-io-platform-cairo-sr4"&gt;just announced Spring IO Platform Cairo SR4&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/09/13/spring-io-platform-brussels-sr13"&gt;Spring IO Platform Brussels SR13&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Boot team lead Phil Webb just &lt;a href="https://spring.io/blog/2018/09/13/spring-boot-2-1-m3-available-now"&gt;announced Spring Boot 2.1.M3&lt;/a&gt;, with kafka streams support, support for non-web OAuth applications, improved conversion service integration, and support for logging groups, among many other things&lt;/li&gt;
+  &lt;li&gt;In this 8th installment of an 8 part series, I looked at deploying Cloud Foundry based applications that use &lt;a href="https://spring.io/blog/2018/09/13/bootiful-gcp-to-production-8-8"&gt;Google Cloud services via Spring Cloud GCP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Andy Wilkinson &lt;a href="https://spring.io/blog/2018/09/12/spring-boot-2-0-5"&gt;also just announced Spring Boot 2.0.5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Make sure you check out Jim Weaver&amp;rsquo;s webinar, &lt;a href="https://content.pivotal.io/webinars/sep-6-reactive-card-magic-understanding-spring-webflux-and-project-reactor-webinar"&gt;&amp;ldquo;Reactive Card Magic&amp;rdquo; &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/09/11/spring-boot-1-5-16"&gt;Spring Boot 1.5.16&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Oleg Zhurakousky introduces the &lt;a href="https://spring.io/blog/2018/09/11/kotlin-support-in-spring-cloud-function"&gt;new Kotlin support in Spring Cloud Function&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/09/11/spring-security-5-0-8-and-4-2-8-released"&gt;Spring Security 5.0.8 and 4.2.8 Released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/09/11/this-week-in-spring-september-11th-2018"&gt;This Week in Spring - September 11th, 2018&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://twitter.com/springcloud/status/1042176703332802560"&gt;https://twitter.com/springcloud/status/1042176703332802560&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;this InfoQ mini-guide is pretty epic; it&amp;rsquo;s a practical guide to building &lt;a href="https://www.infoq.com/minibooks/spring-boot-building-api-backend"&gt;an API backend with Spring Boot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="http://openjdk.java.net/projects/jdk/11/"&gt;JDK 11&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The spring.io/guides[http://Spring.io/guides] have been updated to the &lt;a href="https://twitter.com/springcentral/status/1041749606827057153"&gt;latest Spring Boot and Spring Cloud Finchley release&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Save the date! the good Dr. Subramaniam and I are doing &lt;a href="https://www.meetup.com/sfjava/events/253962994/"&gt;a joint talk introducing Kotlin Wednesday, January 16, 2019 at the San Francisco Java User Group&lt;/a&gt; - join us!&lt;/li&gt;
+  &lt;li&gt;Check out the latest InfoQ eMag, on the theme of testing, &lt;a href="https://www.infoq.com/minibooks/emag-testing-distributed-systems"&gt;with an article from Spring Cloud lead Marcin Grzejszczak&lt;/a&gt; on an integration testing approach for communication between components. He reviews contract testing, and Spring Cloud Contract, as one solution.&lt;/li&gt;
+  &lt;li&gt;It&amp;rsquo;s super cool that Pivotal &lt;a href="https://www.techrepublic.com/article/who-contributes-most-to-open-source-the-answers-will-definitely-surprise-you/"&gt;is ranked #2 in terms of contributors to open source&lt;/a&gt; as a percentage of company employees. Go team and go OSS!&lt;/li&gt;
+  &lt;li&gt;Interesting post on InfoQ on the &lt;a href="https://www.infoq.com/articles/java-serialization-aug18"&gt;state of Java serialization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Cloud Data Flow 1.7 M1 released</title>
     <link rel="alternate" href="https://spring.io/blog/2018/09/18/spring-cloud-data-flow-1-7-m1-released" />
@@ -1273,134 +1312,6 @@ server.port=8080
   &lt;li&gt;I&amp;rsquo;m speaking with the amazing Trisha Gee, fellow Java Champion and legend, at Oracle&amp;rsquo;s CodeOne conference later this year. We&amp;rsquo;ll be talking about reactive Spring, Kotloin, MongoDB and JavaFX. I did a quick promotional &lt;a href="https://www.youtube.com/watch?v=KTuH551BgAc&amp;feature=youtu.be"&gt;video for Oracle which you can watch here&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;In this fourth installment of my series looking at Spring Cloud GCP and Google Cloud, I looked at integration &lt;a href="https://twitter.com/springcentral/status/1035625370995707904"&gt;with Google Cloud Pub/Sub and Spring Cloud&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;Check out the status &lt;a href="https://github.com/orgs/spring-projects/projects/1"&gt;of the Spring projects&lt;/a&gt; so you can see what&amp;rsquo;s coming and who&amp;rsquo;s doing what&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Bootiful GCP: Runtime Configuration with Spring Cloud GCP Runtime Config (5/8)</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/09/03/bootiful-gcp-runtime-configuration-with-spring-cloud-gcp-runtime-config-5-8" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2018-08-18:3367</id>
-    <updated>2018-09-03T00:00:00Z</updated>
-    <content type="html">&lt;blockquote&gt;
-  &lt;p&gt;Hi Spring fans! In this brief 8 part series we’re going to look at the Spring Cloud integration for Google Cloud Platform, called Spring Cloud GCP. &lt;a href="https://cloud.spring.io/spring-cloud-gcp/"&gt;Spring Cloud GCP&lt;/a&gt; represents a joint effort between Google and Pivotal that endeavors to provide a first class experience for Spring Cloud developers when using the Google Cloud Platform. Pivotal Cloud Foundry users will enjoy an even &lt;a href="https://docs.pivotal.io/partners/gcp-sb/index.html"&gt;easier integration with the GCP service broker&lt;/a&gt;. I wrote these installments with input from Google Cloud Developer Advocate, and my buddy, &lt;a href="http://twitter.com/saturnism"&gt;Ray Tsang&lt;/a&gt;. You can also catch a walkthrough of Spring Cloud GCP in our Google Next 2018 session, &lt;a href="https://www.youtube.com/watch?v=2Jo3vy7iQf8"&gt;Bootiful Google Cloud Platform&lt;/a&gt;. Thanks buddy! As always, &lt;a href="http://twitter.com/starbuxman"&gt;I&amp;rsquo;d love to hear from you if you have feedback&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;If you&amp;rsquo;re just joining us, be sure to read the previous installments including:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/08/20/bootiful-gcp-getting-started-with-spring-cloud-for-google-cloud-platform-1-8"&gt;Bootiful GCP: Getting Started with Spring Cloud for Google Cloud Platform (1/8)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/08/23/bootiful-gcp-relational-data-access-with-spring-cloud-gcp-2-8"&gt;Bootiful GCP: Relational Data Access with Spring Cloud GCP (2/8)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/08/27/bootiful-gcp-globally-consistent-data-access-with-spanner-3-8"&gt;Bootiful GCP: Globally Consistent Data Access with Spanner (3/8)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://spring.io/blog/2018/08/30/bootiful-gcp-integration-with-google-cloud-pub-sub-4-8"&gt;Bootiful GCP: Integration with Google Cloud Pub/Sub (4/8)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;So far we’ve looked at some simple examples with all but the most trivial of configuration. Where there was configuration, we specified it in &lt;code&gt;application.properties&lt;/code&gt;. This approach works but there are limitations. What about centrality (making a single config value accessible to a number of other clients), security (storing secrets securely), live reconfiguration, and auditing and journaling? There are a number of other solutions out there that address some or all of these use cases including Apache Zookeeper, Hashicorp Consul, Hashicorp Vault (for secrets management, specifically), and - of course - the Spring Cloud Config Server. All fine choices, but you’d better have a recipe for scaling out and securing these pieces of infrastructure. GCP offers an alternative, Google Cloud RuntimeConfig, that you can use with no change to existing code, thanks to the power of Spring’s abstractions.&lt;/p&gt;
-&lt;p&gt;Let’s look at how to establish a configuration value and then reference that value from our application. We’ll also look at how to later update that configuration live, without restarting the application.&lt;/p&gt;
-&lt;p&gt;First, we’ll need to enable this API.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint shell"&gt;gcloud services enable runtimeconfig.googleapis.com
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let’s think through how we want to use this configuration. We’ll probably have configuration values that make sense when running the application on our local machines. Values that we can source from a built-in &lt;code&gt;application.properties&lt;/code&gt; or &lt;code&gt;application.yaml&lt;/code&gt;. These are the default values that apply to the application. There are going to be some values that are visible only in production -locators, credentials, etc. - that are unique to production. These values might be visible when running under the &lt;code&gt;cloud&lt;/code&gt; profile, for example. We’re going to source those values - when running under the &lt;code&gt;cloud&lt;/code&gt; profile - from Google Cloud Runtime Config. This way we can selectively override important values.&lt;/p&gt;
-&lt;p&gt;We must first create a runtime configuration, and then add a variable value to that configuration.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint shell"&gt;gcloud beta runtime-config configs create reservations_cloud
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Then, register a variable (&lt;code&gt;greeting&lt;/code&gt;) and that variable’s value (&lt;code&gt;Hello GCP&lt;/code&gt;) in the just-created runtime config.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint shell"&gt;gcloud beta runtime-config configs variables set greeting  &amp;quot;Hello GCP&amp;quot;  --config-name reservations_cloud
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can enumerate all the configuration for a given config set like&lt;br/&gt;this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint shell"&gt;gcloud beta runtime-config configs variables list --config-name=reservations_cloud
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Spring Cloud GCP will need to do its work &lt;em&gt;before&lt;/em&gt; most of the Spring application is running since it is a property source that feeds values into other configuration. Thus, any configuration that it requires to do its work must be accessible earlier than the configuration in the usual suspects like &lt;code&gt;application.properties&lt;/code&gt;. It is a convention in Spring Cloud that such configuration live in &lt;code&gt;bootstrap.properties&lt;/code&gt;. Let’s disable Spring Cloud GCP Runtime Config when running on the local machine, without any particular Spring profile active.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;src/main/resources/bootstrap.properties.&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint properties"&gt;spring.cloud.gcp.config.enabled=false&#xD;
-spring.cloud.gcp.config.credentials.location=${spring.cloud.gcp.credentials.location}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;When we’re running in production, in, say, Cloud Foundry, we’ll want to activate the &lt;code&gt;cloud&lt;/code&gt; profile, at which point the Spring Cloud GCP Runtime Config client will kick in and source config from GCP. Spring Boot is smart about loading any profile-specific configuration in adition to default configuration. You need only suffix your configuration file with &lt;code&gt;-${YOUR_PROFILE}&lt;/code&gt;: e.g.: &lt;code&gt;application-foo.properties&lt;/code&gt;, or &lt;code&gt;bootstrap-bar.yml&lt;/code&gt; for Spring profiles &lt;code&gt;foo&lt;/code&gt; and &lt;code&gt;bar&lt;/code&gt; respectively. Let’s configure Spring Cloud GCP for when the &lt;code&gt;cloud&lt;/code&gt; profile is active.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;src/main/resources/bootstrap-cloud.properties.&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;spring.cloud.gcp.config.enabled=true&#xD;
-spring.cloud.gcp.config.name=reservations&#xD;
-spring.cloud.gcp.config.profile=cloud
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;The combination of&lt;br/&gt;&lt;code&gt;${spring.cloud.gcp.config.name}_${spring.cloud.gcp.config.profile}&lt;/code&gt;&lt;br/&gt;forms &lt;code&gt;reservations_cloud&lt;/code&gt;, which is the name of the Runtime&lt;br/&gt;Configuration we’ve just created.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;We will configure some overall properties that will serve as the defaults, absent any overrides, in &lt;code&gt;src/main/resources/application.properties&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;src/main/resources/application.properties.&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint properties"&gt;management.endpoint.health.show-details=always&#xD;
-management.endpoints.web.exposure.include=*&#xD;
-&#xD;
-greeting = Hello ${user.name} (running on ${os.name} ${os.version})!
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-  &lt;p&gt;we want to, for this DEMO, expose all the Actuator endpoints to be able to interrogate them. In &lt;strong&gt;any&lt;/strong&gt; other context: configure security!&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;we want to include all the Actuator endpoints&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Let’s turn now to the Java code. You’ll need to add the following dependencies to your build: &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-web&lt;/code&gt;, &lt;code&gt;org.springframework.boot&lt;/code&gt; : &lt;code&gt;spring-boot-starter-actuator&lt;/code&gt;, &lt;code&gt;org.springframework.cloud&lt;/code&gt; : &lt;code&gt;spring-cloud-gcp-starter-config&lt;/code&gt;. We add the Spring Cloud GCP dependency to get the correct configuration for the Runtime Config support. We add Spring Boot Actuator so we have access to a few operational endpoints, &lt;code&gt;/actuator/env&lt;/code&gt; and &lt;code&gt;/actuator/refresh&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Let’s see some code!&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint java"&gt;package com.example.gcp.runtimeconfig;&#xD;
-&#xD;
-import org.springframework.beans.factory.annotation.Value;&#xD;
-import org.springframework.boot.SpringApplication;&#xD;
-import org.springframework.boot.autoconfigure.SpringBootApplication;&#xD;
-import org.springframework.cloud.context.config.annotation.RefreshScope;&#xD;
-import org.springframework.web.bind.annotation.GetMapping;&#xD;
-import org.springframework.web.bind.annotation.RestController;&#xD;
-&#xD;
-@SpringBootApplication&#xD;
-public class RuntimeConfigApplication {&#xD;
-&#xD;
-        @RefreshScope &#xD;
-        @RestController&#xD;
-        public static class GreetingsRestController {&#xD;
-&#xD;
-                private final String greetings;&#xD;
-&#xD;
-                &#xD;
-                GreetingsRestController(@Value(&amp;quot;${greeting}&amp;quot;) String greetings) {&#xD;
-                        this.greetings = greetings;&#xD;
-                }&#xD;
-&#xD;
-                @GetMapping(&amp;quot;/greeting&amp;quot;)&#xD;
-                String greetings() {&#xD;
-                        return this.greetings;&#xD;
-                }&#xD;
-        }&#xD;
-&#xD;
-        public static void main(String[] args) {&#xD;
-                SpringApplication.run(RuntimeConfigApplication.class, args);&#xD;
-        }&#xD;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-  &lt;p&gt;this annotation supports revising and refreshing the configuration for this bean. We can trigger a refresh event and observe updated configuration in the bean&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;we’re injecting the key from the property file or from GCP Runtime Config. Code-wise, it’s exactly the same.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Run this program with no profile active and you should see something like &lt;code&gt;Hello jlong!&lt;/code&gt; when you hit the endpoint at &lt;code&gt;http://localhost:8080/greeting&lt;/code&gt;.Hit this environment Actuator endpoint (&lt;code&gt;http://localhost:8080/actuator/env&lt;/code&gt;) and you will find no mention of our GCP Runtime Config configuration. Now, run the program with the &lt;code&gt;cloud&lt;/code&gt; profile active and hit the &lt;code&gt;/greeting&lt;/code&gt; endpoint again and you’ll see something like &lt;code&gt;Hello GCP&lt;/code&gt; reflected in the console output. Hit the &lt;code&gt;/actuator/env&lt;/code&gt; endpoint and you’ll see an entry for &lt;code&gt;bootstrapProperties:spring-cloud-gcp&lt;/code&gt; containing our Runtime Config values.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Tip&lt;/strong&gt;&lt;/p&gt;
-  &lt;p&gt;you can change the active profile by specifying&lt;br/&gt;&lt;code&gt;-Dspring.profiles.active=foo,bar&lt;/code&gt; for profiles &lt;code&gt;foo&lt;/code&gt; and &lt;code&gt;bar&lt;/code&gt; when&lt;br/&gt;running the application.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;I like our application so far, but the greeting sounds so stiff! I’d love to change it, but don’t want to stop and start each application instance. Here we can take advantage of the &lt;code&gt;/actuator/refresh&lt;/code&gt; endpoint to &lt;em&gt;refresh&lt;/em&gt; our node’s configuration after updating the value in the Runtime Config configuration. Let’s change the value to something less formal, like &lt;code&gt;Hi, GCP&lt;/code&gt;.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint shell"&gt;gcloud beta runtime-config configs variables set greeting  &amp;quot;Hi, GCP&amp;quot;  --config-name reservations_cloud
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The configuration has been changed in the GCP Runtime Config, but that change isn’t visible, at least not by default, to our application. We need to force the Spring Boot to refresh its local configuration, drawing the configuration from the Runtime Config service. Issue an (empty) HTTP POST command to the &lt;code&gt;/actuator/refresh&lt;/code&gt; endpoint and then hit the &lt;code&gt;/greeting&lt;/code&gt; endpoint to see the updated value.&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint shell"&gt;curl http://localhost:8080/greeting&#xD;
-&amp;gt; Hello GCP&#xD;
-&#xD;
-gcloud beta runtime-config configs variables set greeting  &amp;quot;Hi GCP&amp;quot;  --config-name reservations_cloud&#xD;
-curl -H&amp;quot;content-type: application/json&amp;quot; -d{} http://localhost:8080/actuator/refresh&#xD;
-curl http://localhost:8080/greeting&#xD;
-&amp;gt; Hi GCP
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-  &lt;p&gt;inspect the old value&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;
-  &lt;p&gt;change the value and then force the client to refresh its configuration. You’ll be able to confirm the update.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
   </entry>
 </feed>

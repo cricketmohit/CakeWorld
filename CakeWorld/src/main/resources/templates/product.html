@@ -137,139 +137,149 @@ span.price {
 	}
 }
 
-* {box-sizing: border-box;}
+* {
+	box-sizing: border-box;
+}
 
 .img-zoom-container {
-
-  position: relative;
+	position: relative;
 }
 
 .img-zoom-lens {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  /*set the size of the lens:*/
-  width: 200px;
-  height: 200px;
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	/*set the size of the lens:*/
+	width: 200px;
+	height: 200px;
 }
 
 .img-zoom-result {
-  border: 1px solid #d4d4d4;
-  /*set the size of the result div:*/
-  width: 500px;
-  height: 500px;
-  display:none
-  
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	z-index: 1;
 }
-
 </style>
 </head>
-<body id="productPageBodyId">
-	<header>
-		<div class="top-bar_sub container-fluid">
-			<div class="row">
-				<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
-					<span> <a href="index.html"><i class="fa fa-home"></i> </a>
-						<a id="welcome" href="index.html"> Welcome! </a>
-					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a id="userSign"
-						href="login.html"> <i class="fa fa-lock"></i> Sign In
-					</a>
-
-					</span> <span> <a id="register" href="register.html"> <i
-							class="far fa-user"></i> Register
-					</a>
-					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a
-						style="display: none; font-size: 0" id="logout" href="logout"><i
-							class="fas fa-sign-out-alt"></i> Logout</a>
-					</span>
-				</div>
-				<div class="col-md-4 logo text-center" data-aos="fade-up">
-					<a class="navbar-brand" href="index.html"> <img alt=""
-						src="images/logo.png"></img>
-					</a>
-				</div>
-
-				<div class="col-md-4 log-icons text-right" data-aos="fade-up">
-
-					<ul class="social_list1 mt-4">
-
-						<li><a
-							href="https://www.facebook.com/Bake-World-881719938705439/"
-							target="_blank" class="facebook1 mx-2"> <i
-								class="fab fa-facebook-f"></i>
-
-						</a></li>
-						<li><a
-							href="https://www.facebook.com/Bake-World-881719938705439/"
-							target="_blank" class="twitter2"> <i class="fab fa-twitter"></i>
-
-						</a></li>
-						<li><a
-							href="https://www.facebook.com/Bake-World-881719938705439/"
-							target="_blank" class="instagram3"> <i
-								class="fab fa-instagram"></i>
-						</a></li>
-						<li><a
-							href="https://www.facebook.com/Bake-World-881719938705439/"
-							target="_blank" class="pin"> <i class="fab fa-google-plus"></i>
-						</a></li>
-					</ul>
-					<br />
-					<div data-aos="fade-up">
-						<a id="cartBox" href="cart.html"> <i id="cartBoxOverlap"
-							class="fas fa-shopping-cart"> <i id="cartcount">0</i>
-						</i>
+<body>
+	<div id="productPageBodyId">
+		<header>
+			<div class="top-bar_sub container-fluid">
+				<div class="row">
+					<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
+						<span> <a href="index.html"><i class="fa fa-home"></i>
+						</a> <a id="welcome" href="index.html"> Welcome! </a>
+						</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a id="userSign"
+							href="login.html"> <i class="fa fa-lock"></i> Sign In
 						</a>
 
+						</span> <span> <a id="register" href="register.html"> <i
+								class="far fa-user"></i> Register
+						</a>
+						</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a
+							style="display: none; font-size: 0" id="logout" href="logout"><i
+								class="fas fa-sign-out-alt"></i> Logout</a>
+						</span>
+					</div>
+					<div class="col-md-4 logo text-center" data-aos="fade-up">
+						<a class="navbar-brand" href="index.html"> <img alt=""
+							src="images/logo.png"></img>
+						</a>
 					</div>
 
+					<div class="col-md-4 log-icons text-right" data-aos="fade-up">
 
+						<ul class="social_list1 mt-4">
+
+							<li><a
+								href="https://www.facebook.com/Bake-World-881719938705439/"
+								target="_blank" class="facebook1 mx-2"> <i
+									class="fab fa-facebook-f"></i>
+
+							</a></li>
+							<li><a
+								href="https://www.facebook.com/Bake-World-881719938705439/"
+								target="_blank" class="twitter2"> <i class="fab fa-twitter"></i>
+
+							</a></li>
+							<li><a
+								href="https://www.facebook.com/Bake-World-881719938705439/"
+								target="_blank" class="instagram3"> <i
+									class="fab fa-instagram"></i>
+							</a></li>
+							<li><a
+								href="https://www.facebook.com/Bake-World-881719938705439/"
+								target="_blank" class="pin"> <i class="fab fa-google-plus"></i>
+							</a></li>
+						</ul>
+						<br />
+						<div data-aos="fade-up">
+							<a id="cartBox" href="cart.html"> <i id="cartBoxOverlap"
+								class="fas fa-shopping-cart"> <i id="cartcount">0</i>
+							</i>
+							</a>
+
+						</div>
+
+
+					</div>
 				</div>
+
 			</div>
 
+		</header>
+		<p id="demo"></p>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			
+				<div class="img-zoom-container">
+					<img id="myimage" th:src="${product.imageUrl}" width="500"
+						height="500" alt="" />
+
+				</div>
+		
+			<a id="productPageBodyId3" class="row">
+			  &nbsp; &nbsp;Drag mouse over the image for a larger view
+			</a>
 		</div>
 
-	</header>
-	<p id="demo"></p>
-	<div>
-		<div class="row">
-			<div class="col-25">
-				
-				<div class="img-zoom-container">
-					<img id="myimage" th:src="${product.imageUrl}" width="500" height="500" alt=""/>
-					
-				</div>
-			</div>
+		<div id="productPageBodyId1" style="color: #70b6b2" class="col-25">
 
-			<div style="color:#70b6b2" class="col-25">
-				<div class="img-zoom-container">
-					
-					<div id="myresult" class="img-zoom-result"></div>
-				</div>
-				<span style="color:#70b6b2" th:text="${product.name}"></span> <br/> Price: <span style="color:#70b6b2"
-					th:text="${product.price}"></span> <span style="color:#70b6b2"
-					th:text="${product.currency}"></span><br/>
-					<span style="color:#70b6b2" th:text="${product.description}"></span>
-			</div>
+			<div class="img-zoom-container">
 
-			<div class="col-25">
-				<form action="/index" method="post">
-					<button class="btn">Continue Shopping</button>
-				</form>
+				<div id="myresult" class="img-zoom-result"></div>
 			</div>
+			<span style="color: #70b6b2" th:text="${product.name}"></span> <br />
+			Price: <span style="color: #70b6b2" th:text="${product.price}"></span>
+			<span style="color: #70b6b2" th:text="${product.currency}"></span><br />
+			<span style="color: #70b6b2" th:text="${product.description}"></span>
+		</div>
 
+		<div id="productPageBodyId2" class="col-25">
+			
+			<form action="/index" method="post">
+				<button class="btn">Continue Shopping</button>
+			</form>
+			<form action="/cart" method="post">
+				<button class="btn">Add to cart</button>
+			</form>
 		</div>
 
 
 
 	</div>
 
+
+
 	<script type="text/javascript">
 		displayCart();
 	</script>
 	<script>
-// Initiate zoom effect:
-imageZoom("myimage", "myresult");
-</script>
+		// Initiate zoom effect:
+		imageZoom("myimage", "myresult", "productPageBodyId","productPageBodyId1","productPageBodyId2","productPageBodyId3");
+	</script>
 
 
 
