@@ -3,7 +3,6 @@ package com.cakeworld.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -18,13 +17,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.cakeworld.main.MenuRepository;
 import com.cakeworld.main.UserRepository;
 import com.cakeworld.model.Menu;
-import com.cakeworld.model.Pincode;
 import com.cakeworld.model.User;
 
 @Controller
@@ -35,7 +32,7 @@ public class WelcomeController {
 	private MenuRepository menuRepository;
 	@Autowired
 	private UserRepository userRepository;
-
+	int productIdGlobal = 0;
 	@RequestMapping("/")
 	String entry(Model model, HttpSession session, HttpServletResponse response,
 			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie,
@@ -128,7 +125,8 @@ public class WelcomeController {
 	@RequestMapping("/product")
 	String product(Model model, HttpSession session, HttpServletResponse response,
 			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie,
-			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts) {
+			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
+			HttpServletRequest request) {
 		if (!userEmailCookie.equalsIgnoreCase("")) {
 			User user = userRepository.findByEmail(userEmailCookie).get(0);
 			model.addAttribute("loggedInUser", user.getName());
@@ -165,27 +163,45 @@ public class WelcomeController {
 		model.addAttribute("savMenu", savMenu);
 		model.addAttribute("biscuitMenu", biscuitMenu);
 		model.addAttribute("galleryMenu", galleryMenu);
-
-		return "product";
+		Menu product = null;
+		/*for (Cookie cookie : request.getCookies()) {
+		    if (cookie.getName().equals("product")) {
+		    	 product = menuRepository.findOne(Integer.parseInt(cookie.getValue()));
+				model.addAttribute("product", product);
+				break;
+		    }
+		}*/
+		Object productId = session.getAttribute("productIdSession");
+		if(productId!=null) {
+			product = menuRepository.findOne(Integer.parseInt(productId.toString()));
+			model.addAttribute("product", product);
+		}
+		
+		if(product!=null) {
+			return "product";
+		}else {
+			return "redirect:/index";
+		}
+		
 	}
 	
-	@RequestMapping(value = "/product", method = RequestMethod.GET)
-	public  String checkPinCode(@ModelAttribute("productId") String productId, Model model, 
+	@RequestMapping(value = "/product", method = RequestMethod.POST)
+	public  String checkPinCode(@ModelAttribute("productId") Menu productId, Model model, 
 			@CookieValue(value = "cookiecartcounts", defaultValue = "0") String cookiecartcounts,
-			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
-		
-		Menu product = menuRepository.findOne(Integer.valueOf(1));
-		
-		
-		model.addAttribute("product", product);
+			@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie,
+			HttpServletResponse response,HttpServletRequest request,HttpSession session) {
+	
 		if (!userEmailCookie.equalsIgnoreCase("")) {
 			User user = userRepository.findByEmail(userEmailCookie).get(0);
 			model.addAttribute("loggedInUser", user.getName());
 			model.addAttribute("discountEligible", "discountEligible");
 		}
+		//Cookie cookie = new Cookie("product", productId.getId().toString());
+		//response.addCookie(cookie);
 		
-		
-		return "product";
+		session.setAttribute("productIdSession", productId.getId());
+		Object productId2 = session.getAttribute("productIdSession");
+		return "";
 	}
 
 	@ExceptionHandler

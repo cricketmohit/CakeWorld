@@ -39,7 +39,8 @@ public class CartController {
 	UserRepository userRepository;
 	
 	@RequestMapping(value = "/substractFromCart", method = RequestMethod.POST) 
-    public void substractFromCart(@ModelAttribute("cart")  Menu menuToAdd, Model model,HttpSession session, HttpServletResponse response,HttpServletRequest request,
+    public void substractFromCart(@ModelAttribute("cart")  Menu menuToAdd, 
+    		Model model, HttpServletResponse response,HttpServletRequest request,
     		@CookieValue(value = "userEmailCookie", defaultValue = "") String userEmailCookie) {
 		String id = String.valueOf(menuToAdd.getId());
 		if(userEmailCookie!=null && !userEmailCookie.isEmpty()) {

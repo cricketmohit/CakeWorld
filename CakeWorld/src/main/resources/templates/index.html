@@ -34,17 +34,19 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
+
 .zoomin img {
-  height: 200px;
-  width: 200px;
-  -webkit-transition: all 2s ease;
-     -moz-transition: all 2s ease;
-      -ms-transition: all 2s ease;
-          transition: all 2s ease;
+	height: 200px;
+	width: 200px;
+	-webkit-transition: all 2s ease;
+	-moz-transition: all 2s ease;
+	-ms-transition: all 2s ease;
+	transition: all 2s ease;
 }
+
 .zoomin img:hover {
-  width: 300px;
-  height: 300px;
+	width: 300px;
+	height: 300px;
 }
 </style>
 </head>
@@ -55,23 +57,18 @@ body {
 		<div class="top-bar_sub container-fluid">
 			<div class="row">
 				<div class="col-md-4 top-forms text-left mt-4" data-aos="fade-up">
-					<span> <a href="index.html"><i class="fa fa-home"></i> </a><a id="welcome" href="index.html">Welcome!
-				</a>
-					</span> 
-					
-					<span class="mx-lg-4 mx-md-2  mx-1"> <a  id="userSign" href="login.html">
-							<i class="fa fa-lock"></i> 
-							Sign In</a>
-					
-					</span>
-					
-					<span> <a id="register" href="register.html"> <i class="far fa-user"></i>
-							Register
+					<span> <a href="index.html"><i class="fa fa-home"></i> </a><a
+						id="welcome" href="index.html">Welcome! </a>
+					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a id="userSign"
+						href="login.html"> <i class="fa fa-lock"></i> Sign In
 					</a>
-					</span>
-					 <span class="mx-lg-4 mx-md-2  mx-1">
-					 <a style="display: none; font-size: 0" id="logout" href="logout"><i class="fas fa-sign-out-alt"></i>
-					 		Logout</a>
+
+					</span> <span> <a id="register" href="register.html"> <i
+							class="far fa-user"></i> Register
+					</a>
+					</span> <span class="mx-lg-4 mx-md-2  mx-1"> <a
+						style="display: none; font-size: 0" id="logout" href="logout"><i
+							class="fas fa-sign-out-alt"></i> Logout</a>
 					</span>
 				</div>
 				<div class="col-md-4 logo text-center" data-aos="fade-up">
@@ -132,7 +129,8 @@ body {
 		</div>
 
 	</div>
-	<marquee>For better user experience, please use Google Chrome </marquee>
+	<marquee>For better user experience, please use Google Chrome
+	</marquee>
 	<div class="header_top" id="home">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<button class="navbar-toggler navbar-toggler-right mx-auto"
@@ -189,7 +187,7 @@ body {
 				<div class="carousel-item active">
 					<div class="carousel-caption">
 						<h3>
-							The Bake World  <span>Specialist In Eggless Baking</span>
+							The Bake World <span>Specialist In Eggless Baking</span>
 						</h3>
 
 					</div>
@@ -293,8 +291,9 @@ body {
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+											<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -315,8 +314,9 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${cakeMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+								<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -346,8 +346,9 @@ body {
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${ccMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+											<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -366,8 +367,9 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${ccMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+											<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -396,8 +398,9 @@ body {
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${savMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+											<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -416,8 +419,9 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${savMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+											<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -446,8 +450,9 @@ body {
 									<div class="col-md-6 menu-grid-left" data-aos="fade-down"
 										th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==1}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+											<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -466,8 +471,9 @@ body {
 									<div class="col-md-6 menu-grid-right" data-aos="fade-down"
 										th:each="cake : ${biscuitMenu}" th:if="${cake.id%2==0}">
 										<div class="row mt-2">
-											<div class="col-md-4 proj_gallery_grid">
-												<a th:href="${cake.imageUrl}"><img
+											<div class="col-md-5 menu-img">
+												<a href="product.html"
+													th:onclick="|goToProduct('${cake.id}')|"><img
 													th:src="${cake.imageUrl}" class="img-fluid rounded-circle"
 													alt="" /></a>
 											</div>
@@ -645,7 +651,8 @@ body {
 					<h2>Subscribe for hot updates</h2>
 					<div class="subscribe-main text-left">
 						<div class="subscribe-form">
-							<form th:action="@{/subscribe}" method="post" modelAttribute="subscribe"  class="subscribe_form">
+							<form th:action="@{/subscribe}" method="post"
+								modelAttribute="subscribe" class="subscribe_form">
 								<input class="form-control" name="emailId" type="email"
 									placeholder="Enter your email..." required="" />
 								<button type="submit" class="btn btn-primary submit">Submit</button>
@@ -659,20 +666,20 @@ body {
 						<div class="copyrighttop">
 							<ul>
 								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
-									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
-										<i class="fab fa-facebook-f"></i> <span>Facebook</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/"
+									target="_blank"> <i class="fab fa-facebook-f"></i> <span>Facebook</span>
 								</a></li>
 								<li><a class="facebook"
-									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
-										<i class="fab fa-twitter"></i> <span>Twitter</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/"
+									target="_blank"> <i class="fab fa-twitter"></i> <span>Twitter</span>
 								</a></li>
 								<li class="mx-lg-3 mx-md-2 mx-1"><a class="facebook"
-									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
-										<i class="fab fa-google-plus-g"></i> <span>Google+</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/"
+									target="_blank"> <i class="fab fa-google-plus-g"></i> <span>Google+</span>
 								</a></li>
 								<li><a class="facebook"
-									href="https://www.facebook.com/Bake-World-881719938705439/" target="_blank">
-										<i class="fab  fa-instagram"></i> <span>Instagram</span>
+									href="https://www.facebook.com/Bake-World-881719938705439/"
+									target="_blank"> <i class="fab  fa-instagram"></i> <span>Instagram</span>
 								</a></li>
 							</ul>
 						</div>
@@ -805,7 +812,7 @@ body {
 	<!-- //Custom-JavaScript-File-Links -->
 	<script src="js/bootstrap.js"></script>
 
-<script th:inline="javascript">
+	<script th:inline="javascript">
 	
 	/*<![CDATA[*/
 
@@ -821,7 +828,7 @@ body {
 	
 	</script>
 
-<script th:inline="javascript">
+	<script th:inline="javascript">
 	
 	/*<![CDATA[*/
 
@@ -834,7 +841,7 @@ body {
 	
 	</script>
 
-<script th:inline="javascript">
+	<script th:inline="javascript">
 	
 	/*<![CDATA[*/
 
@@ -847,7 +854,7 @@ body {
 	}
 	
 	</script>
-<script th:inline="javascript">
+	<script th:inline="javascript">
 	
 	/*<![CDATA[*/
 

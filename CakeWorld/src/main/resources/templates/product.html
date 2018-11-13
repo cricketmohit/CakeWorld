@@ -154,8 +154,8 @@ span.price {
 }
 
 .img-zoom-result {
-	width: 600px;
-	height: 600px;
+	width: 500px;
+	height: 500px;
 	position: absolute;
 	z-index: 1;
 }
@@ -230,7 +230,19 @@ span.price {
 		</header>
 		<p id="demo"></p>
 	</div>
+	<div id="myModal" class="modal">
 
+				<!-- Modal content -->
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<p>
+						Item added successfully to your cart!! &nbsp;&nbsp; <a
+							href="/cart" class="blog-btn" data-aos="fade-down">My cart</a>
+					</p>
+
+				</div>
+
+			</div>
 	<div class="row">
 		<div class="col-25">
 			
@@ -256,14 +268,17 @@ span.price {
 			<span style="color: #70b6b2" th:text="${product.currency}"></span><br />
 			<span style="color: #70b6b2" th:text="${product.description}"></span>
 		</div>
+		
+		
 
-		<div id="productPageBodyId2" class="col-25">
-			
-			<form action="/index" method="post">
-				<button class="btn">Continue Shopping</button>
-			</form>
-			<form action="/cart" method="post">
-				<button class="btn">Add to cart</button>
+		<div id="productPageBodyId2" class="col-25" align="right">
+			<br/>
+			<form >
+				<a  href ="index.html" class="blog-btn" data-aos="fade-down" >Menu Page</a>
+			</form><br></br>
+			<form>
+				<a  href ="#" class="blog-btn" data-aos="fade-down"
+						th:onclick="|addToCart('${product.id}')|">Add to cart</a>
 			</form>
 		</div>
 

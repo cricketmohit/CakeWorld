@@ -79,6 +79,26 @@ function displayDelievery(){
 	document.getElementById("totalCount").innerHTML = menuInCartArray.length;
 	
 }
+function goToProduct(id)
+{
+	
+	var tempId = id;
+	$.ajax({
+	    type : "POST",
+	    url : "product",
+	    data : {id:tempId},
+	    timeout : 100000,
+	    success : function(id) {
+	        console.log("SUCCESS: ", id);
+	        display(id);
+	    },
+	    error : function(e) {
+	        console.log("ERROR: ", e);
+	        return "Please Re-try";
+	    }
+	   
+	});
+}
 
 function addToCart(id)
 {

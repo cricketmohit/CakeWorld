@@ -219,7 +219,7 @@ span.price {
 					</div>
 					<!-- a  th:text="${cake.value.size()}"></a-->
 					<div class="col-25">
-						<span><a href="#" style="text-align: center"
+						<span><a href="product.html" th:onclick="|goToProduct('${cake.value[0].id}')|" style="text-align: center"
 							th:text="${cake.value[0].name}"></a></span>
 					</div>
 
