@@ -27,7 +27,19 @@
 	
     
 }
+#addtocart2 {
+    font-size: 12px;
+    color: #f4ff8d;
+    
+    
+    background: #000000;
+  
+    width: 100px;
+	padding: 5px;
 
+    text-align: center;
+   
+}
 #addtocart {
     font-size: 12px;
     color: #f4ff8d;

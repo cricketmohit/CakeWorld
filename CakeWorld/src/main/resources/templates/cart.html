@@ -214,8 +214,9 @@ span.price {
 				<hr />
 				<div class="row">
 					<div class="col-25">
-						<img class="cartImageSize" th:src="${cake.value[0].imageUrl}"
-							alt="" />
+						<a href="product.html" th:onclick="|goToProduct('${cake.value[0].id}')|" style="text-align: center"
+							><img class="cartImageSize" th:src="${cake.value[0].imageUrl}"
+							alt="" /></a>
 					</div>
 					<!-- a  th:text="${cake.value.size()}"></a-->
 					<div class="col-25">

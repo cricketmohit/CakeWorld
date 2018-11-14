@@ -415,8 +415,8 @@ span.price {
 						<div>
 							<p>
 								<span class="rh"> <a th:text="${cake.value.size()}"></a>
-								</span> <span style="float: center;"> <a href="#"
-									style="text-align: center" th:text="${cake.value[0].name}"></a></span>
+								</span> <span style="float: center;"> <a href="product.html" th:onclick="|goToProduct('${cake.value[0].id}')|" style="text-align: center"
+							th:text="${cake.value[0].name}"></a></span>
 								<span style="float: right;"> <a
 									th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a
 									th:text="${cake.value[0].currency}"></a>

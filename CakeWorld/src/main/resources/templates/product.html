@@ -279,6 +279,10 @@ span.price {
 			<form>
 				<a  href ="#" class="blog-btn" data-aos="fade-down"
 						th:onclick="|addToCart('${product.id}')|">Add to cart</a>
+			</form><br></br>
+			<form>
+				<a  href ="checkout.html" class="blog-btn" data-aos="fade-down"
+						>Check - out</a>
 			</form>
 		</div>
 
@@ -295,7 +299,21 @@ span.price {
 		// Initiate zoom effect:
 		imageZoom("myimage", "myresult", "productPageBodyId","productPageBodyId1","productPageBodyId2","productPageBodyId3");
 	</script>
+<script th:inline="javascript">
+	
+	/*<![CDATA[*/
 
+    var loggedInUser = /*[[${loggedInUser}]]*/ 'default';
+  
+	/*]]>*/
+	if(loggedInUser!=null){
+	document.getElementById("welcome").innerHTML="Welcome "+loggedInUser+"!";
+	 document.getElementById("register").setAttribute("hidden", "");
+	 document.getElementById("userSign").setAttribute("hidden", "");
+	 document.getElementById("logout").setAttribute("style","display:block");
+	}
+	
+	</script>
 
 
 </body>
