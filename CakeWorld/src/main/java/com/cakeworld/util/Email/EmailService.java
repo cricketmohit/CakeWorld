@@ -1,5 +1,6 @@
 package com.cakeworld.util.Email;
 
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -16,7 +17,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
+import com.cakeworld.main.ErrorLogRepository;
+import com.cakeworld.model.ErrorLog;
 import com.cakeworld.util.ApplicationLogger;
+import com.mysql.jdbc.Blob;
 
 
 
@@ -30,17 +34,17 @@ public class EmailService {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	@Autowired
+	private ErrorLogRepository errorLogRepo;
 	private static final ApplicationLogger logger = ApplicationLogger.getInstance();
 	
 	
 	public void send(Email eParams) {
 
 		if (eParams.isHtml()) {
-			try {
+			
 				sendHtmlMailViaGoogle(eParams);
-			} catch (MessagingException e) {
-				logger.error("Could not send email to : {} Error = {}", eParams.getToAsList(), e.getMessage());
-			}
+			
 		} else {
 			sendPlainTextMail(eParams);
 		}
@@ -85,7 +89,7 @@ public class EmailService {
 
 	}
 	
-	private void sendHtmlMailViaGoogle(Email eParams) throws MessagingException {
+	private void sendHtmlMailViaGoogle(Email eParams)  {
 
 
 		final String username = "thebakeworlds@gmail.com";
@@ -103,7 +107,7 @@ public class EmailService {
 				return new PasswordAuthentication(username, password);
 			}
 		  });
-
+		try {
 			MimeMessage message = new MimeMessage(session);
 			
 		   
@@ -121,9 +125,24 @@ public class EmailService {
 			 message.setContent( eParams.getMessage(), "text/html; charset=utf-8" );
 			
 			message.saveChanges();
-			Transport.send(message);
+			
+			
+				Transport.send(message);
+				System.out.println("Done");
+			} catch (MessagingException e) {
+				logger.error("Could not send email to : {} Error = {}", eParams.getToAsList(), e.getMessage());
+				ErrorLog newError = new ErrorLog();
+				newError.setErrorMessage(e.getMessage()); 
+				newError.setCreatedDate(new Date()); 
+				
+				newError.setPaylaod(eParams.getMessage().getBytes());
+				newError.setLogicalKey(eParams.getTo().get(0)); 
+				errorLogRepo.save(newError);
+				
+				
+			}
 
-			System.out.println("Done");
+			
 
 		
 	

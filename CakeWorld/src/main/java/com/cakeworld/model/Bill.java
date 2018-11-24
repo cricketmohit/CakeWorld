@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -55,6 +56,9 @@ public class Bill {
     public long totalBillPrice;
     
     public Date creationTime;
+    @ManyToOne
+    public User signedUser;
+    
     public String toString() {
         return getClass().getName() + "@" + Integer.toHexString(hashCode());
     }

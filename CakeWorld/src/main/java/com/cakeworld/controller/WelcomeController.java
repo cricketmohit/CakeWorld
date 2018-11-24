@@ -198,10 +198,11 @@ public class WelcomeController {
 		}
 		//Cookie cookie = new Cookie("product", productId.getId().toString());
 		//response.addCookie(cookie);
-		
+		Menu product = menuRepository.findOne(productId.getId());
+		model.addAttribute("product", product);
 		session.setAttribute("productIdSession", productId.getId());
 		Object productId2 = session.getAttribute("productIdSession");
-		return "";
+		return "product";
 	}
 
 	@ExceptionHandler

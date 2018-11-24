@@ -160,6 +160,10 @@ public class CheckoutController {
 		bill.setTotalBillPrice(totalBillPrice);
 		bill.setOrderList(orderList);
 		bill.setCreationTime(new Date());
+		if (!userEmailCookie.equalsIgnoreCase("")) {
+		User user = userRepository.findByEmail(userEmailCookie).get(0);
+		bill.setSignedUser(user);
+		}
 		Bill billPersist = billRepository.save(bill);
 		if(billPersist!=null && billPersist.getId()!=0) {
 			sendConfirmationEmail(bill,userEmailCookie);
