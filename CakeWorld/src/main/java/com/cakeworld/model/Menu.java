@@ -24,6 +24,10 @@ public class Menu {
     public String description;
     
     public int price;
+    public int priceMedium;
+    public int priceLarge;
+    public int piece;
+    public int gram;
     public String currency;
     
     @ManyToOne

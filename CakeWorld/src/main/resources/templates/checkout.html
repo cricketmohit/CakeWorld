@@ -408,21 +408,28 @@ span.price {
 				
 					<span class="price" > <a
 						href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+						
 					</span>
+					
 				</h4>
+				<br></br>
 				<div class="scrollbar">
-					<div th:each="cake : ${checkoutCart}">
-						<div>
-							<p>
-								<span class="rh"> <a th:text="${cake.value.size()}"></a>
-								</span> <span style="float: center;"> <a href="product.html" th:onclick="|goToProduct('${cake.value[0].id}')|" style="text-align: center"
-							th:text="${cake.value[0].name}"></a></span>
-								<span style="float: right;"> <a
-									th:text="${cake.value[0].price}*${cake.value.size()}"></a> <a
-									th:text="${cake.value[0].currency}"></a>
-								</span>
-							</p>
-						</div>
+					<div class = "row" th:each="cake : ${checkoutCart}">
+					
+							<div class = "col-75">
+								 <a th:text="${cake.value.size()}"></a>
+								 <a href="product.html" th:onclick="|goToProduct('${cake.value[0].id}')|" 
+							th:text="${cake.value[0].name}"></a>
+							</div>
+							<div class = "col-25">
+								 <a
+									th:text="${cake.value[0].price}*${cake.value.size()}"></a>
+							</div>
+							 <div class = "col-25">
+								
+								
+							</div>
+				
 					</div>
 				</div>
 
